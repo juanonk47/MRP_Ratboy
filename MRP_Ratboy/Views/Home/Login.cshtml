@@ -1,0 +1,63 @@
+﻿@model MRP_Ratboy.Models.Usuario
+@{
+    ViewBag.Title = "Inciar Session";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Iniciar Sesion</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container-login">
+
+        <div class="row">
+            <div class="col-md-9 container-imagen">
+                <!--imagen-->
+                <img src="" alt="texto que carga si no hay" class="imagen-login"/>
+            </div>
+            <div class="col-md-3">
+                @using (Html.BeginForm(FormMethod.Post))
+                {
+                    <!--FORMULARIO-->
+                    <div class="container-formulario">
+                        <!--LOGO-->
+
+                        <div class="col-md-12 text-centered">
+                            <img src="" alt="" />
+                        </div>
+                        <!--TITULo-->
+                        <div class="col-md-12 text-centered">
+                            <h2>LOGIN RATBOY</h2>
+                        </div>
+                        <!--text usuario-->
+                        <div class="col-md-12 text-centered">
+                            @Html.LabelFor(model => model.username, new {htmlAttributes = new {@class ="form-control" }})
+                            @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <!--TEXT PASSWORD-->
+                        <div class="col-md-12 text-centered">
+                            @Html.LabelFor(model => model.password, new {htmlAttributes = new {@class = "text-muted" } })
+                            @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control",@type ="password" } })
+                        </div>
+                        <div class="col-md-12 text-centered">
+                            <button>Iniciar session</button>
+                        </div>
+                        <div class="col-md-12 text-centered">
+                            <p>Credenciales invalidas</p>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
