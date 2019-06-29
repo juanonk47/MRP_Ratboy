@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="73108df68e7b4165a3a81639199652b1" Name="Diagram1">
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.Almacenamiento" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.detalleGeneracionProcesador" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.Ensamble" Width="1.5" PointX="8.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.LogEmpleado" Width="1.5" PointX="6" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.modeloVideo" Width="1.5" PointX="10.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.PlacaMadre" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.procesador" Width="1.5" PointX="6" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.socket" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.Tamaño" Width="1.5" PointX="0.75" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.tarjetaVideo" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.tipo_usuarios" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.tipoMemoria" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.Usuarios" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.cuelloBotella" Width="1.5" PointX="13.5" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.memoriaRAM" Width="1.5" PointX="3" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.Perfiles" Width="1.5" PointX="10.5" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.URLImagenes" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_Ensamble_Almacenamiento" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_detalleGeneracionProcesador_PlacaMadre" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_cuelloBotella_Ensamble" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_Ensamble_LogEmpleado" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_Ensamble_PlacaMadre" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_modeloVideo_Ensamble" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_Perfiles_Ensamble" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_PlacaMadre_Ensamble" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_modeloVideo_tarjetaVideo" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_PlacaMadre_socket" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_PlacaMadre_Tamaño" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_PlacaMadre_tipoMemoria" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_cuelloBotella_procesador" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_cuelloBotella_procesador1" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_procesador_socket" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_procesador_tipoMemoria" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_Usuarios_tipo_usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_memoriaRAM_tipoMemoria" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

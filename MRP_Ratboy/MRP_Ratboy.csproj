@@ -129,11 +129,77 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\tipo_usuariosController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\EntityRatboyModel.cs" />
-    <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\Almacenamiento.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cuelloBotella.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\detalleGeneracionProcesador.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ensamble.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EntityRatboy.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityRatboy.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EntityRatboy.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EntityRatboy.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityRatboy.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LogEmpleado.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\memoriaRAM.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\modeloVideo.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Perfiles.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PlacaMadre.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\procesador.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\socket.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tamaño.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tarjetaVideo.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tipoMemoria.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tipo_usuarios.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\URLImagenes.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Usuarios.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -141,13 +207,31 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\layout.css" />
     <Content Include="Content\css\main.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\EntityRatboy.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EntityRatboy.edmx</DependentUpon>
+      <LastGenOutput>EntityRatboy.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\EntityRatboy.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EntityRatboy.edmx</DependentUpon>
+      <LastGenOutput>EntityRatboy.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\EntityRatboy.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EntityRatboy.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\EntityRatboy.edmx.diagram">
+      <DependentUpon>EntityRatboy.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -171,9 +255,22 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Usuarios\Details.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Usuarios\Create.cshtml" />
+    <Content Include="Views\Usuarios\Delete.cshtml" />
+    <Content Include="Views\Usuarios\Edit.cshtml" />
+    <Content Include="Views\Usuarios\Index.cshtml" />
+    <Content Include="Views\tipo_usuarios\Create.cshtml" />
+    <Content Include="Views\tipo_usuarios\Delete.cshtml" />
+    <Content Include="Views\tipo_usuarios\Details.cshtml" />
+    <Content Include="Views\tipo_usuarios\Edit.cshtml" />
+    <Content Include="Views\tipo_usuarios\Index.cshtml" />
+    <Content Include="Views\Usuarios\session_detalle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -187,6 +284,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

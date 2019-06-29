@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MRP_Ratboy.Models;
 
 namespace MRP_Ratboy.Controllers
 {
@@ -11,6 +12,23 @@ namespace MRP_Ratboy.Controllers
         // GET: Home
         public ActionResult Login()
         {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Autorizacion(Usuarios usuario) {
+            using (BD_ArmadoPcEntities db = new BD_ArmadoPcEntities() ) {
+                var userDetails = db.Usuarios.Where(x => x.username == usuario.username && x.password == usuario.password).FirstOrDefault();
+                if (userDetails == null)
+                {
+                    ViewBag.Error = "Usuario o contraeña incorrecta";
+                    return View("Login", usuario);
+                }
+                else {
+                    Session["usuario"] = userDetails;
+                    ViewBag.Usuarios = userDetails;
+                    return View("Index",userDetails);
+                }
+            }
             return View();
         }
 

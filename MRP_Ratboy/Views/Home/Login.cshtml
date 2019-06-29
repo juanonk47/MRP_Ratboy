@@ -1,9 +1,10 @@
-﻿@model MRP_Ratboy.Models.Usuario
+﻿@model MRP_Ratboy.Models.Usuarios
 @{
     ViewBag.Title = "Inciar Session";
     Layout = null;
-}
 
+
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,51 +14,52 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @section Styles {
+        <link href="@Url.Content("~/Content/css/main.css")" rel="stylesheet" type="text/css" />
+    }
 </head>
-<body>
-    <div class="container-login">
+<body style="background-color:aquamarine">
+    @using (Html.BeginForm("Autorizacion", "Home", FormMethod.Post))
+    {
+        <div class="container">
+            <div class="row">
+                <div class='col-md-3'></div>
+                <div class="col-md-6">
+                    <div class="login-box well" >
+                        <form action="">
+                            @{
+                                if (ViewBag.Error != null)
+                                {
+                                    <div class="alert alert-dismissible alert-danger">
+                                        <strong>@ViewBag.Error</strong> 
+                                    </div>
+                                }
+                            }
+                            <legend>INICIO DE SESION</legend>
+                            <div class="form-group">
+                                <label>Correo Electronico</label>
+                                @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control", @placeholder = "Correo Electronico", @type = "text" } })
+                            </div>
+                            <div class="form-group">
+                                <label>Contraseña</label>
+                                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Contraseña", @type = "password" } })
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-success" value="Iniciar Sesion" />
+                            </div>
+                            <div class="form-group">
+                                <p class="text-center m-t-xs text-sm">¿No tienes una cuenta?</p>
+                                <button type="button" onclick="location.href='@Url.Action("Create", "Usuarios")'" class="btn btn-default btn-lg btn-block">Crear Cuenta</button>
+                            </div>
+                        </form>
 
-        <div class="row">
-            <div class="col-md-9 container-imagen">
-                <!--imagen-->
-                <img src="" alt="texto que carga si no hay" class="imagen-login"/>
-            </div>
-            <div class="col-md-3">
-                @using (Html.BeginForm(FormMethod.Post))
-                {
-                    <!--FORMULARIO-->
-                    <div class="container-formulario">
-                        <!--LOGO-->
-
-                        <div class="col-md-12 text-centered">
-                            <img src="" alt="" />
-                        </div>
-                        <!--TITULo-->
-                        <div class="col-md-12 text-centered">
-                            <h2>LOGIN RATBOY</h2>
-                        </div>
-                        <!--text usuario-->
-                        <div class="col-md-12 text-centered">
-                            @Html.LabelFor(model => model.username, new {htmlAttributes = new {@class ="form-control" }})
-                            @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
-                        </div>
-                        <!--TEXT PASSWORD-->
-                        <div class="col-md-12 text-centered">
-                            @Html.LabelFor(model => model.password, new {htmlAttributes = new {@class = "text-muted" } })
-                            @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control",@type ="password" } })
-                        </div>
-                        <div class="col-md-12 text-centered">
-                            <button>Iniciar session</button>
-                        </div>
-                        <div class="col-md-12 text-centered">
-                            <p>Credenciales invalidas</p>
-                        </div>
                     </div>
-                }
-
+                </div>
+                <div class='col-md-3'></div>
             </div>
         </div>
-    </div>
+    }
+
 </body>
 </html>
 
