@@ -22,3 +22,9 @@ select,
 textarea {
     max-width: 280px;
 }
+/*
+    NUEVO
+*/
+.container-imagen {
+    background-color:red;
+}
