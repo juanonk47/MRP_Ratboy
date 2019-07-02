@@ -3,14 +3,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MRP_Ratboy.Models;
 
 namespace MRP_Ratboy.Controllers
 {
     public class HomeController : Controller
     {
+        // Session["usuario"] Esta es la variable que se le da al usuario cuando se logea exitosamente
         // GET: Home
         public ActionResult Index()
         {
+           return  check_session("Index");
+           
+        }
+        public ActionResult Login()
+        {
+            Session["usuario"] = null;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Autorizacion(Usuarios usuario) {
+            //CHECAR EL REGISTRO DEL CORREO ELECTRONICO
+            using (BD_ArmadoPcEntities db = new BD_ArmadoPcEntities() ) {
+                var userDetails = db.Usuarios.Where(x => x.username == usuario.username && x.password == usuario.password).FirstOrDefault();
+                if (userDetails == null)
+                {
+                    ViewBag.Error = "Usuario o contraeña incorrecta";
+                    return View("Login", usuario);
+                }
+                else {
+                    //Cambiar estatus por tabla de verificado
+                    if (userDetails.estatus == 0)
+                    {
+                        return RedirectToAction("Verificar", "Register",userDetails);
+                    }
+                    Session["usuario"] = userDetails;
+                    ViewBag.Usuarios = userDetails;
+                    return View("Index",userDetails);
+                }
+            }
             return View();
         }
 
@@ -23,7 +54,7 @@ namespace MRP_Ratboy.Controllers
         // GET: Home/Create
         public ActionResult Create()
         {
-            return View();
+            return check_session("Create");
         }
 
         // POST: Home/Create
@@ -83,6 +114,30 @@ namespace MRP_Ratboy.Controllers
             catch
             {
                 return View();
+            }
+        }
+        public ActionResult check_session(string pagina)
+        {
+            Usuarios user = (Usuarios)Session["usuario"];
+            if (user != null)
+            {
+                return View(pagina,user);
+            }
+            else
+            {
+                ViewBag.Error = "No se puede acceder sin antes iniciar session";
+                return View("Login");
+            }
+        }
+        public bool check_session_bolean()
+        {
+            Usuarios user = (Usuarios)Session["usuario"];
+            if (user == null) {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }

@@ -1,0 +1,1372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BD_ArmadoPcModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Almacenamiento">
+          <Key>
+            <PropertyRef Name="idAlmacenamento" />
+          </Key>
+          <Property Name="idAlmacenamento" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="capacidad" Type="int" Nullable="false" />
+          <Property Name="costoProveedor" Type="float" Nullable="false" />
+          <Property Name="costoVenta" Type="float" Nullable="false" />
+          <Property Name="estatus" Type="bit" Nullable="false" />
+          <Property Name="marca" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="watts" Type="float" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.cuelloBotella' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="cuelloBotella">
+          <Key>
+            <PropertyRef Name="idCuelloBotella" />
+            <PropertyRef Name="idEnsamble" />
+            <PropertyRef Name="esttus" />
+            <PropertyRef Name="idProcesador" />
+            <PropertyRef Name="modelo" />
+            <PropertyRef Name="comnetarios" />
+          </Key>
+          <Property Name="idCuelloBotella" Type="int" Nullable="false" />
+          <Property Name="idEnsamble" Type="int" Nullable="false" />
+          <Property Name="esttus" Type="bit" Nullable="false" />
+          <Property Name="idProcesador" Type="int" Nullable="false" />
+          <Property Name="modelo" Type="int" Nullable="false" />
+          <Property Name="comnetarios" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="detalleGeneracionProcesador">
+          <Key>
+            <PropertyRef Name="idGP" />
+          </Key>
+          <Property Name="idGP" Type="int" Nullable="false" />
+          <Property Name="idDetalleGP" Type="int" Nullable="false" />
+          <Property Name="idPlacaMadre" Type="int" Nullable="false" />
+          <Property Name="estatus" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ensamble">
+          <Key>
+            <PropertyRef Name="idEnsamble" />
+          </Key>
+          <Property Name="idEnsamble" Type="int" Nullable="false" />
+          <Property Name="idPlacaMadre" Type="int" Nullable="false" />
+          <Property Name="idProcesador" Type="int" Nullable="false" />
+          <Property Name="idRAM" Type="int" Nullable="false" />
+          <Property Name="idAlmacenamiento" Type="int" Nullable="false" />
+          <Property Name="idFuentePoder" Type="int" Nullable="false" />
+          <Property Name="idTarjetaVideo" Type="int" Nullable="false" />
+          <Property Name="idGabinete" Type="int" Nullable="false" />
+          <Property Name="estatus" Type="bit" Nullable="false" />
+          <Property Name="idEmpleado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LogEmpleado">
+          <Key>
+            <PropertyRef Name="idEmpleado" />
+          </Key>
+          <Property Name="idEmpleado" Type="int" Nullable="false" />
+          <Property Name="idEnsamble" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="estatus" Type="bit" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.memoriaRAM' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="memoriaRAM">
+          <Key>
+            <PropertyRef Name="idRAM" />
+            <PropertyRef Name="nombre" />
+            <PropertyRef Name="idTipoMemoria" />
+            <PropertyRef Name="cantidad" />
+            <PropertyRef Name="velocidad" />
+            <PropertyRef Name="estatus" />
+            <PropertyRef Name="costoVendedor" />
+            <PropertyRef Name="costoVenta" />
+            <PropertyRef Name="marca" />
+            <PropertyRef Name="watts" />
+          </Key>
+          <Property Name="idRAM" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="idTipoMemoria" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="int" Nullable="false" />
+          <Property Name="velocidad" Type="int" Nullable="false" />
+          <Property Name="estatus" Type="bit" Nullable="false" />
+          <Property Name="costoVendedor" Type="float" Nullable="false" />
+          <Property Name="costoVenta" Type="float" Nullable="false" />
+          <Property Name="marca" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="watts" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="modeloVideo">
+          <Key>
+            <PropertyRef Name="idModeloVideo" />
+          </Key>
+          <Property Name="idModeloVideo" Type="int" Nullable="false" />
+          <Property Name="idTarjetaVideo" Type="int" Nullable="false" />
+          <Property Name="modelo" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.Perfiles' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Perfiles">
+          <Key>
+            <PropertyRef Name="idPerfil" />
+            <PropertyRef Name="idEnsamble" />
+          </Key>
+          <Property Name="idPerfil" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Nivel" Type="varchar" MaxLength="50" />
+          <Property Name="idEnsamble" Type="int" Nullable="false" />
+          <Property Name="estatus" Type="bit" />
+        </EntityType>
+        <EntityType Name="PlacaMadre">
+          <Key>
+            <PropertyRef Name="idPlacaMadre" />
+          </Key>
+          <Property Name="idPlacaMadre" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idtipoMemoria" Type="int" Nullable="false" />
+          <Property Name="maxVelocidadMemoria" Type="int" Nullable="false" />
+          <Property Name="statusM2" Type="int" Nullable="false" />
+          <Property Name="cantidadM2" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gaming" Type="int" Nullable="false" />
+          <Property Name="idTamaño" Type="int" Nullable="false" />
+          <Property Name="codBarras" Type="image" Nullable="false" />
+          <Property Name="PCIexpress" Type="int" Nullable="false" />
+          <Property Name="SATA" Type="int" Nullable="false" />
+          <Property Name="estatus" Type="bit" Nullable="false" />
+          <Property Name="idEnsamble" Type="int" Nullable="false" />
+          <Property Name="costoProveedor" Type="float" Nullable="false" />
+          <Property Name="costoVenta" Type="float" Nullable="false" />
+          <Property Name="marca" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="modelo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="watts" Type="float" />
+          <Property Name="idSocket" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="procesador">
+          <Key>
+            <PropertyRef Name="idProcesador" />
+          </Key>
+          <Property Name="idProcesador" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="cantidadNucleos" Type="int" Nullable="false" />
+          <Property Name="cantidadSubProcesos" Type="int" Nullable="false" />
+          <Property Name="frecuenciaBasica" Type="int" Nullable="false" />
+          <Property Name="idTipoMemoria" Type="int" Nullable="false" />
+          <Property Name="idSocket" Type="int" Nullable="false" />
+          <Property Name="graficosIntegrados" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="optane" Type="int" Nullable="false" />
+          <Property Name="costoProveedor" Type="float" Nullable="false" />
+          <Property Name="costoVenta" Type="float" Nullable="false" />
+          <Property Name="marca" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="estatus" Type="bit" Nullable="false" />
+          <Property Name="watts" Type="float" />
+        </EntityType>
+        <EntityType Name="socket">
+          <Key>
+            <PropertyRef Name="idSocket" />
+          </Key>
+          <Property Name="idSocket" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tamaño">
+          <Key>
+            <PropertyRef Name="idTamaño" />
+          </Key>
+          <Property Name="idTamaño" Type="int" Nullable="false" />
+          <Property Name="nombreTamaño" Type="varchar" MaxLength="50" />
+          <Property Name="estatus" Type="bit" />
+        </EntityType>
+        <EntityType Name="tarjetaVideo">
+          <Key>
+            <PropertyRef Name="idTarjetaVideo" />
+          </Key>
+          <Property Name="idTarjetaVideo" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="arquitectura" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="cudaCore" Type="int" Nullable="false" />
+          <Property Name="frameBuffer" Type="int" Nullable="false" />
+          <Property Name="velocidadReloj" Type="int" Nullable="false" />
+          <Property Name="velocidadMemoria" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipo_usuarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipoMemoria">
+          <Key>
+            <PropertyRef Name="idTipoMemoria" />
+          </Key>
+          <Property Name="idTipoMemoria" Type="int" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="URLImagenes">
+          <Key>
+            <PropertyRef Name="idUrl" />
+            <PropertyRef Name="tipo" />
+            <PropertyRef Name="URL" />
+          </Key>
+          <Property Name="idUrl" Type="int" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="URL" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tipo_id" Type="int" Nullable="false" />
+          <Property Name="estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_cuelloBotella_Ensamble">
+          <End Role="Ensamble" Type="Self.Ensamble" Multiplicity="1" />
+          <End Role="cuelloBotella" Type="Self.cuelloBotella" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ensamble">
+              <PropertyRef Name="idEnsamble" />
+            </Principal>
+            <Dependent Role="cuelloBotella">
+              <PropertyRef Name="idEnsamble" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cuelloBotella_procesador">
+          <End Role="procesador" Type="Self.procesador" Multiplicity="1" />
+          <End Role="cuelloBotella" Type="Self.cuelloBotella" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="procesador">
+              <PropertyRef Name="idProcesador" />
+            </Principal>
+            <Dependent Role="cuelloBotella">
+              <PropertyRef Name="idProcesador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cuelloBotella_procesador1">
+          <End Role="procesador" Type="Self.procesador" Multiplicity="1" />
+          <End Role="cuelloBotella" Type="Self.cuelloBotella" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="procesador">
+              <PropertyRef Name="idProcesador" />
+            </Principal>
+            <Dependent Role="cuelloBotella">
+              <PropertyRef Name="idProcesador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_detalleGeneracionProcesador_PlacaMadre">
+          <End Role="PlacaMadre" Type="Self.PlacaMadre" Multiplicity="1" />
+          <End Role="detalleGeneracionProcesador" Type="Self.detalleGeneracionProcesador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlacaMadre">
+              <PropertyRef Name="idPlacaMadre" />
+            </Principal>
+            <Dependent Role="detalleGeneracionProcesador">
+              <PropertyRef Name="idPlacaMadre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ensamble_Almacenamiento">
+          <End Role="Almacenamiento" Type="Self.Almacenamiento" Multiplicity="1" />
+          <End Role="Ensamble" Type="Self.Ensamble" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Almacenamiento">
+              <PropertyRef Name="idAlmacenamento" />
+            </Principal>
+            <Dependent Role="Ensamble">
+              <PropertyRef Name="idAlmacenamiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ensamble_LogEmpleado">
+          <End Role="LogEmpleado" Type="Self.LogEmpleado" Multiplicity="1" />
+          <End Role="Ensamble" Type="Self.Ensamble" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LogEmpleado">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="Ensamble">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ensamble_PlacaMadre">
+          <End Role="PlacaMadre" Type="Self.PlacaMadre" Multiplicity="1" />
+          <End Role="Ensamble" Type="Self.Ensamble" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlacaMadre">
+              <PropertyRef Name="idPlacaMadre" />
+            </Principal>
+            <Dependent Role="Ensamble">
+              <PropertyRef Name="idPlacaMadre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_memoriaRAM_tipoMemoria">
+          <End Role="tipoMemoria" Type="Self.tipoMemoria" Multiplicity="1" />
+          <End Role="memoriaRAM" Type="Self.memoriaRAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoMemoria">
+              <PropertyRef Name="idTipoMemoria" />
+            </Principal>
+            <Dependent Role="memoriaRAM">
+              <PropertyRef Name="idTipoMemoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_modeloVideo_Ensamble">
+          <End Role="Ensamble" Type="Self.Ensamble" Multiplicity="1" />
+          <End Role="modeloVideo" Type="Self.modeloVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ensamble">
+              <PropertyRef Name="idEnsamble" />
+            </Principal>
+            <Dependent Role="modeloVideo">
+              <PropertyRef Name="idTarjetaVideo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_modeloVideo_tarjetaVideo">
+          <End Role="tarjetaVideo" Type="Self.tarjetaVideo" Multiplicity="1" />
+          <End Role="modeloVideo" Type="Self.modeloVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tarjetaVideo">
+              <PropertyRef Name="idTarjetaVideo" />
+            </Principal>
+            <Dependent Role="modeloVideo">
+              <PropertyRef Name="idTarjetaVideo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Perfiles_Ensamble">
+          <End Role="Ensamble" Type="Self.Ensamble" Multiplicity="1" />
+          <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ensamble">
+              <PropertyRef Name="idEnsamble" />
+            </Principal>
+            <Dependent Role="Perfiles">
+              <PropertyRef Name="idEnsamble" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlacaMadre_Ensamble">
+          <End Role="Ensamble" Type="Self.Ensamble" Multiplicity="1" />
+          <End Role="PlacaMadre" Type="Self.PlacaMadre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ensamble">
+              <PropertyRef Name="idEnsamble" />
+            </Principal>
+            <Dependent Role="PlacaMadre">
+              <PropertyRef Name="idEnsamble" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlacaMadre_socket">
+          <End Role="socket" Type="Self.socket" Multiplicity="1" />
+          <End Role="PlacaMadre" Type="Self.PlacaMadre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="socket">
+              <PropertyRef Name="idSocket" />
+            </Principal>
+            <Dependent Role="PlacaMadre">
+              <PropertyRef Name="idSocket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlacaMadre_Tamaño">
+          <End Role="Tamaño" Type="Self.Tamaño" Multiplicity="1" />
+          <End Role="PlacaMadre" Type="Self.PlacaMadre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tamaño">
+              <PropertyRef Name="idTamaño" />
+            </Principal>
+            <Dependent Role="PlacaMadre">
+              <PropertyRef Name="idTamaño" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlacaMadre_tipoMemoria">
+          <End Role="tipoMemoria" Type="Self.tipoMemoria" Multiplicity="1" />
+          <End Role="PlacaMadre" Type="Self.PlacaMadre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoMemoria">
+              <PropertyRef Name="idTipoMemoria" />
+            </Principal>
+            <Dependent Role="PlacaMadre">
+              <PropertyRef Name="idtipoMemoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_procesador_socket">
+          <End Role="socket" Type="Self.socket" Multiplicity="1" />
+          <End Role="procesador" Type="Self.procesador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="socket">
+              <PropertyRef Name="idSocket" />
+            </Principal>
+            <Dependent Role="procesador">
+              <PropertyRef Name="idSocket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_procesador_tipoMemoria">
+          <End Role="tipoMemoria" Type="Self.tipoMemoria" Multiplicity="1" />
+          <End Role="procesador" Type="Self.procesador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoMemoria">
+              <PropertyRef Name="idTipoMemoria" />
+            </Principal>
+            <Dependent Role="procesador">
+              <PropertyRef Name="idTipoMemoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_tipo_usuarios">
+          <End Role="tipo_usuarios" Type="Self.tipo_usuarios" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="tipo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BD_ArmadoPcModelStoreContainer">
+          <EntitySet Name="Almacenamiento" EntityType="Self.Almacenamiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="detalleGeneracionProcesador" EntityType="Self.detalleGeneracionProcesador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ensamble" EntityType="Self.Ensamble" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogEmpleado" EntityType="Self.LogEmpleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="modeloVideo" EntityType="Self.modeloVideo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlacaMadre" EntityType="Self.PlacaMadre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="procesador" EntityType="Self.procesador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="socket" EntityType="Self.socket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tamaño" EntityType="Self.Tamaño" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tarjetaVideo" EntityType="Self.tarjetaVideo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipo_usuarios" EntityType="Self.tipo_usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipoMemoria" EntityType="Self.tipoMemoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cuelloBotella" EntityType="Self.cuelloBotella" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [cuelloBotella].[idCuelloBotella] AS [idCuelloBotella], 
+    [cuelloBotella].[idEnsamble] AS [idEnsamble], 
+    [cuelloBotella].[esttus] AS [esttus], 
+    [cuelloBotella].[idProcesador] AS [idProcesador], 
+    [cuelloBotella].[modelo] AS [modelo], 
+    [cuelloBotella].[comnetarios] AS [comnetarios]
+    FROM [dbo].[cuelloBotella] AS [cuelloBotella]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="memoriaRAM" EntityType="Self.memoriaRAM" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [memoriaRAM].[idRAM] AS [idRAM], 
+    [memoriaRAM].[nombre] AS [nombre], 
+    [memoriaRAM].[idTipoMemoria] AS [idTipoMemoria], 
+    [memoriaRAM].[cantidad] AS [cantidad], 
+    [memoriaRAM].[velocidad] AS [velocidad], 
+    [memoriaRAM].[estatus] AS [estatus], 
+    [memoriaRAM].[costoVendedor] AS [costoVendedor], 
+    [memoriaRAM].[costoVenta] AS [costoVenta], 
+    [memoriaRAM].[marca] AS [marca], 
+    [memoriaRAM].[watts] AS [watts]
+    FROM [dbo].[memoriaRAM] AS [memoriaRAM]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Perfiles" EntityType="Self.Perfiles" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Perfiles].[idPerfil] AS [idPerfil], 
+    [Perfiles].[Nombre] AS [Nombre], 
+    [Perfiles].[Nivel] AS [Nivel], 
+    [Perfiles].[idEnsamble] AS [idEnsamble], 
+    [Perfiles].[estatus] AS [estatus]
+    FROM [dbo].[Perfiles] AS [Perfiles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="URLImagenes" EntityType="Self.URLImagenes" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [URLImagenes].[idUrl] AS [idUrl], 
+    [URLImagenes].[tipo] AS [tipo], 
+    [URLImagenes].[URL] AS [URL]
+    FROM [dbo].[URLImagenes] AS [URLImagenes]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_cuelloBotella_Ensamble" Association="Self.FK_cuelloBotella_Ensamble">
+            <End Role="Ensamble" EntitySet="Ensamble" />
+            <End Role="cuelloBotella" EntitySet="cuelloBotella" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cuelloBotella_procesador" Association="Self.FK_cuelloBotella_procesador">
+            <End Role="procesador" EntitySet="procesador" />
+            <End Role="cuelloBotella" EntitySet="cuelloBotella" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cuelloBotella_procesador1" Association="Self.FK_cuelloBotella_procesador1">
+            <End Role="procesador" EntitySet="procesador" />
+            <End Role="cuelloBotella" EntitySet="cuelloBotella" />
+          </AssociationSet>
+          <AssociationSet Name="FK_detalleGeneracionProcesador_PlacaMadre" Association="Self.FK_detalleGeneracionProcesador_PlacaMadre">
+            <End Role="PlacaMadre" EntitySet="PlacaMadre" />
+            <End Role="detalleGeneracionProcesador" EntitySet="detalleGeneracionProcesador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ensamble_Almacenamiento" Association="Self.FK_Ensamble_Almacenamiento">
+            <End Role="Almacenamiento" EntitySet="Almacenamiento" />
+            <End Role="Ensamble" EntitySet="Ensamble" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ensamble_LogEmpleado" Association="Self.FK_Ensamble_LogEmpleado">
+            <End Role="LogEmpleado" EntitySet="LogEmpleado" />
+            <End Role="Ensamble" EntitySet="Ensamble" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ensamble_PlacaMadre" Association="Self.FK_Ensamble_PlacaMadre">
+            <End Role="PlacaMadre" EntitySet="PlacaMadre" />
+            <End Role="Ensamble" EntitySet="Ensamble" />
+          </AssociationSet>
+          <AssociationSet Name="FK_memoriaRAM_tipoMemoria" Association="Self.FK_memoriaRAM_tipoMemoria">
+            <End Role="tipoMemoria" EntitySet="tipoMemoria" />
+            <End Role="memoriaRAM" EntitySet="memoriaRAM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_modeloVideo_Ensamble" Association="Self.FK_modeloVideo_Ensamble">
+            <End Role="Ensamble" EntitySet="Ensamble" />
+            <End Role="modeloVideo" EntitySet="modeloVideo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_modeloVideo_tarjetaVideo" Association="Self.FK_modeloVideo_tarjetaVideo">
+            <End Role="tarjetaVideo" EntitySet="tarjetaVideo" />
+            <End Role="modeloVideo" EntitySet="modeloVideo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Perfiles_Ensamble" Association="Self.FK_Perfiles_Ensamble">
+            <End Role="Ensamble" EntitySet="Ensamble" />
+            <End Role="Perfiles" EntitySet="Perfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlacaMadre_Ensamble" Association="Self.FK_PlacaMadre_Ensamble">
+            <End Role="Ensamble" EntitySet="Ensamble" />
+            <End Role="PlacaMadre" EntitySet="PlacaMadre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlacaMadre_socket" Association="Self.FK_PlacaMadre_socket">
+            <End Role="socket" EntitySet="socket" />
+            <End Role="PlacaMadre" EntitySet="PlacaMadre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlacaMadre_Tamaño" Association="Self.FK_PlacaMadre_Tamaño">
+            <End Role="Tamaño" EntitySet="Tamaño" />
+            <End Role="PlacaMadre" EntitySet="PlacaMadre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlacaMadre_tipoMemoria" Association="Self.FK_PlacaMadre_tipoMemoria">
+            <End Role="tipoMemoria" EntitySet="tipoMemoria" />
+            <End Role="PlacaMadre" EntitySet="PlacaMadre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_procesador_socket" Association="Self.FK_procesador_socket">
+            <End Role="socket" EntitySet="socket" />
+            <End Role="procesador" EntitySet="procesador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_procesador_tipoMemoria" Association="Self.FK_procesador_tipoMemoria">
+            <End Role="tipoMemoria" EntitySet="tipoMemoria" />
+            <End Role="procesador" EntitySet="procesador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_tipo_usuarios" Association="Self.FK_Usuarios_tipo_usuarios">
+            <End Role="tipo_usuarios" EntitySet="tipo_usuarios" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BD_ArmadoPcModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Almacenamiento">
+          <Key>
+            <PropertyRef Name="idAlmacenamento" />
+          </Key>
+          <Property Name="idAlmacenamento" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="capacidad" Type="Int32" Nullable="false" />
+          <Property Name="costoProveedor" Type="Double" Nullable="false" />
+          <Property Name="costoVenta" Type="Double" Nullable="false" />
+          <Property Name="estatus" Type="Boolean" Nullable="false" />
+          <Property Name="marca" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="watts" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Ensamble" Relationship="Self.FK_Ensamble_Almacenamiento" FromRole="Almacenamiento" ToRole="Ensamble" />
+        </EntityType>
+        <EntityType Name="detalleGeneracionProcesador">
+          <Key>
+            <PropertyRef Name="idGP" />
+          </Key>
+          <Property Name="idGP" Type="Int32" Nullable="false" />
+          <Property Name="idDetalleGP" Type="Int32" Nullable="false" />
+          <Property Name="idPlacaMadre" Type="Int32" Nullable="false" />
+          <Property Name="estatus" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="PlacaMadre" Relationship="Self.FK_detalleGeneracionProcesador_PlacaMadre" FromRole="detalleGeneracionProcesador" ToRole="PlacaMadre" />
+        </EntityType>
+        <EntityType Name="Ensamble">
+          <Key>
+            <PropertyRef Name="idEnsamble" />
+          </Key>
+          <Property Name="idEnsamble" Type="Int32" Nullable="false" />
+          <Property Name="idPlacaMadre" Type="Int32" Nullable="false" />
+          <Property Name="idProcesador" Type="Int32" Nullable="false" />
+          <Property Name="idRAM" Type="Int32" Nullable="false" />
+          <Property Name="idAlmacenamiento" Type="Int32" Nullable="false" />
+          <Property Name="idFuentePoder" Type="Int32" Nullable="false" />
+          <Property Name="idTarjetaVideo" Type="Int32" Nullable="false" />
+          <Property Name="idGabinete" Type="Int32" Nullable="false" />
+          <Property Name="estatus" Type="Boolean" Nullable="false" />
+          <Property Name="idEmpleado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Almacenamiento" Relationship="Self.FK_Ensamble_Almacenamiento" FromRole="Ensamble" ToRole="Almacenamiento" />
+          <NavigationProperty Name="cuelloBotella" Relationship="Self.FK_cuelloBotella_Ensamble" FromRole="Ensamble" ToRole="cuelloBotella" />
+          <NavigationProperty Name="LogEmpleado" Relationship="Self.FK_Ensamble_LogEmpleado" FromRole="Ensamble" ToRole="LogEmpleado" />
+          <NavigationProperty Name="PlacaMadre" Relationship="Self.FK_Ensamble_PlacaMadre" FromRole="Ensamble" ToRole="PlacaMadre" />
+          <NavigationProperty Name="modeloVideo" Relationship="Self.FK_modeloVideo_Ensamble" FromRole="Ensamble" ToRole="modeloVideo" />
+          <NavigationProperty Name="Perfiles" Relationship="Self.FK_Perfiles_Ensamble" FromRole="Ensamble" ToRole="Perfiles" />
+          <NavigationProperty Name="PlacaMadre1" Relationship="Self.FK_PlacaMadre_Ensamble" FromRole="Ensamble" ToRole="PlacaMadre" />
+        </EntityType>
+        <EntityType Name="LogEmpleado">
+          <Key>
+            <PropertyRef Name="idEmpleado" />
+          </Key>
+          <Property Name="idEmpleado" Type="Int32" Nullable="false" />
+          <Property Name="idEnsamble" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="estatus" Type="Boolean" />
+          <NavigationProperty Name="Ensamble" Relationship="Self.FK_Ensamble_LogEmpleado" FromRole="LogEmpleado" ToRole="Ensamble" />
+        </EntityType>
+        <EntityType Name="modeloVideo">
+          <Key>
+            <PropertyRef Name="idModeloVideo" />
+          </Key>
+          <Property Name="idModeloVideo" Type="Int32" Nullable="false" />
+          <Property Name="idTarjetaVideo" Type="Int32" Nullable="false" />
+          <Property Name="modelo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Ensamble" Relationship="Self.FK_modeloVideo_Ensamble" FromRole="modeloVideo" ToRole="Ensamble" />
+          <NavigationProperty Name="tarjetaVideo" Relationship="Self.FK_modeloVideo_tarjetaVideo" FromRole="modeloVideo" ToRole="tarjetaVideo" />
+        </EntityType>
+        <EntityType Name="PlacaMadre">
+          <Key>
+            <PropertyRef Name="idPlacaMadre" />
+          </Key>
+          <Property Name="idPlacaMadre" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idtipoMemoria" Type="Int32" Nullable="false" />
+          <Property Name="maxVelocidadMemoria" Type="Int32" Nullable="false" />
+          <Property Name="statusM2" Type="Int32" Nullable="false" />
+          <Property Name="cantidadM2" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gaming" Type="Int32" Nullable="false" />
+          <Property Name="idTamaño" Type="Int32" Nullable="false" />
+          <Property Name="codBarras" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="PCIexpress" Type="Int32" Nullable="false" />
+          <Property Name="SATA" Type="Int32" Nullable="false" />
+          <Property Name="estatus" Type="Boolean" Nullable="false" />
+          <Property Name="idEnsamble" Type="Int32" Nullable="false" />
+          <Property Name="costoProveedor" Type="Double" Nullable="false" />
+          <Property Name="costoVenta" Type="Double" Nullable="false" />
+          <Property Name="marca" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modelo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="watts" Type="Double" />
+          <Property Name="idSocket" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="detalleGeneracionProcesador" Relationship="Self.FK_detalleGeneracionProcesador_PlacaMadre" FromRole="PlacaMadre" ToRole="detalleGeneracionProcesador" />
+          <NavigationProperty Name="Ensamble" Relationship="Self.FK_Ensamble_PlacaMadre" FromRole="PlacaMadre" ToRole="Ensamble" />
+          <NavigationProperty Name="Ensamble1" Relationship="Self.FK_PlacaMadre_Ensamble" FromRole="PlacaMadre" ToRole="Ensamble" />
+          <NavigationProperty Name="socket" Relationship="Self.FK_PlacaMadre_socket" FromRole="PlacaMadre" ToRole="socket" />
+          <NavigationProperty Name="Tamaño" Relationship="Self.FK_PlacaMadre_Tamaño" FromRole="PlacaMadre" ToRole="Tamaño" />
+          <NavigationProperty Name="tipoMemoria" Relationship="Self.FK_PlacaMadre_tipoMemoria" FromRole="PlacaMadre" ToRole="tipoMemoria" />
+        </EntityType>
+        <EntityType Name="procesador">
+          <Key>
+            <PropertyRef Name="idProcesador" />
+          </Key>
+          <Property Name="idProcesador" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cantidadNucleos" Type="Int32" Nullable="false" />
+          <Property Name="cantidadSubProcesos" Type="Int32" Nullable="false" />
+          <Property Name="frecuenciaBasica" Type="Int32" Nullable="false" />
+          <Property Name="idTipoMemoria" Type="Int32" Nullable="false" />
+          <Property Name="idSocket" Type="Int32" Nullable="false" />
+          <Property Name="graficosIntegrados" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="optane" Type="Int32" Nullable="false" />
+          <Property Name="costoProveedor" Type="Double" Nullable="false" />
+          <Property Name="costoVenta" Type="Double" Nullable="false" />
+          <Property Name="marca" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estatus" Type="Boolean" Nullable="false" />
+          <Property Name="watts" Type="Double" />
+          <NavigationProperty Name="cuelloBotella" Relationship="Self.FK_cuelloBotella_procesador" FromRole="procesador" ToRole="cuelloBotella" />
+          <NavigationProperty Name="cuelloBotella1" Relationship="Self.FK_cuelloBotella_procesador1" FromRole="procesador" ToRole="cuelloBotella" />
+          <NavigationProperty Name="socket" Relationship="Self.FK_procesador_socket" FromRole="procesador" ToRole="socket" />
+          <NavigationProperty Name="tipoMemoria" Relationship="Self.FK_procesador_tipoMemoria" FromRole="procesador" ToRole="tipoMemoria" />
+        </EntityType>
+        <EntityType Name="socket">
+          <Key>
+            <PropertyRef Name="idSocket" />
+          </Key>
+          <Property Name="idSocket" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PlacaMadre" Relationship="Self.FK_PlacaMadre_socket" FromRole="socket" ToRole="PlacaMadre" />
+          <NavigationProperty Name="procesador" Relationship="Self.FK_procesador_socket" FromRole="socket" ToRole="procesador" />
+        </EntityType>
+        <EntityType Name="Tamaño">
+          <Key>
+            <PropertyRef Name="idTamaño" />
+          </Key>
+          <Property Name="idTamaño" Type="Int32" Nullable="false" />
+          <Property Name="nombreTamaño" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="estatus" Type="Boolean" />
+          <NavigationProperty Name="PlacaMadre" Relationship="Self.FK_PlacaMadre_Tamaño" FromRole="Tamaño" ToRole="PlacaMadre" />
+        </EntityType>
+        <EntityType Name="tarjetaVideo">
+          <Key>
+            <PropertyRef Name="idTarjetaVideo" />
+          </Key>
+          <Property Name="idTarjetaVideo" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="arquitectura" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cudaCore" Type="Int32" Nullable="false" />
+          <Property Name="frameBuffer" Type="Int32" Nullable="false" />
+          <Property Name="velocidadReloj" Type="Int32" Nullable="false" />
+          <Property Name="velocidadMemoria" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="modeloVideo" Relationship="Self.FK_modeloVideo_tarjetaVideo" FromRole="tarjetaVideo" ToRole="modeloVideo" />
+        </EntityType>
+        <EntityType Name="tipo_usuarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_tipo_usuarios" FromRole="tipo_usuarios" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="tipoMemoria">
+          <Key>
+            <PropertyRef Name="idTipoMemoria" />
+          </Key>
+          <Property Name="idTipoMemoria" Type="Int32" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PlacaMadre" Relationship="Self.FK_PlacaMadre_tipoMemoria" FromRole="tipoMemoria" ToRole="PlacaMadre" />
+          <NavigationProperty Name="procesador" Relationship="Self.FK_procesador_tipoMemoria" FromRole="tipoMemoria" ToRole="procesador" />
+          <NavigationProperty Name="memoriaRAM" Relationship="Self.FK_memoriaRAM_tipoMemoria" FromRole="tipoMemoria" ToRole="memoriaRAM" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipo_id" Type="Int32" Nullable="false" />
+          <Property Name="estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tipo_usuarios" Relationship="Self.FK_Usuarios_tipo_usuarios" FromRole="Usuarios" ToRole="tipo_usuarios" />
+        </EntityType>
+        <EntityType Name="cuelloBotella">
+          <Key>
+            <PropertyRef Name="idCuelloBotella" />
+            <PropertyRef Name="idEnsamble" />
+            <PropertyRef Name="esttus" />
+            <PropertyRef Name="idProcesador" />
+            <PropertyRef Name="modelo" />
+            <PropertyRef Name="comnetarios" />
+          </Key>
+          <Property Name="idCuelloBotella" Type="Int32" Nullable="false" />
+          <Property Name="idEnsamble" Type="Int32" Nullable="false" />
+          <Property Name="esttus" Type="Boolean" Nullable="false" />
+          <Property Name="idProcesador" Type="Int32" Nullable="false" />
+          <Property Name="modelo" Type="Int32" Nullable="false" />
+          <Property Name="comnetarios" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Ensamble" Relationship="Self.FK_cuelloBotella_Ensamble" FromRole="cuelloBotella" ToRole="Ensamble" />
+          <NavigationProperty Name="procesador" Relationship="Self.FK_cuelloBotella_procesador" FromRole="cuelloBotella" ToRole="procesador" />
+          <NavigationProperty Name="procesador1" Relationship="Self.FK_cuelloBotella_procesador1" FromRole="cuelloBotella" ToRole="procesador" />
+        </EntityType>
+        <EntityType Name="memoriaRAM">
+          <Key>
+            <PropertyRef Name="idRAM" />
+            <PropertyRef Name="nombre" />
+            <PropertyRef Name="idTipoMemoria" />
+            <PropertyRef Name="cantidad" />
+            <PropertyRef Name="velocidad" />
+            <PropertyRef Name="estatus" />
+            <PropertyRef Name="costoVendedor" />
+            <PropertyRef Name="costoVenta" />
+            <PropertyRef Name="marca" />
+            <PropertyRef Name="watts" />
+          </Key>
+          <Property Name="idRAM" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idTipoMemoria" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <Property Name="velocidad" Type="Int32" Nullable="false" />
+          <Property Name="estatus" Type="Boolean" Nullable="false" />
+          <Property Name="costoVendedor" Type="Double" Nullable="false" />
+          <Property Name="costoVenta" Type="Double" Nullable="false" />
+          <Property Name="marca" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="watts" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tipoMemoria" Relationship="Self.FK_memoriaRAM_tipoMemoria" FromRole="memoriaRAM" ToRole="tipoMemoria" />
+        </EntityType>
+        <EntityType Name="Perfiles">
+          <Key>
+            <PropertyRef Name="idPerfil" />
+            <PropertyRef Name="idEnsamble" />
+          </Key>
+          <Property Name="idPerfil" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nivel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idEnsamble" Type="Int32" Nullable="false" />
+          <Property Name="estatus" Type="Boolean" />
+          <NavigationProperty Name="Ensamble" Relationship="Self.FK_Perfiles_Ensamble" FromRole="Perfiles" ToRole="Ensamble" />
+        </EntityType>
+        <EntityType Name="URLImagenes">
+          <Key>
+            <PropertyRef Name="idUrl" />
+            <PropertyRef Name="tipo" />
+            <PropertyRef Name="URL" />
+          </Key>
+          <Property Name="idUrl" Type="Int32" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="URL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Ensamble_Almacenamiento">
+          <End Role="Almacenamiento" Type="Self.Almacenamiento" Multiplicity="1" />
+          <End Role="Ensamble" Type="Self.Ensamble" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Almacenamiento">
+              <PropertyRef Name="idAlmacenamento" />
+            </Principal>
+            <Dependent Role="Ensamble">
+              <PropertyRef Name="idAlmacenamiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_detalleGeneracionProcesador_PlacaMadre">
+          <End Role="PlacaMadre" Type="Self.PlacaMadre" Multiplicity="1" />
+          <End Role="detalleGeneracionProcesador" Type="Self.detalleGeneracionProcesador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlacaMadre">
+              <PropertyRef Name="idPlacaMadre" />
+            </Principal>
+            <Dependent Role="detalleGeneracionProcesador">
+              <PropertyRef Name="idPlacaMadre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cuelloBotella_Ensamble">
+          <End Role="Ensamble" Type="Self.Ensamble" Multiplicity="1" />
+          <End Role="cuelloBotella" Type="Self.cuelloBotella" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ensamble">
+              <PropertyRef Name="idEnsamble" />
+            </Principal>
+            <Dependent Role="cuelloBotella">
+              <PropertyRef Name="idEnsamble" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ensamble_LogEmpleado">
+          <End Role="LogEmpleado" Type="Self.LogEmpleado" Multiplicity="1" />
+          <End Role="Ensamble" Type="Self.Ensamble" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LogEmpleado">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="Ensamble">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ensamble_PlacaMadre">
+          <End Role="PlacaMadre" Type="Self.PlacaMadre" Multiplicity="1" />
+          <End Role="Ensamble" Type="Self.Ensamble" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlacaMadre">
+              <PropertyRef Name="idPlacaMadre" />
+            </Principal>
+            <Dependent Role="Ensamble">
+              <PropertyRef Name="idPlacaMadre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_modeloVideo_Ensamble">
+          <End Role="Ensamble" Type="Self.Ensamble" Multiplicity="1" />
+          <End Role="modeloVideo" Type="Self.modeloVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ensamble">
+              <PropertyRef Name="idEnsamble" />
+            </Principal>
+            <Dependent Role="modeloVideo">
+              <PropertyRef Name="idTarjetaVideo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Perfiles_Ensamble">
+          <End Role="Ensamble" Type="Self.Ensamble" Multiplicity="1" />
+          <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ensamble">
+              <PropertyRef Name="idEnsamble" />
+            </Principal>
+            <Dependent Role="Perfiles">
+              <PropertyRef Name="idEnsamble" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlacaMadre_Ensamble">
+          <End Role="Ensamble" Type="Self.Ensamble" Multiplicity="1" />
+          <End Role="PlacaMadre" Type="Self.PlacaMadre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ensamble">
+              <PropertyRef Name="idEnsamble" />
+            </Principal>
+            <Dependent Role="PlacaMadre">
+              <PropertyRef Name="idEnsamble" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_modeloVideo_tarjetaVideo">
+          <End Role="tarjetaVideo" Type="Self.tarjetaVideo" Multiplicity="1" />
+          <End Role="modeloVideo" Type="Self.modeloVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tarjetaVideo">
+              <PropertyRef Name="idTarjetaVideo" />
+            </Principal>
+            <Dependent Role="modeloVideo">
+              <PropertyRef Name="idTarjetaVideo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlacaMadre_socket">
+          <End Role="socket" Type="Self.socket" Multiplicity="1" />
+          <End Role="PlacaMadre" Type="Self.PlacaMadre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="socket">
+              <PropertyRef Name="idSocket" />
+            </Principal>
+            <Dependent Role="PlacaMadre">
+              <PropertyRef Name="idSocket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlacaMadre_Tamaño">
+          <End Role="Tamaño" Type="Self.Tamaño" Multiplicity="1" />
+          <End Role="PlacaMadre" Type="Self.PlacaMadre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tamaño">
+              <PropertyRef Name="idTamaño" />
+            </Principal>
+            <Dependent Role="PlacaMadre">
+              <PropertyRef Name="idTamaño" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlacaMadre_tipoMemoria">
+          <End Role="tipoMemoria" Type="Self.tipoMemoria" Multiplicity="1" />
+          <End Role="PlacaMadre" Type="Self.PlacaMadre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoMemoria">
+              <PropertyRef Name="idTipoMemoria" />
+            </Principal>
+            <Dependent Role="PlacaMadre">
+              <PropertyRef Name="idtipoMemoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cuelloBotella_procesador">
+          <End Role="procesador" Type="Self.procesador" Multiplicity="1" />
+          <End Role="cuelloBotella" Type="Self.cuelloBotella" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="procesador">
+              <PropertyRef Name="idProcesador" />
+            </Principal>
+            <Dependent Role="cuelloBotella">
+              <PropertyRef Name="idProcesador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cuelloBotella_procesador1">
+          <End Role="procesador" Type="Self.procesador" Multiplicity="1" />
+          <End Role="cuelloBotella" Type="Self.cuelloBotella" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="procesador">
+              <PropertyRef Name="idProcesador" />
+            </Principal>
+            <Dependent Role="cuelloBotella">
+              <PropertyRef Name="idProcesador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_procesador_socket">
+          <End Role="socket" Type="Self.socket" Multiplicity="1" />
+          <End Role="procesador" Type="Self.procesador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="socket">
+              <PropertyRef Name="idSocket" />
+            </Principal>
+            <Dependent Role="procesador">
+              <PropertyRef Name="idSocket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_procesador_tipoMemoria">
+          <End Role="tipoMemoria" Type="Self.tipoMemoria" Multiplicity="1" />
+          <End Role="procesador" Type="Self.procesador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoMemoria">
+              <PropertyRef Name="idTipoMemoria" />
+            </Principal>
+            <Dependent Role="procesador">
+              <PropertyRef Name="idTipoMemoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_tipo_usuarios">
+          <End Role="tipo_usuarios" Type="Self.tipo_usuarios" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="tipo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_memoriaRAM_tipoMemoria">
+          <End Role="tipoMemoria" Type="Self.tipoMemoria" Multiplicity="1" />
+          <End Role="memoriaRAM" Type="Self.memoriaRAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipoMemoria">
+              <PropertyRef Name="idTipoMemoria" />
+            </Principal>
+            <Dependent Role="memoriaRAM">
+              <PropertyRef Name="idTipoMemoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BD_ArmadoPcEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Almacenamiento" EntityType="Self.Almacenamiento" />
+          <EntitySet Name="detalleGeneracionProcesador" EntityType="Self.detalleGeneracionProcesador" />
+          <EntitySet Name="Ensamble" EntityType="Self.Ensamble" />
+          <EntitySet Name="LogEmpleado" EntityType="Self.LogEmpleado" />
+          <EntitySet Name="modeloVideo" EntityType="Self.modeloVideo" />
+          <EntitySet Name="PlacaMadre" EntityType="Self.PlacaMadre" />
+          <EntitySet Name="procesador" EntityType="Self.procesador" />
+          <EntitySet Name="socket" EntityType="Self.socket" />
+          <EntitySet Name="Tamaño" EntityType="Self.Tamaño" />
+          <EntitySet Name="tarjetaVideo" EntityType="Self.tarjetaVideo" />
+          <EntitySet Name="tipo_usuarios" EntityType="Self.tipo_usuarios" />
+          <EntitySet Name="tipoMemoria" EntityType="Self.tipoMemoria" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <EntitySet Name="cuelloBotella" EntityType="Self.cuelloBotella" />
+          <EntitySet Name="memoriaRAM" EntityType="Self.memoriaRAM" />
+          <EntitySet Name="Perfiles" EntityType="Self.Perfiles" />
+          <EntitySet Name="URLImagenes" EntityType="Self.URLImagenes" />
+          <AssociationSet Name="FK_Ensamble_Almacenamiento" Association="Self.FK_Ensamble_Almacenamiento">
+            <End Role="Almacenamiento" EntitySet="Almacenamiento" />
+            <End Role="Ensamble" EntitySet="Ensamble" />
+          </AssociationSet>
+          <AssociationSet Name="FK_detalleGeneracionProcesador_PlacaMadre" Association="Self.FK_detalleGeneracionProcesador_PlacaMadre">
+            <End Role="PlacaMadre" EntitySet="PlacaMadre" />
+            <End Role="detalleGeneracionProcesador" EntitySet="detalleGeneracionProcesador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cuelloBotella_Ensamble" Association="Self.FK_cuelloBotella_Ensamble">
+            <End Role="Ensamble" EntitySet="Ensamble" />
+            <End Role="cuelloBotella" EntitySet="cuelloBotella" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ensamble_LogEmpleado" Association="Self.FK_Ensamble_LogEmpleado">
+            <End Role="LogEmpleado" EntitySet="LogEmpleado" />
+            <End Role="Ensamble" EntitySet="Ensamble" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ensamble_PlacaMadre" Association="Self.FK_Ensamble_PlacaMadre">
+            <End Role="PlacaMadre" EntitySet="PlacaMadre" />
+            <End Role="Ensamble" EntitySet="Ensamble" />
+          </AssociationSet>
+          <AssociationSet Name="FK_modeloVideo_Ensamble" Association="Self.FK_modeloVideo_Ensamble">
+            <End Role="Ensamble" EntitySet="Ensamble" />
+            <End Role="modeloVideo" EntitySet="modeloVideo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Perfiles_Ensamble" Association="Self.FK_Perfiles_Ensamble">
+            <End Role="Ensamble" EntitySet="Ensamble" />
+            <End Role="Perfiles" EntitySet="Perfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlacaMadre_Ensamble" Association="Self.FK_PlacaMadre_Ensamble">
+            <End Role="Ensamble" EntitySet="Ensamble" />
+            <End Role="PlacaMadre" EntitySet="PlacaMadre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_modeloVideo_tarjetaVideo" Association="Self.FK_modeloVideo_tarjetaVideo">
+            <End Role="tarjetaVideo" EntitySet="tarjetaVideo" />
+            <End Role="modeloVideo" EntitySet="modeloVideo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlacaMadre_socket" Association="Self.FK_PlacaMadre_socket">
+            <End Role="socket" EntitySet="socket" />
+            <End Role="PlacaMadre" EntitySet="PlacaMadre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlacaMadre_Tamaño" Association="Self.FK_PlacaMadre_Tamaño">
+            <End Role="Tamaño" EntitySet="Tamaño" />
+            <End Role="PlacaMadre" EntitySet="PlacaMadre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlacaMadre_tipoMemoria" Association="Self.FK_PlacaMadre_tipoMemoria">
+            <End Role="tipoMemoria" EntitySet="tipoMemoria" />
+            <End Role="PlacaMadre" EntitySet="PlacaMadre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cuelloBotella_procesador" Association="Self.FK_cuelloBotella_procesador">
+            <End Role="procesador" EntitySet="procesador" />
+            <End Role="cuelloBotella" EntitySet="cuelloBotella" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cuelloBotella_procesador1" Association="Self.FK_cuelloBotella_procesador1">
+            <End Role="procesador" EntitySet="procesador" />
+            <End Role="cuelloBotella" EntitySet="cuelloBotella" />
+          </AssociationSet>
+          <AssociationSet Name="FK_procesador_socket" Association="Self.FK_procesador_socket">
+            <End Role="socket" EntitySet="socket" />
+            <End Role="procesador" EntitySet="procesador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_procesador_tipoMemoria" Association="Self.FK_procesador_tipoMemoria">
+            <End Role="tipoMemoria" EntitySet="tipoMemoria" />
+            <End Role="procesador" EntitySet="procesador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_tipo_usuarios" Association="Self.FK_Usuarios_tipo_usuarios">
+            <End Role="tipo_usuarios" EntitySet="tipo_usuarios" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_memoriaRAM_tipoMemoria" Association="Self.FK_memoriaRAM_tipoMemoria">
+            <End Role="tipoMemoria" EntitySet="tipoMemoria" />
+            <End Role="memoriaRAM" EntitySet="memoriaRAM" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BD_ArmadoPcModelStoreContainer" CdmEntityContainer="BD_ArmadoPcEntities">
+          <EntitySetMapping Name="Almacenamiento">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.Almacenamiento">
+              <MappingFragment StoreEntitySet="Almacenamiento">
+                <ScalarProperty Name="idAlmacenamento" ColumnName="idAlmacenamento" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="capacidad" ColumnName="capacidad" />
+                <ScalarProperty Name="costoProveedor" ColumnName="costoProveedor" />
+                <ScalarProperty Name="costoVenta" ColumnName="costoVenta" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="watts" ColumnName="watts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="detalleGeneracionProcesador">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.detalleGeneracionProcesador">
+              <MappingFragment StoreEntitySet="detalleGeneracionProcesador">
+                <ScalarProperty Name="idGP" ColumnName="idGP" />
+                <ScalarProperty Name="idDetalleGP" ColumnName="idDetalleGP" />
+                <ScalarProperty Name="idPlacaMadre" ColumnName="idPlacaMadre" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ensamble">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.Ensamble">
+              <MappingFragment StoreEntitySet="Ensamble">
+                <ScalarProperty Name="idEnsamble" ColumnName="idEnsamble" />
+                <ScalarProperty Name="idPlacaMadre" ColumnName="idPlacaMadre" />
+                <ScalarProperty Name="idProcesador" ColumnName="idProcesador" />
+                <ScalarProperty Name="idRAM" ColumnName="idRAM" />
+                <ScalarProperty Name="idAlmacenamiento" ColumnName="idAlmacenamiento" />
+                <ScalarProperty Name="idFuentePoder" ColumnName="idFuentePoder" />
+                <ScalarProperty Name="idTarjetaVideo" ColumnName="idTarjetaVideo" />
+                <ScalarProperty Name="idGabinete" ColumnName="idGabinete" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogEmpleado">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.LogEmpleado">
+              <MappingFragment StoreEntitySet="LogEmpleado">
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+                <ScalarProperty Name="idEnsamble" ColumnName="idEnsamble" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="modeloVideo">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.modeloVideo">
+              <MappingFragment StoreEntitySet="modeloVideo">
+                <ScalarProperty Name="idModeloVideo" ColumnName="idModeloVideo" />
+                <ScalarProperty Name="idTarjetaVideo" ColumnName="idTarjetaVideo" />
+                <ScalarProperty Name="modelo" ColumnName="modelo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlacaMadre">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.PlacaMadre">
+              <MappingFragment StoreEntitySet="PlacaMadre">
+                <ScalarProperty Name="idPlacaMadre" ColumnName="idPlacaMadre" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="idtipoMemoria" ColumnName="idtipoMemoria" />
+                <ScalarProperty Name="maxVelocidadMemoria" ColumnName="maxVelocidadMemoria" />
+                <ScalarProperty Name="statusM2" ColumnName="statusM2" />
+                <ScalarProperty Name="cantidadM2" ColumnName="cantidadM2" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Gaming" ColumnName="Gaming" />
+                <ScalarProperty Name="idTamaño" ColumnName="idTamaño" />
+                <ScalarProperty Name="codBarras" ColumnName="codBarras" />
+                <ScalarProperty Name="PCIexpress" ColumnName="PCIexpress" />
+                <ScalarProperty Name="SATA" ColumnName="SATA" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="idEnsamble" ColumnName="idEnsamble" />
+                <ScalarProperty Name="costoProveedor" ColumnName="costoProveedor" />
+                <ScalarProperty Name="costoVenta" ColumnName="costoVenta" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="modelo" ColumnName="modelo" />
+                <ScalarProperty Name="watts" ColumnName="watts" />
+                <ScalarProperty Name="idSocket" ColumnName="idSocket" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="procesador">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.procesador">
+              <MappingFragment StoreEntitySet="procesador">
+                <ScalarProperty Name="idProcesador" ColumnName="idProcesador" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="cantidadNucleos" ColumnName="cantidadNucleos" />
+                <ScalarProperty Name="cantidadSubProcesos" ColumnName="cantidadSubProcesos" />
+                <ScalarProperty Name="frecuenciaBasica" ColumnName="frecuenciaBasica" />
+                <ScalarProperty Name="idTipoMemoria" ColumnName="idTipoMemoria" />
+                <ScalarProperty Name="idSocket" ColumnName="idSocket" />
+                <ScalarProperty Name="graficosIntegrados" ColumnName="graficosIntegrados" />
+                <ScalarProperty Name="optane" ColumnName="optane" />
+                <ScalarProperty Name="costoProveedor" ColumnName="costoProveedor" />
+                <ScalarProperty Name="costoVenta" ColumnName="costoVenta" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="watts" ColumnName="watts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="socket">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.socket">
+              <MappingFragment StoreEntitySet="socket">
+                <ScalarProperty Name="idSocket" ColumnName="idSocket" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tamaño">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.Tamaño">
+              <MappingFragment StoreEntitySet="Tamaño">
+                <ScalarProperty Name="idTamaño" ColumnName="idTamaño" />
+                <ScalarProperty Name="nombreTamaño" ColumnName="nombreTamaño" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tarjetaVideo">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.tarjetaVideo">
+              <MappingFragment StoreEntitySet="tarjetaVideo">
+                <ScalarProperty Name="idTarjetaVideo" ColumnName="idTarjetaVideo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="arquitectura" ColumnName="arquitectura" />
+                <ScalarProperty Name="cudaCore" ColumnName="cudaCore" />
+                <ScalarProperty Name="frameBuffer" ColumnName="frameBuffer" />
+                <ScalarProperty Name="velocidadReloj" ColumnName="velocidadReloj" />
+                <ScalarProperty Name="velocidadMemoria" ColumnName="velocidadMemoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipo_usuarios">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.tipo_usuarios">
+              <MappingFragment StoreEntitySet="tipo_usuarios">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipoMemoria">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.tipoMemoria">
+              <MappingFragment StoreEntitySet="tipoMemoria">
+                <ScalarProperty Name="idTipoMemoria" ColumnName="idTipoMemoria" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="tipo_id" ColumnName="tipo_id" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cuelloBotella">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.cuelloBotella">
+              <MappingFragment StoreEntitySet="cuelloBotella">
+                <ScalarProperty Name="idCuelloBotella" ColumnName="idCuelloBotella" />
+                <ScalarProperty Name="idEnsamble" ColumnName="idEnsamble" />
+                <ScalarProperty Name="esttus" ColumnName="esttus" />
+                <ScalarProperty Name="idProcesador" ColumnName="idProcesador" />
+                <ScalarProperty Name="modelo" ColumnName="modelo" />
+                <ScalarProperty Name="comnetarios" ColumnName="comnetarios" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="memoriaRAM">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.memoriaRAM">
+              <MappingFragment StoreEntitySet="memoriaRAM">
+                <ScalarProperty Name="idRAM" ColumnName="idRAM" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idTipoMemoria" ColumnName="idTipoMemoria" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="velocidad" ColumnName="velocidad" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="costoVendedor" ColumnName="costoVendedor" />
+                <ScalarProperty Name="costoVenta" ColumnName="costoVenta" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="watts" ColumnName="watts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Perfiles">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.Perfiles">
+              <MappingFragment StoreEntitySet="Perfiles">
+                <ScalarProperty Name="idPerfil" ColumnName="idPerfil" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Nivel" ColumnName="Nivel" />
+                <ScalarProperty Name="idEnsamble" ColumnName="idEnsamble" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="URLImagenes">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.URLImagenes">
+              <MappingFragment StoreEntitySet="URLImagenes">
+                <ScalarProperty Name="idUrl" ColumnName="idUrl" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
