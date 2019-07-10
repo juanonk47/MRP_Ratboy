@@ -65,6 +65,7 @@ namespace MRP_Ratboy.Controllers
                 correoElectronico.fecha = DateTime.Now;
                 correoElectronico.idUsuario_FK = usuario.idUsuario;
                 correoElectronico.estatus = true;
+                db.correoElectronico.Add(correoElectronico);
                 db.SaveChanges();
                 //var userDetails = db.Usuarios.Where(x => x.username == usuarios.username && x.password == usuarios.password).FirstOrDefault();
 
@@ -135,15 +136,20 @@ namespace MRP_Ratboy.Controllers
             try
             {
                 var userDetails = db.Usuarios.Where(x => x.username == usuarios.username).FirstOrDefault();
-                if (ce.SendEmailForForgotePassword(userDetails))
-                {
-                    return RedirectToAction("Login", "Home");
+                var correo = db.correoElectronico.Where(x => x.idUsuario_FK == userDetails.idUsuario).FirstOrDefault();
+                if (userDetails != null && correo != null) {
+                    if (ce.SendEmailForForgotePassword(userDetails, correo.campoAutogenerado))
+                    {
+                        return RedirectToAction("Login", "Home");
+                    }
+                    else
+                    {
+                        ViewBag.Error = "No se pudo enviar el correo de restablecimiento";
+                        return View();
+                    }
                 }
-                else
-                {
-                    ViewBag.Error = "No se pudo enviar el correo de restablecimiento";
-                    return View();
-                }
+                ViewBag.Error = "No se encontro el usuario";
+                return View();
             }catch(Exception e)
             {
                 Console.WriteLine(e.Message);
@@ -171,10 +177,11 @@ namespace MRP_Ratboy.Controllers
         public ActionResult RestablecerContraseña(int id)
         {
             //Actualizamos la contraseña del usuario
-            var user = db.Usuarios.Find(id);
-            if (user != null)
+            var correo = db.correoElectronico.Where(x => x.campoAutogenerado == id).FirstOrDefault();
+            if (correo != null)
             {
-                return View(user);
+
+                return View(correo.Usuarios);
             }
             ViewBag.Error = "No se pudo encontral el usuario";
             return View("RecuperarContraseña");
