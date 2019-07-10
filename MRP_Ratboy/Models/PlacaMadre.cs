@@ -46,7 +46,6 @@ namespace MRP_Ratboy.Models
         public virtual ICollection<detalleGeneracionProcesador> detalleGeneracionProcesador { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ensamble> Ensamble { get; set; }
-        public virtual Ensamble Ensamble1 { get; set; }
         public virtual socket socket { get; set; }
         public virtual Tamaño Tamaño { get; set; }
         public virtual tipoMemoria tipoMemoria { get; set; }

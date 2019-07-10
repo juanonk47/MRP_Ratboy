@@ -42,7 +42,6 @@ namespace MRP_Ratboy.Controllers
                     return View("Index",userDetails);
                 }
             }
-            return View();
         }
 
         // GET: Home/Details/5

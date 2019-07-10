@@ -17,6 +17,7 @@ namespace MRP_Ratboy.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tarjetaVideo()
         {
+            this.cuelloBotella = new HashSet<cuelloBotella>();
             this.modeloVideo = new HashSet<modeloVideo>();
         }
     
@@ -27,7 +28,11 @@ namespace MRP_Ratboy.Models
         public int frameBuffer { get; set; }
         public int velocidadReloj { get; set; }
         public int velocidadMemoria { get; set; }
+        public string nombreModelo { get; set; }
+        public bool estatus { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<cuelloBotella> cuelloBotella { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<modeloVideo> modeloVideo { get; set; }
     }

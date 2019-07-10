@@ -18,7 +18,8 @@ namespace MRP_Ratboy.Models
         public procesador()
         {
             this.cuelloBotella = new HashSet<cuelloBotella>();
-            this.cuelloBotella1 = new HashSet<cuelloBotella>();
+            this.detalleGeneracionProcesador = new HashSet<detalleGeneracionProcesador>();
+            this.Ensamble = new HashSet<Ensamble>();
         }
     
         public int idProcesador { get; set; }
@@ -28,18 +29,20 @@ namespace MRP_Ratboy.Models
         public int frecuenciaBasica { get; set; }
         public int idTipoMemoria { get; set; }
         public int idSocket { get; set; }
-        public string graficosIntegrados { get; set; }
+        public bool graficosIntegrados { get; set; }
         public int optane { get; set; }
         public double costoProveedor { get; set; }
         public double costoVenta { get; set; }
         public string marca { get; set; }
         public bool estatus { get; set; }
-        public Nullable<double> watts { get; set; }
+        public double watts { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cuelloBotella> cuelloBotella { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<cuelloBotella> cuelloBotella1 { get; set; }
+        public virtual ICollection<detalleGeneracionProcesador> detalleGeneracionProcesador { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ensamble> Ensamble { get; set; }
         public virtual socket socket { get; set; }
         public virtual tipoMemoria tipoMemoria { get; set; }
     }

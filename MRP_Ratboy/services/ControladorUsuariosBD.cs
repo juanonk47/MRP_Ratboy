@@ -28,7 +28,7 @@ namespace MRP_Ratboy.services
         }
         public Usuarios UpdateUsuario (Usuarios usuarios)
         {
-            var userDetail = db.Usuarios.Find(usuarios.id);
+            var userDetail = db.Usuarios.Find(usuarios.idUsuario);
             if(userDetail == null)
             {
                 return null;

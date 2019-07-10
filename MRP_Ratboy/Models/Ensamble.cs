@@ -18,9 +18,7 @@ namespace MRP_Ratboy.Models
         public Ensamble()
         {
             this.cuelloBotella = new HashSet<cuelloBotella>();
-            this.modeloVideo = new HashSet<modeloVideo>();
-            this.Perfiles = new HashSet<Perfiles>();
-            this.PlacaMadre1 = new HashSet<PlacaMadre>();
+            this.Perfil_Ensamble = new HashSet<Perfil_Ensamble>();
         }
     
         public int idEnsamble { get; set; }
@@ -38,12 +36,11 @@ namespace MRP_Ratboy.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cuelloBotella> cuelloBotella { get; set; }
         public virtual LogEmpleado LogEmpleado { get; set; }
+        public virtual memoriaRAM memoriaRAM { get; set; }
+        public virtual modeloVideo modeloVideo { get; set; }
         public virtual PlacaMadre PlacaMadre { get; set; }
+        public virtual procesador procesador { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<modeloVideo> modeloVideo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Perfiles> Perfiles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PlacaMadre> PlacaMadre1 { get; set; }
+        public virtual ICollection<Perfil_Ensamble> Perfil_Ensamble { get; set; }
     }
 }

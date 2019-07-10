@@ -12,22 +12,23 @@ namespace MRP_Ratboy.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class socket
+    public partial class Persona
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public socket()
+        public Persona()
         {
-            this.PlacaMadre = new HashSet<PlacaMadre>();
-            this.procesador = new HashSet<procesador>();
+            this.Usuarios = new HashSet<Usuarios>();
         }
     
-        public int idSocket { get; set; }
+        public int idPersona { get; set; }
         public string nombre { get; set; }
+        public string apePaterno { get; set; }
+        public string apeMaterno { get; set; }
+        public int edad { get; set; }
+        public string direccion { get; set; }
         public bool estatus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PlacaMadre> PlacaMadre { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<procesador> procesador { get; set; }
+        public virtual ICollection<Usuarios> Usuarios { get; set; }
     }
 }

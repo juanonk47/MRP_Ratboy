@@ -15,10 +15,12 @@ namespace MRP_Ratboy.Models
     public partial class detalleGeneracionProcesador
     {
         public int idGP { get; set; }
-        public int idDetalleGP { get; set; }
-        public int idPlacaMadre { get; set; }
+        public int DetalleGP { get; set; }
+        public int idPlacaMadre_FK { get; set; }
         public bool estatus { get; set; }
+        public int idProcesador_FK { get; set; }
     
         public virtual PlacaMadre PlacaMadre { get; set; }
+        public virtual procesador procesador { get; set; }
     }
 }
