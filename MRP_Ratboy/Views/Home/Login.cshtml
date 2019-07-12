@@ -1,11 +1,11 @@
 ﻿@model MRP_Ratboy.Models.Usuarios
 @{
     ViewBag.Title = "Inciar Session";
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
 
 
 }
-<!DOCTYPE html>
+@*<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -17,7 +17,7 @@
     @section Styles {
         <link href="@Url.Content("~/Content/css/main.css")" rel="stylesheet" type="text/css" />
     }
-</head>
+</head>*@
 <body style="background-color:aquamarine">
     @using (Html.BeginForm("Autorizacion", "Home", FormMethod.Post))
     {
@@ -62,5 +62,5 @@
     }
 
 </body>
-</html>
+@*</html>*@
 
