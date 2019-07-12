@@ -81,6 +81,14 @@ namespace MRP_Ratboy.Controllers
                 return HttpNotFound();
             }
             ViewBag.tipo_id = new SelectList(db.tipo_usuarios, "id", "descripcion", usuarios.tipo_id);
+            if (usuarios.estatus == 1)
+            {
+                usuarios.checkestatus = true;
+            }
+            if (usuarios.estatus == 0)
+            {
+                usuarios.checkestatus = false;
+            }
             return View(usuarios);
         }
 
@@ -89,7 +97,7 @@ namespace MRP_Ratboy.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,username,password,tipo_id,estatus,checkestatus")] Usuarios usuarios)
+        public ActionResult Edit([Bind(Include = "idUsuario,username,password,tipo_id,estatus,checkestatus,persona")] Usuarios usuarios)
         {
             if (usuarios.checkestatus)
             {

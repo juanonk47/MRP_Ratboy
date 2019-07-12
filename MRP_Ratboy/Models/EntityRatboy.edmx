@@ -19,13 +19,8 @@
           <Property Name="marca" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="watts" Type="float" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.correoElectronico' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="correoElectronico">
           <Key>
-            <PropertyRef Name="fecha" />
-            <PropertyRef Name="estatus" />
-            <PropertyRef Name="campoAutogenerado" />
             <PropertyRef Name="idUsuario_FK" />
           </Key>
           <Property Name="fecha" Type="datetime" Nullable="false" />
@@ -259,7 +254,7 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
         </EntityType>
         <Association Name="FK_correoElectronico_Usuarios">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
-          <End Role="correoElectronico" Type="Self.correoElectronico" Multiplicity="*" />
+          <End Role="correoElectronico" Type="Self.correoElectronico" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
               <PropertyRef Name="idUsuario" />
@@ -547,6 +542,7 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
         </Association>
         <EntityContainer Name="BD_ArmadoPcModelStoreContainer">
           <EntitySet Name="Almacenamiento" EntityType="Self.Almacenamiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="correoElectronico" EntityType="Self.correoElectronico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cuelloBotella" EntityType="Self.cuelloBotella" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetalleGeneracion" EntityType="Self.DetalleGeneracion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="detalleGeneracionProcesador" EntityType="Self.detalleGeneracionProcesador" Schema="dbo" store:Type="Tables" />
@@ -565,14 +561,6 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <EntitySet Name="tipo_usuarios" EntityType="Self.tipo_usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipoMemoria" EntityType="Self.tipoMemoria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="correoElectronico" EntityType="Self.correoElectronico" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [correoElectronico].[fecha] AS [fecha], 
-    [correoElectronico].[estatus] AS [estatus], 
-    [correoElectronico].[campoAutogenerado] AS [campoAutogenerado], 
-    [correoElectronico].[idUsuario_FK] AS [idUsuario_FK]
-    FROM [dbo].[correoElectronico] AS [correoElectronico]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="URLImagenes" EntityType="Self.URLImagenes" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [URLImagenes].[idUrl] AS [idUrl], 
@@ -684,6 +672,7 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
       <Schema Namespace="BD_ArmadoPcModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BD_ArmadoPcEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Almacenamiento" EntityType="BD_ArmadoPcModel.Almacenamiento" />
+          <EntitySet Name="correoElectronico" EntityType="BD_ArmadoPcModel.correoElectronico" />
           <EntitySet Name="cuelloBotella" EntityType="BD_ArmadoPcModel.cuelloBotella" />
           <EntitySet Name="DetalleGeneracion" EntityType="BD_ArmadoPcModel.DetalleGeneracion" />
           <EntitySet Name="detalleGeneracionProcesador" EntityType="BD_ArmadoPcModel.detalleGeneracionProcesador" />
@@ -702,11 +691,14 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <EntitySet Name="tipo_usuarios" EntityType="BD_ArmadoPcModel.tipo_usuarios" />
           <EntitySet Name="tipoMemoria" EntityType="BD_ArmadoPcModel.tipoMemoria" />
           <EntitySet Name="Usuarios" EntityType="BD_ArmadoPcModel.Usuarios" />
-          <EntitySet Name="correoElectronico" EntityType="BD_ArmadoPcModel.correoElectronico" />
           <EntitySet Name="URLImagenes" EntityType="BD_ArmadoPcModel.URLImagenes" />
           <AssociationSet Name="FK_Ensamble_Almacenamiento" Association="BD_ArmadoPcModel.FK_Ensamble_Almacenamiento">
             <End Role="Almacenamiento" EntitySet="Almacenamiento" />
             <End Role="Ensamble" EntitySet="Ensamble" />
+          </AssociationSet>
+          <AssociationSet Name="FK_correoElectronico_Usuarios" Association="BD_ArmadoPcModel.FK_correoElectronico_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="correoElectronico" EntitySet="correoElectronico" />
           </AssociationSet>
           <AssociationSet Name="FK_cuelloBotella_Ensamble" Association="BD_ArmadoPcModel.FK_cuelloBotella_Ensamble">
             <End Role="Ensamble" EntitySet="Ensamble" />
@@ -796,10 +788,6 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             <End Role="tipo_usuarios" EntitySet="tipo_usuarios" />
             <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
-          <AssociationSet Name="FK_correoElectronico_Usuarios" Association="BD_ArmadoPcModel.FK_correoElectronico_Usuarios">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="correoElectronico" EntitySet="correoElectronico" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Almacenamiento">
           <Key>
@@ -815,6 +803,16 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="marca" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="watts" Type="Double" Nullable="false" />
           <NavigationProperty Name="Ensamble" Relationship="BD_ArmadoPcModel.FK_Ensamble_Almacenamiento" FromRole="Almacenamiento" ToRole="Ensamble" />
+        </EntityType>
+        <EntityType Name="correoElectronico">
+          <Key>
+            <PropertyRef Name="idUsuario_FK" />
+          </Key>
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="estatus" Type="Boolean" Nullable="false" />
+          <Property Name="campoAutogenerado" Type="Int32" Nullable="false" />
+          <Property Name="idUsuario_FK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="BD_ArmadoPcModel.FK_correoElectronico_Usuarios" FromRole="correoElectronico" ToRole="Usuarios" />
         </EntityType>
         <EntityType Name="cuelloBotella">
           <Key>
@@ -1068,23 +1066,10 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="estatus" Type="Int32" Nullable="false" />
           <Property Name="idPersona_FK" Type="Int32" Nullable="false" />
           <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="correoElectronico" Relationship="BD_ArmadoPcModel.FK_correoElectronico_Usuarios" FromRole="Usuarios" ToRole="correoElectronico" />
           <NavigationProperty Name="LogEmpleado" Relationship="BD_ArmadoPcModel.FK_LogEmpleado_Usuarios" FromRole="Usuarios" ToRole="LogEmpleado" />
           <NavigationProperty Name="Persona" Relationship="BD_ArmadoPcModel.FK_Usuarios_Persona" FromRole="Usuarios" ToRole="Persona" />
           <NavigationProperty Name="tipo_usuarios" Relationship="BD_ArmadoPcModel.FK_Usuarios_tipo_usuarios" FromRole="Usuarios" ToRole="tipo_usuarios" />
-          <NavigationProperty Name="correoElectronico" Relationship="BD_ArmadoPcModel.FK_correoElectronico_Usuarios" FromRole="Usuarios" ToRole="correoElectronico" />
-        </EntityType>
-        <EntityType Name="correoElectronico">
-          <Key>
-            <PropertyRef Name="fecha" />
-            <PropertyRef Name="estatus" />
-            <PropertyRef Name="campoAutogenerado" />
-            <PropertyRef Name="idUsuario_FK" />
-          </Key>
-          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="estatus" Type="Boolean" Nullable="false" />
-          <Property Name="campoAutogenerado" Type="Int32" Nullable="false" />
-          <Property Name="idUsuario_FK" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Usuarios" Relationship="BD_ArmadoPcModel.FK_correoElectronico_Usuarios" FromRole="correoElectronico" ToRole="Usuarios" />
         </EntityType>
         <EntityType Name="URLImagenes">
           <Key>
@@ -1106,6 +1091,18 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             </Principal>
             <Dependent Role="Ensamble">
               <PropertyRef Name="idAlmacenamiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_correoElectronico_Usuarios">
+          <End Type="BD_ArmadoPcModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+          <End Type="BD_ArmadoPcModel.correoElectronico" Role="correoElectronico" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="correoElectronico">
+              <PropertyRef Name="idUsuario_FK" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1373,18 +1370,6 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_correoElectronico_Usuarios">
-          <End Type="BD_ArmadoPcModel.Usuarios" Role="Usuarios" Multiplicity="1" />
-          <End Type="BD_ArmadoPcModel.correoElectronico" Role="correoElectronico" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuarios">
-              <PropertyRef Name="idUsuario" />
-            </Principal>
-            <Dependent Role="correoElectronico">
-              <PropertyRef Name="idUsuario_FK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1403,6 +1388,16 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
                 <ScalarProperty Name="tipo" ColumnName="tipo" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="idAlmacenamento" ColumnName="idAlmacenamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="correoElectronico">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.correoElectronico">
+              <MappingFragment StoreEntitySet="correoElectronico">
+                <ScalarProperty Name="idUsuario_FK" ColumnName="idUsuario_FK" />
+                <ScalarProperty Name="campoAutogenerado" ColumnName="campoAutogenerado" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1632,16 +1627,6 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="correoElectronico">
-            <EntityTypeMapping TypeName="BD_ArmadoPcModel.correoElectronico">
-              <MappingFragment StoreEntitySet="correoElectronico">
-                <ScalarProperty Name="idUsuario_FK" ColumnName="idUsuario_FK" />
-                <ScalarProperty Name="campoAutogenerado" ColumnName="campoAutogenerado" />
-                <ScalarProperty Name="estatus" ColumnName="estatus" />
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
