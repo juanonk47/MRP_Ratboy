@@ -94,7 +94,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="#">
+                            <a class="navbar-brand" href="@Url.Action("Index","IndexLogout")">
                                 <img src="@Url.Content("~/Content/images/LogoRatBoy.png")" alt="logo">
                             </a>
                         </div>
@@ -104,7 +104,7 @@
                                 <li class="active"><a href="#">Perfiles</a></li>
                                 <li><a href="#">Personalizado</a></li>
                                 <li><a href="#">Productos</a></li>
-                                <li><a href="#">Login</a></li>
+                                <li><a href="@Url.Action("Login","Home")">Login</a></li>
                             </ul>
                         </div>
                         <!-- /.navbar-collapse -->
@@ -115,14 +115,7 @@
     </header>
 
     <!-- Header End -->
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
+ 
 
     @RenderBody()
 
@@ -156,7 +149,7 @@
     <br />
     <br />
 
-    <div class="footer">
+    <div class="footer" >
 
         <!-- Subscribe Our Newsletter -->
         <!-- Subscribe Our Newsletter END -->
