@@ -17,6 +17,11 @@ namespace MRP_Ratboy.Controllers
         // GET: Usuarios
         public ActionResult Index()
         {
+            var session = Session["usuarios"];
+            if (session == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
             var usuarios = db.Usuarios.Include(u => u.tipo_usuarios);
             return View(usuarios.ToList());
         }
@@ -142,6 +147,15 @@ namespace MRP_Ratboy.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [HttpPost,ActionName("temporal")]
+        public ActionResult DeleteTemporal(int id)
+        {
+            Usuarios usuarios = db.Usuarios.Find(id);
+            usuarios.estatus = 0;
+            db.Entry(usuarios).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
         protected override void Dispose(bool disposing)
         {
@@ -151,5 +165,18 @@ namespace MRP_Ratboy.Controllers
             }
             base.Dispose(disposing);
         }
+        [HttpGet]
+        public ActionResult BuscarPorCorreo(string correo)
+        {
+            var usuarios = db.Usuarios.Where(x => x.username.Contains(correo));
+            return View(usuarios.ToList());
+        }
+        [HttpGet]
+        public ActionResult mostrarPorEstatus(int estatus)
+        {
+            var usuarios = db.Usuarios.Where(x => x.estatus == estatus);
+            return View(usuarios.ToList());
+        }
+
     }
 }

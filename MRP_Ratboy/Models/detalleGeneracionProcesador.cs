@@ -14,13 +14,20 @@ namespace MRP_Ratboy.Models
     
     public partial class detalleGeneracionProcesador
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public detalleGeneracionProcesador()
+        {
+            this.Generacion = new HashSet<Generacion>();
+            this.procesador = new HashSet<procesador>();
+        }
+    
         public int idGP { get; set; }
         public int DetalleGP { get; set; }
-        public int idPlacaMadre_FK { get; set; }
         public bool estatus { get; set; }
-        public int idProcesador_FK { get; set; }
     
-        public virtual PlacaMadre PlacaMadre { get; set; }
-        public virtual procesador procesador { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Generacion> Generacion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<procesador> procesador { get; set; }
     }
 }
