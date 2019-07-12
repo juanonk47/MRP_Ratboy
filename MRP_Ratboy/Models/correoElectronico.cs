@@ -12,11 +12,13 @@ namespace MRP_Ratboy.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class URLImagenes
+    public partial class correoElectronico
     {
-        public int idUrl { get; set; }
-        public string tipo { get; set; }
-        public string URL { get; set; }
-        public Nullable<bool> estatus { get; set; }
+        public System.DateTime fecha { get; set; }
+        public bool estatus { get; set; }
+        public int campoAutogenerado { get; set; }
+        public int idUsuario_FK { get; set; }
+    
+        public virtual Usuarios Usuarios { get; set; }
     }
 }

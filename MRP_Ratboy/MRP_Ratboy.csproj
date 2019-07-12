@@ -138,7 +138,13 @@
     <Compile Include="Models\Almacenamiento.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\correoElectronico.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\cuelloBotella.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DetalleGeneracion.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\detalleGeneracionProcesador.cs">
@@ -162,6 +168,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityRatboy.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\EUsuarioPersona.cs" />
     <Compile Include="Models\LogEmpleado.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
@@ -172,6 +179,12 @@
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Perfiles.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Perfil_Ensamble.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Persona.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PlacaMadre.cs">
@@ -258,11 +271,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Usuarios\Details.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Usuarios\Create.cshtml" />
     <Content Include="Views\Usuarios\Delete.cshtml" />
-    <Content Include="Views\Usuarios\Edit.cshtml" />
     <Content Include="Views\Usuarios\Index.cshtml" />
     <Content Include="Views\tipo_usuarios\Create.cshtml" />
     <Content Include="Views\tipo_usuarios\Delete.cshtml" />
@@ -274,6 +284,9 @@
     <Content Include="Views\Register\Verificar.cshtml" />
     <Content Include="Views\Register\RecuperarContraseña.cshtml" />
     <Content Include="Views\Register\RestablecerContraseña.cshtml" />
+    <Content Include="Views\Usuarios\Create.cshtml" />
+    <Content Include="Views\Usuarios\Details.cshtml" />
+    <Content Include="Views\Usuarios\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

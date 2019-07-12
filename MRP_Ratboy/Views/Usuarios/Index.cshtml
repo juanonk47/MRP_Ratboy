@@ -12,16 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.username)
+           Correo Electronico
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.password)
+            Estatus del usuario
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.estatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tipo_usuarios.descripcion)
+           Tipo de usuario
         </th>
         <th></th>
     </tr>
@@ -32,18 +29,17 @@
             @Html.DisplayFor(modelItem => item.username)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.estatus)
+            @if(item.estatus == 1){
+                <label>Activo</label>
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.tipo_usuarios.descripcion)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.idUsuario }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idUsuario }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idUsuario })
         </td>
     </tr>
 }

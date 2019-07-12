@@ -22,10 +22,12 @@ namespace MRP_Ratboy.Models
     
         public int idEmpleado { get; set; }
         public int idEnsamble { get; set; }
-        public Nullable<System.DateTime> fecha { get; set; }
-        public Nullable<bool> estatus { get; set; }
+        public System.DateTime fecha { get; set; }
+        public bool estatus { get; set; }
+        public int idUsuario_FK { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ensamble> Ensamble { get; set; }
+        public virtual Usuarios Usuarios { get; set; }
     }
 }

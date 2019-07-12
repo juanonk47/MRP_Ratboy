@@ -26,10 +26,17 @@ namespace MRP_Ratboy.Models
         }
     
         public virtual DbSet<Almacenamiento> Almacenamiento { get; set; }
+        public virtual DbSet<correoElectronico> correoElectronico { get; set; }
+        public virtual DbSet<cuelloBotella> cuelloBotella { get; set; }
+        public virtual DbSet<DetalleGeneracion> DetalleGeneracion { get; set; }
         public virtual DbSet<detalleGeneracionProcesador> detalleGeneracionProcesador { get; set; }
         public virtual DbSet<Ensamble> Ensamble { get; set; }
         public virtual DbSet<LogEmpleado> LogEmpleado { get; set; }
+        public virtual DbSet<memoriaRAM> memoriaRAM { get; set; }
         public virtual DbSet<modeloVideo> modeloVideo { get; set; }
+        public virtual DbSet<Perfil_Ensamble> Perfil_Ensamble { get; set; }
+        public virtual DbSet<Perfiles> Perfiles { get; set; }
+        public virtual DbSet<Persona> Persona { get; set; }
         public virtual DbSet<PlacaMadre> PlacaMadre { get; set; }
         public virtual DbSet<procesador> procesador { get; set; }
         public virtual DbSet<socket> socket { get; set; }
@@ -38,9 +45,6 @@ namespace MRP_Ratboy.Models
         public virtual DbSet<tipo_usuarios> tipo_usuarios { get; set; }
         public virtual DbSet<tipoMemoria> tipoMemoria { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
-        public virtual DbSet<cuelloBotella> cuelloBotella { get; set; }
-        public virtual DbSet<memoriaRAM> memoriaRAM { get; set; }
-        public virtual DbSet<Perfiles> Perfiles { get; set; }
         public virtual DbSet<URLImagenes> URLImagenes { get; set; }
     }
 }

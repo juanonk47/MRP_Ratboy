@@ -11,13 +11,13 @@ namespace MRP_Ratboy.services
     public class ControladorEmail
     {
 
-        public bool SendEmailForForgotePassword(Usuarios userDetails)
+        public bool SendEmailForForgotePassword(Usuarios userDetails, int campoAutoGenerado)
         {
             try
             {
                 MailMessage mm = new MailMessage("desarrollo9company@gmail.com", userDetails.username);
                 mm.Subject = "Verificar tu correo";
-                mm.Body = string.Format("Hola : <h1>" + userDetails.username + "</h1> \n click porfavor en el enlace : <a href='https://localhost:44327/Register/RestablecerContraseña/{0}'>Click para recuperar</a>", userDetails.id);
+                mm.Body = string.Format("Hola : <h1>" + userDetails.username + "</h1> \n click porfavor en el enlace : <a href='https://localhost:44327/Register/RestablecerContraseña/{0}'>Click para recuperar</a>", campoAutoGenerado);
                 mm.IsBodyHtml = true;
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "smtp.gmail.com";

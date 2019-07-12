@@ -12,11 +12,10 @@ namespace MRP_Ratboy.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class URLImagenes
+    public partial class DetalleGeneracion
     {
-        public int idUrl { get; set; }
-        public string tipo { get; set; }
-        public string URL { get; set; }
-        public Nullable<bool> estatus { get; set; }
+        public int idDetalleGeneracion { get; set; }
+        public int generacion { get; set; }
+        public bool estatus { get; set; }
     }
 }

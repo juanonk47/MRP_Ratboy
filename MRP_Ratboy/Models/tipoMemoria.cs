@@ -17,19 +17,20 @@ namespace MRP_Ratboy.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tipoMemoria()
         {
+            this.memoriaRAM = new HashSet<memoriaRAM>();
             this.PlacaMadre = new HashSet<PlacaMadre>();
             this.procesador = new HashSet<procesador>();
-            this.memoriaRAM = new HashSet<memoriaRAM>();
         }
     
         public int idTipoMemoria { get; set; }
         public string tipo { get; set; }
+        public bool estatus { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<memoriaRAM> memoriaRAM { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PlacaMadre> PlacaMadre { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<procesador> procesador { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<memoriaRAM> memoriaRAM { get; set; }
     }
 }

@@ -20,10 +20,12 @@
     @using (Html.BeginForm("RestablecerContraseña", "Register", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
-
+        
         <div class="form-horizontal">
             <h4>Usuarios</h4>
             <hr />
+            @Html.HiddenFor(model => model.username, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.HiddenFor(model => model.idUsuario,htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="form-group">
                 @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">

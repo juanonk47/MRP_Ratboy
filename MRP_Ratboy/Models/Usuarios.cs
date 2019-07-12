@@ -11,16 +11,29 @@ namespace MRP_Ratboy.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-
+    
     public partial class Usuarios
     {
-        public int id { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Usuarios()
+        {
+            this.LogEmpleado = new HashSet<LogEmpleado>();
+        }
+    
+        public int idUsuario { get; set; }
         public string username { get; set; }
         public string password { get; set; }
         public int tipo_id { get; set; }
         public int estatus { get; set; }
+        public int idPersona_FK { get; set; }
+        public string correo { get; set; }
         public bool checkestatus { get; set; }
+
+
+        public virtual correoElectronico correoElectronico { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LogEmpleado> LogEmpleado { get; set; }
+        public virtual Persona Persona { get; set; }
         public virtual tipo_usuarios tipo_usuarios { get; set; }
     }
 }

@@ -14,11 +14,19 @@ namespace MRP_Ratboy.Models
     
     public partial class modeloVideo
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public modeloVideo()
+        {
+            this.Ensamble = new HashSet<Ensamble>();
+        }
+    
         public int idModeloVideo { get; set; }
         public int idTarjetaVideo { get; set; }
         public string modelo { get; set; }
+        public bool estatus { get; set; }
     
-        public virtual Ensamble Ensamble { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ensamble> Ensamble { get; set; }
         public virtual tarjetaVideo tarjetaVideo { get; set; }
     }
 }

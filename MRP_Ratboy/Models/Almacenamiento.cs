@@ -23,7 +23,7 @@ namespace MRP_Ratboy.Models
         public int idAlmacenamento { get; set; }
         public string nombre { get; set; }
         public string tipo { get; set; }
-        public int capacidad { get; set; }
+        public double capacidad { get; set; }
         public double costoProveedor { get; set; }
         public double costoVenta { get; set; }
         public bool estatus { get; set; }

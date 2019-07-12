@@ -13,22 +13,26 @@ namespace MRP_Ratboy.services
         
         public Usuarios ValidarCorreo(int id)
         {
-            var userDetails = db.Usuarios.Find(id);
-            if (userDetails == null)
+            var registro = db.correoElectronico.Where(x => x.campoAutogenerado == id).FirstOrDefault();
+            if (registro == null)
             {
                 return null;
             }
             else
             {
-                userDetails.estatus = 1;
-                db.Entry(userDetails).State = EntityState.Modified;
+                Usuarios usuarios = registro.Usuarios;
+                usuarios.estatus = 1;
+                db.Entry(usuarios).State = EntityState.Modified;
                 db.SaveChanges();
-                return userDetails;
+                registro.estatus = false;
+                db.Entry(registro).State = EntityState.Modified;
+                db.SaveChanges();
+                return usuarios;
             }
         }
         public Usuarios UpdateUsuario (Usuarios usuarios)
         {
-            var userDetail = db.Usuarios.Find(usuarios.id);
+            var userDetail = db.Usuarios.Find(usuarios.idUsuario);
             if(userDetail == null)
             {
                 return null;

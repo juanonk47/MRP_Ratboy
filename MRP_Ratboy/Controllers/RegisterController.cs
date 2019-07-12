@@ -24,28 +24,56 @@ namespace MRP_Ratboy.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "username,password")] Usuarios usuarios)
+        public ActionResult Create([Bind(Include = "username,password,nombre,apeMaterno,apePaterno,direccion,edad")] EUsuarioPersona eUsuarioPersona)
         {
-            usuarios.estatus = 0;
-            usuarios.tipo_id = 1;
+            Usuarios usuario = new Usuarios();
+            Persona persona = new Persona();
+            correoElectronico correoElectronico = new correoElectronico();
+            //Primero tiene que crear a la persona luego al usuario y generar el campo de registro
             
+
             if (ModelState.IsValid)
             {
                 //Mandar correo para el registro
-                var checkuser = db.Usuarios.Where(x => x.username == usuarios.username).FirstOrDefault();
+                var checkuser = db.Usuarios.Where(x => x.username == eUsuarioPersona.username).FirstOrDefault();
                 if (checkuser != null)
                 {
                     ViewBag.Error = "Ya existe un registro con ese correo electronico";
-                    return View(usuarios);
+                    return View(eUsuarioPersona);
                 }
-                db.Usuarios.Add(usuarios);
+
+                persona.nombre = eUsuarioPersona.nombre;
+                persona.estatus = true;
+                persona.edad = eUsuarioPersona.edad;
+                persona.direccion = eUsuarioPersona.direccion;
+                persona.apePaterno = eUsuarioPersona.apePaterno;
+                persona.apeMaterno = eUsuarioPersona.apeMaterno;
+                db.Persona.Add(persona);
                 db.SaveChanges();
-                var userDetails = db.Usuarios.Where(x => x.username == usuarios.username && x.password == usuarios.password).FirstOrDefault();
+
+                usuario.username = eUsuarioPersona.username;
+                usuario.tipo_id = 1;
+                usuario.password = eUsuarioPersona.password;
+                usuario.idPersona_FK = persona.idPersona;
+                usuario.estatus = 0;
+                db.Usuarios.Add(usuario);
+                db.SaveChanges();
+
+                Random r = new Random();
+                int aleatorio = r.Next(1, 10000000);
+                correoElectronico.campoAutogenerado = aleatorio;
+                correoElectronico.fecha = DateTime.Now;
+                correoElectronico.idUsuario_FK = usuario.idUsuario;
+                correoElectronico.estatus = true;
+                db.correoElectronico.Add(correoElectronico);
+                db.SaveChanges();
+                //var userDetails = db.Usuarios.Where(x => x.username == usuarios.username && x.password == usuarios.password).FirstOrDefault();
+
                 try
                 {
-                    MailMessage mm = new MailMessage("desarrollo9company@gmail.com", userDetails.username);
+                    MailMessage mm = new MailMessage("desarrollo9company@gmail.com", usuario.username);
                     mm.Subject = "Verificar tu correo";
-                    mm.Body = string.Format("Hola : <h1>" + userDetails.username + "</h1> \n click porfavor en el enlace : <a href='https://localhost:44327/Register/registro/{0}'>Click para registrar</a>", userDetails.id);
+                    mm.Body = string.Format("Hola : <h1>" + usuario.username + "</h1> \n click porfavor en el enlace : <a href='https://localhost:44327/Register/registro/{0}'>Click para registrar</a>", correoElectronico.campoAutogenerado);
                     mm.IsBodyHtml = true;
                     SmtpClient smtp = new SmtpClient();
                     smtp.Host = "smtp.gmail.com";
@@ -64,10 +92,10 @@ namespace MRP_Ratboy.Controllers
                     ViewBag.Error = "No se pudo enviar el correo electronico "+e.Message;
                     return RedirectToAction("Login", "Home");
                 }
-                return RedirectToAction("Login");
+                return RedirectToAction("Login","Home");
             }
 
-            return View(usuarios);
+            return View(eUsuarioPersona);
         }
         public ActionResult check_session(string pagina)
         {
@@ -108,15 +136,20 @@ namespace MRP_Ratboy.Controllers
             try
             {
                 var userDetails = db.Usuarios.Where(x => x.username == usuarios.username).FirstOrDefault();
-                if (ce.SendEmailForForgotePassword(userDetails))
-                {
-                    return RedirectToAction("Login", "Home");
+                var correo = db.correoElectronico.Where(x => x.idUsuario_FK == userDetails.idUsuario).FirstOrDefault();
+                if (userDetails != null && correo != null) {
+                    if (ce.SendEmailForForgotePassword(userDetails, correo.campoAutogenerado))
+                    {
+                        return RedirectToAction("Login", "Home");
+                    }
+                    else
+                    {
+                        ViewBag.Error = "No se pudo enviar el correo de restablecimiento";
+                        return View();
+                    }
                 }
-                else
-                {
-                    ViewBag.Error = "No se pudo enviar el correo de restablecimiento";
-                    return View();
-                }
+                ViewBag.Error = "No se encontro el usuario";
+                return View();
             }catch(Exception e)
             {
                 Console.WriteLine(e.Message);
@@ -144,10 +177,11 @@ namespace MRP_Ratboy.Controllers
         public ActionResult RestablecerContraseña(int id)
         {
             //Actualizamos la contraseña del usuario
-            var user = db.Usuarios.Find(id);
-            if (user != null)
+            var correo = db.correoElectronico.Where(x => x.campoAutogenerado == id).FirstOrDefault();
+            if (correo != null)
             {
-                return View(user);
+
+                return View(correo.Usuarios);
             }
             ViewBag.Error = "No se pudo encontral el usuario";
             return View("RecuperarContraseña");

@@ -276,3 +276,5 @@ __pycache__/
 # Cake - Uncomment if you are using it
 # tools/**
 # !tools/packages.config
+.vs/SIASAWeb/v15/sqlite3/storage.ide
+.vs/**/storage.ide

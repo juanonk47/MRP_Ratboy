@@ -14,12 +14,19 @@ namespace MRP_Ratboy.Models
     
     public partial class Perfiles
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Perfiles()
+        {
+            this.Perfil_Ensamble = new HashSet<Perfil_Ensamble>();
+        }
+    
         public int idPerfil { get; set; }
         public string Nombre { get; set; }
         public string Nivel { get; set; }
-        public int idEnsamble { get; set; }
+        public int idEnsamble_FK { get; set; }
         public Nullable<bool> estatus { get; set; }
     
-        public virtual Ensamble Ensamble { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Perfil_Ensamble> Perfil_Ensamble { get; set; }
     }
 }
