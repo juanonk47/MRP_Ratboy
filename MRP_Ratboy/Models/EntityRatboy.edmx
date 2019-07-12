@@ -54,9 +54,7 @@
           </Key>
           <Property Name="idGP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DetalleGP" Type="int" Nullable="false" />
-          <Property Name="idPlacaMadre_FK" Type="int" Nullable="false" />
           <Property Name="estatus" Type="bit" Nullable="false" />
-          <Property Name="idProcesador_FK" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Ensamble">
           <Key>
@@ -72,6 +70,17 @@
           <Property Name="idGabinete" Type="int" Nullable="false" />
           <Property Name="estatus" Type="bit" Nullable="false" />
           <Property Name="idEmpleado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Generacion">
+          <Key>
+            <PropertyRef Name="idGeneracion" />
+            <PropertyRef Name="idPlacaMadre_FK" />
+            <PropertyRef Name="idGP" />
+          </Key>
+          <Property Name="idGeneracion" Type="int" Nullable="false" />
+          <Property Name="idPlacaMadre_FK" Type="int" Nullable="false" />
+          <Property Name="idGP" Type="int" Nullable="false" />
+          <Property Name="estatus" Type="bit" />
         </EntityType>
         <EntityType Name="LogEmpleado">
           <Key>
@@ -160,7 +169,7 @@
           <Property Name="marca" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="modelo" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="watts" Type="float" />
-          <Property Name="idSocket" Type="int" Nullable="false" />
+          <Property Name="idSocket_FK" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="procesador">
           <Key>
@@ -171,8 +180,8 @@
           <Property Name="cantidadNucleos" Type="int" Nullable="false" />
           <Property Name="cantidadSubProcesos" Type="int" Nullable="false" />
           <Property Name="frecuenciaBasica" Type="int" Nullable="false" />
-          <Property Name="idTipoMemoria" Type="int" Nullable="false" />
-          <Property Name="idSocket" Type="int" Nullable="false" />
+          <Property Name="idTipoMemoria_FK" Type="int" Nullable="false" />
+          <Property Name="idSocket_FK" Type="int" Nullable="false" />
           <Property Name="graficosIntegrados" Type="bit" Nullable="false" />
           <Property Name="optane" Type="int" Nullable="false" />
           <Property Name="costoProveedor" Type="float" Nullable="false" />
@@ -180,6 +189,7 @@
           <Property Name="marca" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="estatus" Type="bit" Nullable="false" />
           <Property Name="watts" Type="float" Nullable="false" />
+          <Property Name="idGP_FK" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="socket">
           <Key>
@@ -300,30 +310,6 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_detalleGeneracionProcesador_PlacaMadre">
-          <End Role="PlacaMadre" Type="Self.PlacaMadre" Multiplicity="1" />
-          <End Role="detalleGeneracionProcesador" Type="Self.detalleGeneracionProcesador" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PlacaMadre">
-              <PropertyRef Name="idPlacaMadre" />
-            </Principal>
-            <Dependent Role="detalleGeneracionProcesador">
-              <PropertyRef Name="idPlacaMadre_FK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_detalleGeneracionProcesador_procesador">
-          <End Role="procesador" Type="Self.procesador" Multiplicity="1" />
-          <End Role="detalleGeneracionProcesador" Type="Self.detalleGeneracionProcesador" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="procesador">
-              <PropertyRef Name="idProcesador" />
-            </Principal>
-            <Dependent Role="detalleGeneracionProcesador">
-              <PropertyRef Name="idProcesador_FK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Ensamble_Almacenamiento">
           <End Role="Almacenamiento" Type="Self.Almacenamiento" Multiplicity="1" />
           <End Role="Ensamble" Type="Self.Ensamble" Multiplicity="*" />
@@ -396,6 +382,30 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Generacion_detalleGeneracionProcesador">
+          <End Role="detalleGeneracionProcesador" Type="Self.detalleGeneracionProcesador" Multiplicity="1" />
+          <End Role="Generacion" Type="Self.Generacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="detalleGeneracionProcesador">
+              <PropertyRef Name="idGP" />
+            </Principal>
+            <Dependent Role="Generacion">
+              <PropertyRef Name="idGP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Generacion_PlacaMadre">
+          <End Role="PlacaMadre" Type="Self.PlacaMadre" Multiplicity="1" />
+          <End Role="Generacion" Type="Self.Generacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlacaMadre">
+              <PropertyRef Name="idPlacaMadre" />
+            </Principal>
+            <Dependent Role="Generacion">
+              <PropertyRef Name="idPlacaMadre_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_LogEmpleado_Usuarios">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
           <End Role="LogEmpleado" Type="Self.LogEmpleado" Multiplicity="*" />
@@ -464,7 +474,7 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
               <PropertyRef Name="idSocket" />
             </Principal>
             <Dependent Role="PlacaMadre">
-              <PropertyRef Name="idSocket" />
+              <PropertyRef Name="idSocket_FK" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -492,6 +502,18 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_procesador_detalleGeneracionProcesador">
+          <End Role="detalleGeneracionProcesador" Type="Self.detalleGeneracionProcesador" Multiplicity="1" />
+          <End Role="procesador" Type="Self.procesador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="detalleGeneracionProcesador">
+              <PropertyRef Name="idGP" />
+            </Principal>
+            <Dependent Role="procesador">
+              <PropertyRef Name="idGP_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_procesador_socket">
           <End Role="socket" Type="Self.socket" Multiplicity="1" />
           <End Role="procesador" Type="Self.procesador" Multiplicity="*" />
@@ -500,7 +522,7 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
               <PropertyRef Name="idSocket" />
             </Principal>
             <Dependent Role="procesador">
-              <PropertyRef Name="idSocket" />
+              <PropertyRef Name="idSocket_FK" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -512,12 +534,14 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
               <PropertyRef Name="idTipoMemoria" />
             </Principal>
             <Dependent Role="procesador">
-              <PropertyRef Name="idTipoMemoria" />
+              <PropertyRef Name="idTipoMemoria_FK" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Usuarios_Persona">
-          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Persona">
@@ -547,6 +571,7 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <EntitySet Name="DetalleGeneracion" EntityType="Self.DetalleGeneracion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="detalleGeneracionProcesador" EntityType="Self.detalleGeneracionProcesador" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ensamble" EntityType="Self.Ensamble" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Generacion" EntityType="Self.Generacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LogEmpleado" EntityType="Self.LogEmpleado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="memoriaRAM" EntityType="Self.memoriaRAM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="modeloVideo" EntityType="Self.modeloVideo" Schema="dbo" store:Type="Tables" />
@@ -585,14 +610,6 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             <End Role="tarjetaVideo" EntitySet="tarjetaVideo" />
             <End Role="cuelloBotella" EntitySet="cuelloBotella" />
           </AssociationSet>
-          <AssociationSet Name="FK_detalleGeneracionProcesador_PlacaMadre" Association="Self.FK_detalleGeneracionProcesador_PlacaMadre">
-            <End Role="PlacaMadre" EntitySet="PlacaMadre" />
-            <End Role="detalleGeneracionProcesador" EntitySet="detalleGeneracionProcesador" />
-          </AssociationSet>
-          <AssociationSet Name="FK_detalleGeneracionProcesador_procesador" Association="Self.FK_detalleGeneracionProcesador_procesador">
-            <End Role="procesador" EntitySet="procesador" />
-            <End Role="detalleGeneracionProcesador" EntitySet="detalleGeneracionProcesador" />
-          </AssociationSet>
           <AssociationSet Name="FK_Ensamble_Almacenamiento" Association="Self.FK_Ensamble_Almacenamiento">
             <End Role="Almacenamiento" EntitySet="Almacenamiento" />
             <End Role="Ensamble" EntitySet="Ensamble" />
@@ -616,6 +633,14 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <AssociationSet Name="FK_Ensamble_procesador" Association="Self.FK_Ensamble_procesador">
             <End Role="procesador" EntitySet="procesador" />
             <End Role="Ensamble" EntitySet="Ensamble" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Generacion_detalleGeneracionProcesador" Association="Self.FK_Generacion_detalleGeneracionProcesador">
+            <End Role="detalleGeneracionProcesador" EntitySet="detalleGeneracionProcesador" />
+            <End Role="Generacion" EntitySet="Generacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Generacion_PlacaMadre" Association="Self.FK_Generacion_PlacaMadre">
+            <End Role="PlacaMadre" EntitySet="PlacaMadre" />
+            <End Role="Generacion" EntitySet="Generacion" />
           </AssociationSet>
           <AssociationSet Name="FK_LogEmpleado_Usuarios" Association="Self.FK_LogEmpleado_Usuarios">
             <End Role="Usuarios" EntitySet="Usuarios" />
@@ -649,6 +674,10 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             <End Role="tipoMemoria" EntitySet="tipoMemoria" />
             <End Role="PlacaMadre" EntitySet="PlacaMadre" />
           </AssociationSet>
+          <AssociationSet Name="FK_procesador_detalleGeneracionProcesador" Association="Self.FK_procesador_detalleGeneracionProcesador">
+            <End Role="detalleGeneracionProcesador" EntitySet="detalleGeneracionProcesador" />
+            <End Role="procesador" EntitySet="procesador" />
+          </AssociationSet>
           <AssociationSet Name="FK_procesador_socket" Association="Self.FK_procesador_socket">
             <End Role="socket" EntitySet="socket" />
             <End Role="procesador" EntitySet="procesador" />
@@ -677,6 +706,7 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <EntitySet Name="DetalleGeneracion" EntityType="BD_ArmadoPcModel.DetalleGeneracion" />
           <EntitySet Name="detalleGeneracionProcesador" EntityType="BD_ArmadoPcModel.detalleGeneracionProcesador" />
           <EntitySet Name="Ensamble" EntityType="BD_ArmadoPcModel.Ensamble" />
+          <EntitySet Name="Generacion" EntityType="BD_ArmadoPcModel.Generacion" />
           <EntitySet Name="LogEmpleado" EntityType="BD_ArmadoPcModel.LogEmpleado" />
           <EntitySet Name="memoriaRAM" EntityType="BD_ArmadoPcModel.memoriaRAM" />
           <EntitySet Name="modeloVideo" EntityType="BD_ArmadoPcModel.modeloVideo" />
@@ -712,13 +742,13 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             <End Role="tarjetaVideo" EntitySet="tarjetaVideo" />
             <End Role="cuelloBotella" EntitySet="cuelloBotella" />
           </AssociationSet>
-          <AssociationSet Name="FK_detalleGeneracionProcesador_PlacaMadre" Association="BD_ArmadoPcModel.FK_detalleGeneracionProcesador_PlacaMadre">
-            <End Role="PlacaMadre" EntitySet="PlacaMadre" />
+          <AssociationSet Name="FK_Generacion_detalleGeneracionProcesador" Association="BD_ArmadoPcModel.FK_Generacion_detalleGeneracionProcesador">
             <End Role="detalleGeneracionProcesador" EntitySet="detalleGeneracionProcesador" />
+            <End Role="Generacion" EntitySet="Generacion" />
           </AssociationSet>
-          <AssociationSet Name="FK_detalleGeneracionProcesador_procesador" Association="BD_ArmadoPcModel.FK_detalleGeneracionProcesador_procesador">
-            <End Role="procesador" EntitySet="procesador" />
+          <AssociationSet Name="FK_procesador_detalleGeneracionProcesador" Association="BD_ArmadoPcModel.FK_procesador_detalleGeneracionProcesador">
             <End Role="detalleGeneracionProcesador" EntitySet="detalleGeneracionProcesador" />
+            <End Role="procesador" EntitySet="procesador" />
           </AssociationSet>
           <AssociationSet Name="FK_Ensamble_LogEmpleado" Association="BD_ArmadoPcModel.FK_Ensamble_LogEmpleado">
             <End Role="LogEmpleado" EntitySet="LogEmpleado" />
@@ -743,6 +773,10 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <AssociationSet Name="FK_Perfil_Ensamble_Ensamble" Association="BD_ArmadoPcModel.FK_Perfil_Ensamble_Ensamble">
             <End Role="Ensamble" EntitySet="Ensamble" />
             <End Role="Perfil_Ensamble" EntitySet="Perfil_Ensamble" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Generacion_PlacaMadre" Association="BD_ArmadoPcModel.FK_Generacion_PlacaMadre">
+            <End Role="PlacaMadre" EntitySet="PlacaMadre" />
+            <End Role="Generacion" EntitySet="Generacion" />
           </AssociationSet>
           <AssociationSet Name="FK_LogEmpleado_Usuarios" Association="BD_ArmadoPcModel.FK_LogEmpleado_Usuarios">
             <End Role="Usuarios" EntitySet="Usuarios" />
@@ -843,11 +877,9 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           </Key>
           <Property Name="idGP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DetalleGP" Type="Int32" Nullable="false" />
-          <Property Name="idPlacaMadre_FK" Type="Int32" Nullable="false" />
           <Property Name="estatus" Type="Boolean" Nullable="false" />
-          <Property Name="idProcesador_FK" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="PlacaMadre" Relationship="BD_ArmadoPcModel.FK_detalleGeneracionProcesador_PlacaMadre" FromRole="detalleGeneracionProcesador" ToRole="PlacaMadre" />
-          <NavigationProperty Name="procesador" Relationship="BD_ArmadoPcModel.FK_detalleGeneracionProcesador_procesador" FromRole="detalleGeneracionProcesador" ToRole="procesador" />
+          <NavigationProperty Name="Generacion" Relationship="BD_ArmadoPcModel.FK_Generacion_detalleGeneracionProcesador" FromRole="detalleGeneracionProcesador" ToRole="Generacion" />
+          <NavigationProperty Name="procesador" Relationship="BD_ArmadoPcModel.FK_procesador_detalleGeneracionProcesador" FromRole="detalleGeneracionProcesador" ToRole="procesador" />
         </EntityType>
         <EntityType Name="Ensamble">
           <Key>
@@ -871,6 +903,19 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <NavigationProperty Name="PlacaMadre" Relationship="BD_ArmadoPcModel.FK_Ensamble_PlacaMadre" FromRole="Ensamble" ToRole="PlacaMadre" />
           <NavigationProperty Name="procesador" Relationship="BD_ArmadoPcModel.FK_Ensamble_procesador" FromRole="Ensamble" ToRole="procesador" />
           <NavigationProperty Name="Perfil_Ensamble" Relationship="BD_ArmadoPcModel.FK_Perfil_Ensamble_Ensamble" FromRole="Ensamble" ToRole="Perfil_Ensamble" />
+        </EntityType>
+        <EntityType Name="Generacion">
+          <Key>
+            <PropertyRef Name="idGeneracion" />
+            <PropertyRef Name="idPlacaMadre_FK" />
+            <PropertyRef Name="idGP" />
+          </Key>
+          <Property Name="idGeneracion" Type="Int32" Nullable="false" />
+          <Property Name="idPlacaMadre_FK" Type="Int32" Nullable="false" />
+          <Property Name="idGP" Type="Int32" Nullable="false" />
+          <Property Name="estatus" Type="Boolean" />
+          <NavigationProperty Name="detalleGeneracionProcesador" Relationship="BD_ArmadoPcModel.FK_Generacion_detalleGeneracionProcesador" FromRole="Generacion" ToRole="detalleGeneracionProcesador" />
+          <NavigationProperty Name="PlacaMadre" Relationship="BD_ArmadoPcModel.FK_Generacion_PlacaMadre" FromRole="Generacion" ToRole="PlacaMadre" />
         </EntityType>
         <EntityType Name="LogEmpleado">
           <Key>
@@ -969,9 +1014,9 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="marca" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="modelo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="watts" Type="Double" />
-          <Property Name="idSocket" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="detalleGeneracionProcesador" Relationship="BD_ArmadoPcModel.FK_detalleGeneracionProcesador_PlacaMadre" FromRole="PlacaMadre" ToRole="detalleGeneracionProcesador" />
+          <Property Name="idSocket_FK" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Ensamble" Relationship="BD_ArmadoPcModel.FK_Ensamble_PlacaMadre" FromRole="PlacaMadre" ToRole="Ensamble" />
+          <NavigationProperty Name="Generacion" Relationship="BD_ArmadoPcModel.FK_Generacion_PlacaMadre" FromRole="PlacaMadre" ToRole="Generacion" />
           <NavigationProperty Name="socket" Relationship="BD_ArmadoPcModel.FK_PlacaMadre_socket" FromRole="PlacaMadre" ToRole="socket" />
           <NavigationProperty Name="Tamaño" Relationship="BD_ArmadoPcModel.FK_PlacaMadre_Tamaño" FromRole="PlacaMadre" ToRole="Tamaño" />
           <NavigationProperty Name="tipoMemoria" Relationship="BD_ArmadoPcModel.FK_PlacaMadre_tipoMemoria" FromRole="PlacaMadre" ToRole="tipoMemoria" />
@@ -985,8 +1030,8 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="cantidadNucleos" Type="Int32" Nullable="false" />
           <Property Name="cantidadSubProcesos" Type="Int32" Nullable="false" />
           <Property Name="frecuenciaBasica" Type="Int32" Nullable="false" />
-          <Property Name="idTipoMemoria" Type="Int32" Nullable="false" />
-          <Property Name="idSocket" Type="Int32" Nullable="false" />
+          <Property Name="idTipoMemoria_FK" Type="Int32" Nullable="false" />
+          <Property Name="idSocket_FK" Type="Int32" Nullable="false" />
           <Property Name="graficosIntegrados" Type="Boolean" Nullable="false" />
           <Property Name="optane" Type="Int32" Nullable="false" />
           <Property Name="costoProveedor" Type="Double" Nullable="false" />
@@ -994,8 +1039,9 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="marca" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="estatus" Type="Boolean" Nullable="false" />
           <Property Name="watts" Type="Double" Nullable="false" />
+          <Property Name="idGP_FK" Type="Int32" Nullable="false" />
           <NavigationProperty Name="cuelloBotella" Relationship="BD_ArmadoPcModel.FK_cuelloBotella_procesador" FromRole="procesador" ToRole="cuelloBotella" />
-          <NavigationProperty Name="detalleGeneracionProcesador" Relationship="BD_ArmadoPcModel.FK_detalleGeneracionProcesador_procesador" FromRole="procesador" ToRole="detalleGeneracionProcesador" />
+          <NavigationProperty Name="detalleGeneracionProcesador" Relationship="BD_ArmadoPcModel.FK_procesador_detalleGeneracionProcesador" FromRole="procesador" ToRole="detalleGeneracionProcesador" />
           <NavigationProperty Name="Ensamble" Relationship="BD_ArmadoPcModel.FK_Ensamble_procesador" FromRole="procesador" ToRole="Ensamble" />
           <NavigationProperty Name="socket" Relationship="BD_ArmadoPcModel.FK_procesador_socket" FromRole="procesador" ToRole="socket" />
           <NavigationProperty Name="tipoMemoria" Relationship="BD_ArmadoPcModel.FK_procesador_tipoMemoria" FromRole="procesador" ToRole="tipoMemoria" />
@@ -1142,27 +1188,27 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_detalleGeneracionProcesador_PlacaMadre">
-          <End Type="BD_ArmadoPcModel.PlacaMadre" Role="PlacaMadre" Multiplicity="1" />
-          <End Type="BD_ArmadoPcModel.detalleGeneracionProcesador" Role="detalleGeneracionProcesador" Multiplicity="*" />
+        <Association Name="FK_Generacion_detalleGeneracionProcesador">
+          <End Type="BD_ArmadoPcModel.detalleGeneracionProcesador" Role="detalleGeneracionProcesador" Multiplicity="1" />
+          <End Type="BD_ArmadoPcModel.Generacion" Role="Generacion" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PlacaMadre">
-              <PropertyRef Name="idPlacaMadre" />
+            <Principal Role="detalleGeneracionProcesador">
+              <PropertyRef Name="idGP" />
             </Principal>
-            <Dependent Role="detalleGeneracionProcesador">
-              <PropertyRef Name="idPlacaMadre_FK" />
+            <Dependent Role="Generacion">
+              <PropertyRef Name="idGP" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_detalleGeneracionProcesador_procesador">
-          <End Type="BD_ArmadoPcModel.procesador" Role="procesador" Multiplicity="1" />
-          <End Type="BD_ArmadoPcModel.detalleGeneracionProcesador" Role="detalleGeneracionProcesador" Multiplicity="*" />
+        <Association Name="FK_procesador_detalleGeneracionProcesador">
+          <End Type="BD_ArmadoPcModel.detalleGeneracionProcesador" Role="detalleGeneracionProcesador" Multiplicity="1" />
+          <End Type="BD_ArmadoPcModel.procesador" Role="procesador" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="procesador">
-              <PropertyRef Name="idProcesador" />
+            <Principal Role="detalleGeneracionProcesador">
+              <PropertyRef Name="idGP" />
             </Principal>
-            <Dependent Role="detalleGeneracionProcesador">
-              <PropertyRef Name="idProcesador_FK" />
+            <Dependent Role="procesador">
+              <PropertyRef Name="idGP_FK" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1238,6 +1284,18 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Generacion_PlacaMadre">
+          <End Type="BD_ArmadoPcModel.PlacaMadre" Role="PlacaMadre" Multiplicity="1" />
+          <End Type="BD_ArmadoPcModel.Generacion" Role="Generacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlacaMadre">
+              <PropertyRef Name="idPlacaMadre" />
+            </Principal>
+            <Dependent Role="Generacion">
+              <PropertyRef Name="idPlacaMadre_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_LogEmpleado_Usuarios">
           <End Type="BD_ArmadoPcModel.Usuarios" Role="Usuarios" Multiplicity="1" />
           <End Type="BD_ArmadoPcModel.LogEmpleado" Role="LogEmpleado" Multiplicity="*" />
@@ -1287,7 +1345,9 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Usuarios_Persona">
-          <End Type="BD_ArmadoPcModel.Persona" Role="Persona" Multiplicity="1" />
+          <End Type="BD_ArmadoPcModel.Persona" Role="Persona" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="BD_ArmadoPcModel.Usuarios" Role="Usuarios" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Persona">
@@ -1306,7 +1366,7 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
               <PropertyRef Name="idSocket" />
             </Principal>
             <Dependent Role="PlacaMadre">
-              <PropertyRef Name="idSocket" />
+              <PropertyRef Name="idSocket_FK" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1342,7 +1402,7 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
               <PropertyRef Name="idSocket" />
             </Principal>
             <Dependent Role="procesador">
-              <PropertyRef Name="idSocket" />
+              <PropertyRef Name="idSocket_FK" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1354,7 +1414,7 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
               <PropertyRef Name="idTipoMemoria" />
             </Principal>
             <Dependent Role="procesador">
-              <PropertyRef Name="idTipoMemoria" />
+              <PropertyRef Name="idTipoMemoria_FK" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1426,9 +1486,7 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <EntitySetMapping Name="detalleGeneracionProcesador">
             <EntityTypeMapping TypeName="BD_ArmadoPcModel.detalleGeneracionProcesador">
               <MappingFragment StoreEntitySet="detalleGeneracionProcesador">
-                <ScalarProperty Name="idProcesador_FK" ColumnName="idProcesador_FK" />
                 <ScalarProperty Name="estatus" ColumnName="estatus" />
-                <ScalarProperty Name="idPlacaMadre_FK" ColumnName="idPlacaMadre_FK" />
                 <ScalarProperty Name="DetalleGP" ColumnName="DetalleGP" />
                 <ScalarProperty Name="idGP" ColumnName="idGP" />
               </MappingFragment>
@@ -1447,6 +1505,16 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
                 <ScalarProperty Name="idProcesador" ColumnName="idProcesador" />
                 <ScalarProperty Name="idPlacaMadre" ColumnName="idPlacaMadre" />
                 <ScalarProperty Name="idEnsamble" ColumnName="idEnsamble" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Generacion">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.Generacion">
+              <MappingFragment StoreEntitySet="Generacion">
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="idGP" ColumnName="idGP" />
+                <ScalarProperty Name="idPlacaMadre_FK" ColumnName="idPlacaMadre_FK" />
+                <ScalarProperty Name="idGeneracion" ColumnName="idGeneracion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1523,7 +1591,7 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <EntitySetMapping Name="PlacaMadre">
             <EntityTypeMapping TypeName="BD_ArmadoPcModel.PlacaMadre">
               <MappingFragment StoreEntitySet="PlacaMadre">
-                <ScalarProperty Name="idSocket" ColumnName="idSocket" />
+                <ScalarProperty Name="idSocket_FK" ColumnName="idSocket_FK" />
                 <ScalarProperty Name="watts" ColumnName="watts" />
                 <ScalarProperty Name="modelo" ColumnName="modelo" />
                 <ScalarProperty Name="marca" ColumnName="marca" />
@@ -1549,6 +1617,7 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <EntitySetMapping Name="procesador">
             <EntityTypeMapping TypeName="BD_ArmadoPcModel.procesador">
               <MappingFragment StoreEntitySet="procesador">
+                <ScalarProperty Name="idGP_FK" ColumnName="idGP_FK" />
                 <ScalarProperty Name="watts" ColumnName="watts" />
                 <ScalarProperty Name="estatus" ColumnName="estatus" />
                 <ScalarProperty Name="marca" ColumnName="marca" />
@@ -1556,8 +1625,8 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
                 <ScalarProperty Name="costoProveedor" ColumnName="costoProveedor" />
                 <ScalarProperty Name="optane" ColumnName="optane" />
                 <ScalarProperty Name="graficosIntegrados" ColumnName="graficosIntegrados" />
-                <ScalarProperty Name="idSocket" ColumnName="idSocket" />
-                <ScalarProperty Name="idTipoMemoria" ColumnName="idTipoMemoria" />
+                <ScalarProperty Name="idSocket_FK" ColumnName="idSocket_FK" />
+                <ScalarProperty Name="idTipoMemoria_FK" ColumnName="idTipoMemoria_FK" />
                 <ScalarProperty Name="frecuenciaBasica" ColumnName="frecuenciaBasica" />
                 <ScalarProperty Name="cantidadSubProcesos" ColumnName="cantidadSubProcesos" />
                 <ScalarProperty Name="cantidadNucleos" ColumnName="cantidadNucleos" />

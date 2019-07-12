@@ -31,6 +31,7 @@ namespace MRP_Ratboy.Models
         public virtual DbSet<DetalleGeneracion> DetalleGeneracion { get; set; }
         public virtual DbSet<detalleGeneracionProcesador> detalleGeneracionProcesador { get; set; }
         public virtual DbSet<Ensamble> Ensamble { get; set; }
+        public virtual DbSet<Generacion> Generacion { get; set; }
         public virtual DbSet<LogEmpleado> LogEmpleado { get; set; }
         public virtual DbSet<memoriaRAM> memoriaRAM { get; set; }
         public virtual DbSet<modeloVideo> modeloVideo { get; set; }
