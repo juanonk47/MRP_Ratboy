@@ -16,7 +16,7 @@ namespace MRP_Ratboy
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Login", id = UrlParameter.Optional }
+                defaults: new { controller = "IndexLogout", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IndexLogoutController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\tipo_usuariosController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -446,6 +447,7 @@
     <Content Include="Views\tipo_usuarios\Edit.cshtml" />
     <Content Include="Views\tipo_usuarios\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutMain.cshtml" />
+    <Content Include="Views\IndexLogout\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
