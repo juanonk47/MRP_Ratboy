@@ -17,7 +17,7 @@ namespace MRP_Ratboy.Controllers
         // GET: Usuarios
         public ActionResult Index()
         {
-            var session = Session["usuarios"];
+            var session = Session["usuario"];
             if (session == null)
             {
                 return RedirectToAction("Login", "Home");

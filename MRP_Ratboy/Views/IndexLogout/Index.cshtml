@@ -1,0 +1,146 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+
+<!-- Banner -->
+<div id="video" class="video-bg iq-bg iq-bg-fixed iq-box-shadow iq-over-black-80" data-vide-bg="video/01" data-vide-options="position: 0% 50%" style="width: 100%; height:100%;">
+    <section id="iq-home" class="banner-03">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="iq-font-white iq-tw-8 text-center">RatBoy Computer<small class="iq-font-white iq-tw-6"><b class="iq-font-white"></b>La computadora que necesitas a tu medida</small></h1>
+                    <div class="iq-mobile-app text-center">
+                        <div class="iq-mobile-box">
+                            <img class="iq-mobile-img" src="@Url.Content("~/Content/images/pc-gaming2.png")" alt="#">
+                            <span data-depth="0.8" class="layer iq-mobile-icon icon-01" data-bottom="transform:translateX(50px)" data-top="transform:translateX(-100px);">
+                                <img src="@Url.Content("~/Content/images/banner/04.png")" alt="#">
+                            </span>
+                            <span data-depth="0.8" class="layer iq-mobile-icon icon-02" data-bottom="transform:translateX(100px)" data-top="transform:translateX(0px);">
+                                <img src="@Url.Content("~/Content/images/banner/05.png")" alt="#">
+                            </span>
+                            <span data-depth="0.8" class="layer iq-mobile-icon icon-03" data-bottom="transform:translateX(-50px)" data-top="transform:translateX(40px);">
+                                <img src="@Url.Content("~/Content/images/banner/06.png")" alt="#">
+                            </span>
+                            <span data-depth="0.8" class="layer iq-mobile-icon icon-04" data-bottom="transform:translateX(-30px)" data-top="transform:translateX(0px);">
+                                <img src="@Url.Content("~/Content/images/banner/07.png")" alt="#">
+                            </span>
+                            <span data-depth="0.8" class="layer iq-mobile-icon icon-05" data-bottom="transform:translateX(0px)" data-top="transform:translateX(-50px);">
+                                <img src="@Url.Content("~/Content/images/banner/08.png")" alt="#">
+                            </span>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="link">
+                        <h5 class="iq-font-white" data-animation="animated fadeInLeft">Descarga aquí</h5>
+                        <ul class="list-inline" data-animation="animated fadeInUp">
+                            <li><a href="#"><i class="ion-social-apple"></i></a></li>
+                            <li><a href="#"><i class="ion-social-android"></i></a></li>
+
+                        </ul>
+
+                        <p class="iq-font-white iq-mt-10">Gestor de garantias al alcance de tus manos. Interfaz intuitiva para el usuario con ahorro de tiempo en traslados con técnicos físicos.</p>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<br>
+<!-- Banner End -->
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<!-- full-contact -->
+
+<section id="contact-us" class="iq-full-contact white-bg">
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <div class="col-sm-6">
+                <div class="iq-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.86891413078!2d-101.6612685849666!3d21.117791685950216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842bbe557a0bb4e3%3A0x855c10c235f07c!2sTORRE+NISSAN!5e0!3m2!1ses-419!2smx!4v1521145464393" width="600" height="450" frameborder="0" style="border:0" allowfullscreen> style="border:0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-sm-6 iq-mt-20 iq-pall-40">
+                <h4 class="heading-left iq-tw-6 iq-pb-20">Enviar mensaje</h4>
+                <div class="row">
+                    <div id="formmessage">Success/Error Message Goes Here</div>
+                    <form class="form-horizontal contact-form" id="contactform" method="post">
+                        <div class="contact-form">
+                            <div class="col-sm-6">
+                                <div class="section-field form-group customised-formgroup">
+                                    <input id="name" type="text" placeholder="Nombre*" name="name">
+                                </div>
+                                <div class="section-field form-group customised-formgroup">
+                                    <input type="email" placeholder="Email*" name="email">
+                                </div>
+                                <div class="section-field form-group customised-formgroup">
+                                    <input type="text" placeholder="tel*" name="phone">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="section-field textarea form-group customised-formgroup">
+                                    <textarea class="input-message" placeholder="comentario*" rows="7" name="message"></textarea>
+                                </div>
+                                <input type="hidden" name="action" value="sendEmail" />
+                                <button id="submit" name="submit" type="submit" value="Send" class="button pull-right iq-mt-40">Enviar mensaje</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="ajaxloader" style="display:none"><img class="center-block mt-30 mb-30" src="@Url.Content("~/Content/images/ajax-loader.gif")" alt=""></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row iq-ptb-80">
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="iq-fancy-box-04">
+                    <div class="iq-icon green-bg">
+                        <i aria-hidden="true" class="ion-ios-location-outline"></i>
+                    </div>
+                    <div class="fancy-content">
+                        <h5 class="iq-tw-6">Dirección</h5>
+                        <span class="lead iq-tw-6">Universidad Tacnologica de Léon. León, Gto.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="iq-fancy-box-04">
+                    <div class="iq-icon green-bg">
+                        <i aria-hidden="true" class="ion-ios-telephone-outline"></i>
+                    </div>
+                    <div class="fancy-content">
+                        <h5 class="iq-tw-6">CEL</h5>
+                        <span class="lead iq-tw-6">(044) 477 224 4608</span>
+                        <p class="iq-mb-0">Lunes-sabado 8:00am - 8:00pm</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="iq-fancy-box-04">
+                    <div class="iq-icon green-bg">
+                        <i aria-hidden="true" class="ion-ios-email-outline"></i>
+                    </div>
+                    <div class="fancy-content">
+                        <h5 class="iq-tw-6">E-mail</h5>
+                        <span class="lead iq-tw-6">ratboy@gmail.com</span>
+                        <p class="iq-mb-0">24 X 7 atención</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- full-contact END -->
