@@ -30,7 +30,7 @@ namespace MRP_Ratboy.services
                 return usuarios;
             }
         }
-        public Usuarios UpdateUsuario (Usuarios usuarios)
+        public Usuarios UpdateUsuarioPassword (Usuarios usuarios)
         {
             var userDetail = db.Usuarios.Find(usuarios.idUsuario);
             if(userDetail == null)

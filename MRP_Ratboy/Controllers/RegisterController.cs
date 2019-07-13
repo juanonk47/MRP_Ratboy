@@ -30,8 +30,6 @@ namespace MRP_Ratboy.Controllers
             Persona persona = new Persona();
             correoElectronico correoElectronico = new correoElectronico();
             //Primero tiene que crear a la persona luego al usuario y generar el campo de registro
-            
-
             if (ModelState.IsValid)
             {
                 //Mandar correo para el registro
@@ -86,7 +84,6 @@ namespace MRP_Ratboy.Controllers
                     smtp.Port = 587;
                     smtp.Send(mm);
                     Console.WriteLine("Correo enviado");
-
                 }catch(Exception e) {
                     Console.WriteLine("No se pudo mandar el correo electronico "+e.Message);
                     ViewBag.Error = "No se pudo enviar el correo electronico "+e.Message;
@@ -149,6 +146,7 @@ namespace MRP_Ratboy.Controllers
                     }
                 }
                 ViewBag.Error = "No se encontro el usuario";
+                
                 return View();
             }catch(Exception e)
             {
@@ -167,7 +165,7 @@ namespace MRP_Ratboy.Controllers
             
             if (user != null)
             {
-                cu.UpdateUsuario(user);
+                cu.UpdateUsuarioPassword(user);
                 return RedirectToAction("Login", "Home");
             }
             ViewBag.Error = "No se pudo encontrar el usuario";
