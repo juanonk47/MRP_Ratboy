@@ -1,0 +1,131 @@
+﻿@model MRP_Ratboy.Models.procesador
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>procesador</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidadNucleos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidadNucleos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidadSubProcesos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidadSubProcesos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.frecuenciaBasica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.frecuenciaBasica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.graficosIntegrados)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.graficosIntegrados)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.optane)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.optane)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.costoProveedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.costoProveedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.costoVenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.costoVenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.marca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.watts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.watts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.detalleGeneracionProcesador.DetalleGeneracionProcesador1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.detalleGeneracionProcesador.DetalleGeneracionProcesador1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.socket.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.socket.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipoMemoria.tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipoMemoria.tipo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idProcesador }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
