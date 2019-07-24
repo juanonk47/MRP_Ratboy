@@ -12,10 +12,14 @@ namespace MRP_Ratboy.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class DetalleGeneracion
+    public partial class GeneracionSoportadaPlacaMadre
     {
-        public int idDetalleGeneracion { get; set; }
-        public int generacion { get; set; }
+        public int idGeneracionSoportadaPlacaMadre { get; set; }
+        public int idPlacaMadre_FK { get; set; }
+        public int idGeneracionProcesador_FK { get; set; }
         public bool estatus { get; set; }
+    
+        public virtual detalleGeneracionProcesador detalleGeneracionProcesador { get; set; }
+        public virtual PlacaMadre PlacaMadre { get; set; }
     }
 }

@@ -17,16 +17,16 @@ namespace MRP_Ratboy.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public detalleGeneracionProcesador()
         {
-            this.Generacion = new HashSet<Generacion>();
+            this.GeneracionSoportadaPlacaMadre = new HashSet<GeneracionSoportadaPlacaMadre>();
             this.procesador = new HashSet<procesador>();
         }
     
-        public int idGP { get; set; }
-        public int DetalleGP { get; set; }
+        public int idGeneracionProcesador { get; set; }
+        public string DetalleGeneracionProcesador1 { get; set; }
         public bool estatus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Generacion> Generacion { get; set; }
+        public virtual ICollection<GeneracionSoportadaPlacaMadre> GeneracionSoportadaPlacaMadre { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<procesador> procesador { get; set; }
     }

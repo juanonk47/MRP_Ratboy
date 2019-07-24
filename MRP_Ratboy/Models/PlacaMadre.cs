@@ -18,7 +18,7 @@ namespace MRP_Ratboy.Models
         public PlacaMadre()
         {
             this.Ensamble = new HashSet<Ensamble>();
-            this.Generacion = new HashSet<Generacion>();
+            this.GeneracionSoportadaPlacaMadre = new HashSet<GeneracionSoportadaPlacaMadre>();
         }
     
         public int idPlacaMadre { get; set; }
@@ -29,7 +29,7 @@ namespace MRP_Ratboy.Models
         public int cantidadM2 { get; set; }
         public string Descripcion { get; set; }
         public int Gaming { get; set; }
-        public int idTamaño { get; set; }
+        public int idTamaño_FK { get; set; }
         public byte[] codBarras { get; set; }
         public int PCIexpress { get; set; }
         public int SATA { get; set; }
@@ -45,7 +45,7 @@ namespace MRP_Ratboy.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ensamble> Ensamble { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Generacion> Generacion { get; set; }
+        public virtual ICollection<GeneracionSoportadaPlacaMadre> GeneracionSoportadaPlacaMadre { get; set; }
         public virtual socket socket { get; set; }
         public virtual Tamaño Tamaño { get; set; }
         public virtual tipoMemoria tipoMemoria { get; set; }

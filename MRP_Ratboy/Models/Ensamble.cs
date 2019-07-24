@@ -22,15 +22,15 @@ namespace MRP_Ratboy.Models
         }
     
         public int idEnsamble { get; set; }
-        public int idPlacaMadre { get; set; }
-        public int idProcesador { get; set; }
-        public int idRAM { get; set; }
-        public int idAlmacenamiento { get; set; }
-        public int idFuentePoder { get; set; }
-        public int idTarjetaVideo { get; set; }
-        public int idGabinete { get; set; }
+        public int idPlacaMadre_FK { get; set; }
+        public int idProcesador_FK { get; set; }
+        public int idRAM_FK { get; set; }
+        public int idAlmacenamiento_FK { get; set; }
+        public int idFuentePoder_FK { get; set; }
+        public int idTarjetaVideo_FK { get; set; }
+        public int idGabinete_FK { get; set; }
         public bool estatus { get; set; }
-        public int idEmpleado { get; set; }
+        public int idEmpleado_FK { get; set; }
     
         public virtual Almacenamiento Almacenamiento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

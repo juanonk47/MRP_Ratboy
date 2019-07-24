@@ -10,16 +10,10 @@
 namespace MRP_Ratboy.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Generacion
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public int idGeneracion { get; set; }
-        public int idPlacaMadre_FK { get; set; }
-        public int idGP { get; set; }
-        public Nullable<bool> estatus { get; set; }
-    
-        public virtual detalleGeneracionProcesador detalleGeneracionProcesador { get; set; }
-        public virtual PlacaMadre PlacaMadre { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

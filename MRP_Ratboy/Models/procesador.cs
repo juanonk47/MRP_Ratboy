@@ -35,7 +35,7 @@ namespace MRP_Ratboy.Models
         public string marca { get; set; }
         public bool estatus { get; set; }
         public double watts { get; set; }
-        public int idGP_FK { get; set; }
+        public int idGeneracionProcesador_FK { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cuelloBotella> cuelloBotella { get; set; }

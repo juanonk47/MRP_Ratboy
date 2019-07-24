@@ -128,9 +128,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\detalleGeneracionProcesadorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndexLogoutController.cs" />
+    <Compile Include="Controllers\memoriaRAMsController.cs" />
+    <Compile Include="Controllers\PlacaMadresController.cs" />
+    <Compile Include="Controllers\procesadorsController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\socketsController.cs" />
+    <Compile Include="Controllers\tarjetaVideosController.cs" />
     <Compile Include="Controllers\tipo_usuariosController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
@@ -143,9 +149,6 @@
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\cuelloBotella.cs">
-      <DependentUpon>EntityRatboy.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DetalleGeneracion.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\detalleGeneracionProcesador.cs">
@@ -170,7 +173,7 @@
       <DependentUpon>EntityRatboy.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\EUsuarioPersona.cs" />
-    <Compile Include="Models\Generacion.cs">
+    <Compile Include="Models\GeneracionSoportadaPlacaMadre.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LogEmpleado.cs">
@@ -200,15 +203,26 @@
     <Compile Include="Models\socket.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Tamaño.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\TamañoController.cs" />
     <Compile Include="Models\tarjetaVideo.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tipoMemoria.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\tipoMemoriasController.cs" />
     <Compile Include="Models\tipo_usuarios.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
@@ -448,6 +462,46 @@
     <Content Include="Views\tipo_usuarios\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutMain.cshtml" />
     <Content Include="Views\IndexLogout\Index.cshtml" />
+    <Content Include="Views\sockets\Create.cshtml" />
+    <Content Include="Views\sockets\Delete.cshtml" />
+    <Content Include="Views\sockets\Details.cshtml" />
+    <Content Include="Views\sockets\Edit.cshtml" />
+    <Content Include="Views\sockets\Index.cshtml" />
+    <Content Include="Views\memoriaRAMs\Create.cshtml" />
+    <Content Include="Views\memoriaRAMs\Delete.cshtml" />
+    <Content Include="Views\memoriaRAMs\Details.cshtml" />
+    <Content Include="Views\memoriaRAMs\Edit.cshtml" />
+    <Content Include="Views\memoriaRAMs\Index.cshtml" />
+    <Content Include="Views\Tamaño\Create.cshtml" />
+    <Content Include="Views\Tamaño\Delete.cshtml" />
+    <Content Include="Views\Tamaño\Details.cshtml" />
+    <Content Include="Views\Tamaño\Edit.cshtml" />
+    <Content Include="Views\Tamaño\Index.cshtml" />
+    <Content Include="Views\tipoMemorias\Create.cshtml" />
+    <Content Include="Views\tipoMemorias\Delete.cshtml" />
+    <Content Include="Views\tipoMemorias\Details.cshtml" />
+    <Content Include="Views\tipoMemorias\Edit.cshtml" />
+    <Content Include="Views\tipoMemorias\Index.cshtml" />
+    <Content Include="Views\detalleGeneracionProcesadors\Create.cshtml" />
+    <Content Include="Views\detalleGeneracionProcesadors\Delete.cshtml" />
+    <Content Include="Views\detalleGeneracionProcesadors\Details.cshtml" />
+    <Content Include="Views\detalleGeneracionProcesadors\Edit.cshtml" />
+    <Content Include="Views\detalleGeneracionProcesadors\Index.cshtml" />
+    <Content Include="Views\procesadors\Create.cshtml" />
+    <Content Include="Views\procesadors\Delete.cshtml" />
+    <Content Include="Views\procesadors\Details.cshtml" />
+    <Content Include="Views\procesadors\Edit.cshtml" />
+    <Content Include="Views\procesadors\Index.cshtml" />
+    <Content Include="Views\tarjetaVideos\Create.cshtml" />
+    <Content Include="Views\tarjetaVideos\Delete.cshtml" />
+    <Content Include="Views\tarjetaVideos\Details.cshtml" />
+    <Content Include="Views\tarjetaVideos\Edit.cshtml" />
+    <Content Include="Views\tarjetaVideos\Index.cshtml" />
+    <Content Include="Views\PlacaMadres\Create.cshtml" />
+    <Content Include="Views\PlacaMadres\Delete.cshtml" />
+    <Content Include="Views\PlacaMadres\Details.cshtml" />
+    <Content Include="Views\PlacaMadres\Edit.cshtml" />
+    <Content Include="Views\PlacaMadres\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -50,7 +50,7 @@ namespace MRP_Ratboy.Controllers
                 db.SaveChanges();
 
                 usuario.username = eUsuarioPersona.username;
-                usuario.tipo_id = 1;
+                usuario.tipo_id_FK = 1;
                 usuario.password = eUsuarioPersona.password;
                 usuario.idPersona_FK = persona.idPersona;
                 usuario.estatus = 0;

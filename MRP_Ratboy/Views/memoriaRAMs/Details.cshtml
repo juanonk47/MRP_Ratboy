@@ -1,0 +1,91 @@
+﻿@model MRP_Ratboy.Models.memoriaRAM
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>memoriaRAM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.velocidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.velocidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.costoVendedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.costoVendedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.costoVenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.costoVenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.marca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.watts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.watts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipoMemoria.tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipoMemoria.tipo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idRAM }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
