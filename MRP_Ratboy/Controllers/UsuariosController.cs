@@ -175,7 +175,7 @@ namespace MRP_Ratboy.Controllers
         public ActionResult mostrarPorEstatus(int estatus)
         {
             var usuarios = db.Usuarios.Where(x => x.estatus == estatus);
-            return View(usuarios.ToList());
+            return View("Index",usuarios.ToList());
         }
 
     }
