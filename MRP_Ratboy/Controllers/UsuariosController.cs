@@ -118,7 +118,7 @@ namespace MRP_Ratboy.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.tipo_id = new SelectList(db.tipo_usuarios, "id", "descripcion", usuarios.tipo_id);
+            ViewBag.tipo_id = new SelectList(db.tipo_usuarios, "id", "descripcion", usuarios.tipo_id_FK);
             return View(usuarios);
         }
 

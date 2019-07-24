@@ -24,7 +24,7 @@ namespace MRP_Ratboy.Models
         public string nombre { get; set; }
         public int idTipoMemoria { get; set; }
         public int cantidad { get; set; }
-        public int velocidad { get; set; }
+        public double velocidad { get; set; }
         public bool estatus { get; set; }
         public double costoVendedor { get; set; }
         public double costoVenta { get; set; }

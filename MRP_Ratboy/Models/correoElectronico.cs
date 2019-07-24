@@ -18,6 +18,7 @@ namespace MRP_Ratboy.Models
         public bool estatus { get; set; }
         public int campoAutogenerado { get; set; }
         public int idUsuario_FK { get; set; }
+        public int idCorreoElectronico { get; set; }
     
         public virtual Usuarios Usuarios { get; set; }
     }

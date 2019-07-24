@@ -24,7 +24,7 @@ namespace MRP_Ratboy.Models
         public string nombre { get; set; }
         public string apePaterno { get; set; }
         public string apeMaterno { get; set; }
-        public int edad { get; set; }
+        public Nullable<int> edad { get; set; }
         public string direccion { get; set; }
         public bool estatus { get; set; }
     

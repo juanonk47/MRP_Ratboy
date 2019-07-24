@@ -21,7 +21,7 @@ namespace MRP_Ratboy.Models
         }
     
         public int idModeloVideo { get; set; }
-        public int idTarjetaVideo { get; set; }
+        public int idTarjetaVideo_FK { get; set; }
         public string modelo { get; set; }
         public bool estatus { get; set; }
     

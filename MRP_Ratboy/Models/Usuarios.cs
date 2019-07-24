@@ -17,19 +17,21 @@ namespace MRP_Ratboy.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Usuarios()
         {
+            this.correoElectronico = new HashSet<correoElectronico>();
             this.LogEmpleado = new HashSet<LogEmpleado>();
         }
     
         public int idUsuario { get; set; }
         public string username { get; set; }
         public string password { get; set; }
-        public bool checkestatus { get; set; }
-        public int tipo_id { get; set; }
+        public int tipo_id_FK { get; set; }
         public int estatus { get; set; }
         public int idPersona_FK { get; set; }
         public string correo { get; set; }
+        public Nullable<bool> checkestatus { get; set; }
     
-        public virtual correoElectronico correoElectronico { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<correoElectronico> correoElectronico { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LogEmpleado> LogEmpleado { get; set; }
         public virtual Persona Persona { get; set; }
