@@ -69,7 +69,7 @@ namespace MRP_Ratboy.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.tipo_id = new SelectList(db.tipo_usuarios, "id", "descripcion", usuarios.tipo_id);
+            ViewBag.tipo_id = new SelectList(db.tipo_usuarios, "id", "descripcion", usuarios.tipo_id_FK);
             return View(usuarios);
         }
 
@@ -85,7 +85,7 @@ namespace MRP_Ratboy.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.tipo_id = new SelectList(db.tipo_usuarios, "id", "descripcion", usuarios.tipo_id);
+            ViewBag.tipo_id = new SelectList(db.tipo_usuarios, "id", "descripcion", usuarios.tipo_id_FK);
             if (usuarios.estatus == 1)
             {
                 usuarios.checkestatus = true;

@@ -1,0 +1,177 @@
+﻿@model MRP_Ratboy.Models.PlacaMadre
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PlacaMadre</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maxVelocidadMemoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maxVelocidadMemoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.statusM2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.statusM2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidadM2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidadM2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gaming)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gaming)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codBarras)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codBarras)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PCIexpress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PCIexpress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SATA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SATA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idEnsamble)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idEnsamble)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.costoProveedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.costoProveedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.costoVenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.costoVenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.marca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.watts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.watts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.socket.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.socket.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tamaño.nombreTamaño)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tamaño.nombreTamaño)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipoMemoria.tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipoMemoria.tipo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

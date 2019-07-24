@@ -1,0 +1,142 @@
+﻿@model IEnumerable<MRP_Ratboy.Models.PlacaMadre>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.maxVelocidadMemoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.statusM2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidadM2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gaming)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codBarras)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PCIexpress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SATA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idEnsamble)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.costoProveedor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.costoVenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.marca)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.modelo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.watts)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.socket.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tamaño.nombreTamaño)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipoMemoria.tipo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.maxVelocidadMemoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.statusM2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidadM2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gaming)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.codBarras)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PCIexpress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SATA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idEnsamble)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.costoProveedor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.costoVenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.marca)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.modelo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.watts)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.socket.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tamaño.nombreTamaño)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipoMemoria.tipo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idPlacaMadre }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idPlacaMadre }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idPlacaMadre })
+        </td>
+    </tr>
+}
+
+</table>

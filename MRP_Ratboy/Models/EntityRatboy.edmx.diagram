@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="73108df68e7b4165a3a81639199652b1" Name="Diagram1" ZoomLevel="114">
+      <Diagram DiagramId="73108df68e7b4165a3a81639199652b1" Name="Diagram1" ZoomLevel="59">
         <EntityTypeShape EntityType="BD_ArmadoPcModel.Almacenamiento" Width="1.5" PointX="6" PointY="14.75" />
         <EntityTypeShape EntityType="BD_ArmadoPcModel.correoElectronico" Width="1.5" PointX="6" PointY="23" />
         <EntityTypeShape EntityType="BD_ArmadoPcModel.cuelloBotella" Width="1.5" PointX="10.5" PointY="11.875" />

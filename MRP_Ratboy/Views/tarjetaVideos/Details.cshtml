@@ -1,0 +1,83 @@
+﻿@model MRP_Ratboy.Models.tarjetaVideo
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tarjetaVideo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.arquitectura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.arquitectura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cudaCore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cudaCore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.frameBuffer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.frameBuffer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.velocidadReloj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.velocidadReloj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.velocidadMemoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.velocidadMemoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreModelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreModelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estatus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idTarjetaVideo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
