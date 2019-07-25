@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="73108df68e7b4165a3a81639199652b1" Name="Diagram1" ZoomLevel="59">
+      <Diagram DiagramId="73108df68e7b4165a3a81639199652b1" Name="Diagram1" ZoomLevel="77">
         <EntityTypeShape EntityType="BD_ArmadoPcModel.Almacenamiento" Width="1.5" PointX="6" PointY="14.75" />
         <EntityTypeShape EntityType="BD_ArmadoPcModel.correoElectronico" Width="1.5" PointX="6" PointY="23" />
         <EntityTypeShape EntityType="BD_ArmadoPcModel.cuelloBotella" Width="1.5" PointX="10.5" PointY="11.875" />
         <EntityTypeShape EntityType="BD_ArmadoPcModel.detalleGeneracionProcesador" Width="1.5" PointX="6" PointY="4.625" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.Ensamble" Width="1.5" PointX="8.25" PointY="13.875" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.Ensamble" Width="1.5" PointX="12.5" PointY="11.25" />
         <EntityTypeShape EntityType="BD_ArmadoPcModel.GeneracionSoportadaPlacaMadre" Width="1.5" PointX="8.25" PointY="9.625" />
         <EntityTypeShape EntityType="BD_ArmadoPcModel.LogEmpleado" Width="1.5" PointX="6" PointY="26.875" />
         <EntityTypeShape EntityType="BD_ArmadoPcModel.memoriaRAM" Width="1.5" PointX="3" PointY="21.125" />

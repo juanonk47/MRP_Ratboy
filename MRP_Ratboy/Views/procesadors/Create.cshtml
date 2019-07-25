@@ -7,10 +7,17 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
+    if (ViewBag.Error != null)
+    {
+        <div class="alert alert-dismissible alert-danger">
+            <strong>@ViewBag.Error</strong>
+        </div>
+    }
+
     <div class="form-horizontal">
         <h4>procesador</h4>
         <hr />
