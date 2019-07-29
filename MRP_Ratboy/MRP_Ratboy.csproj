@@ -132,6 +132,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndexLogoutController.cs" />
     <Compile Include="Controllers\memoriaRAMsController.cs" />
+    <Compile Include="Controllers\PaypalController.cs" />
     <Compile Include="Controllers\PlacaMadresController.cs" />
     <Compile Include="Controllers\procesadorsController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
@@ -502,6 +503,7 @@
     <Content Include="Views\PlacaMadres\Details.cshtml" />
     <Content Include="Views\PlacaMadres\Edit.cshtml" />
     <Content Include="Views\PlacaMadres\Index.cshtml" />
+    <Content Include="Views\Paypal\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
