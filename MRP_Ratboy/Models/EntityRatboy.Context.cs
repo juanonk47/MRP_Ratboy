@@ -27,20 +27,26 @@ namespace MRP_Ratboy.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Accesorio> Accesorio { get; set; }
         public virtual DbSet<Almacenamiento> Almacenamiento { get; set; }
         public virtual DbSet<correoElectronico> correoElectronico { get; set; }
         public virtual DbSet<cuelloBotella> cuelloBotella { get; set; }
         public virtual DbSet<detalleGeneracionProcesador> detalleGeneracionProcesador { get; set; }
         public virtual DbSet<Ensamble> Ensamble { get; set; }
+        public virtual DbSet<fuentePoder> fuentePoder { get; set; }
+        public virtual DbSet<Gabinete> Gabinete { get; set; }
         public virtual DbSet<GeneracionSoportadaPlacaMadre> GeneracionSoportadaPlacaMadre { get; set; }
         public virtual DbSet<LogEmpleado> LogEmpleado { get; set; }
         public virtual DbSet<memoriaRAM> memoriaRAM { get; set; }
         public virtual DbSet<modeloVideo> modeloVideo { get; set; }
+        public virtual DbSet<Monitor> Monitor { get; set; }
         public virtual DbSet<Perfil_Ensamble> Perfil_Ensamble { get; set; }
         public virtual DbSet<Perfiles> Perfiles { get; set; }
         public virtual DbSet<Persona> Persona { get; set; }
         public virtual DbSet<PlacaMadre> PlacaMadre { get; set; }
         public virtual DbSet<procesador> procesador { get; set; }
+        public virtual DbSet<proveedor> proveedor { get; set; }
+        public virtual DbSet<PRUEBA> PRUEBA { get; set; }
         public virtual DbSet<socket> socket { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Tamaño> Tamaño { get; set; }

@@ -12,23 +12,23 @@ namespace MRP_Ratboy.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Almacenamiento
+    public partial class fuentePoder
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Almacenamiento()
+        public fuentePoder()
         {
             this.Ensamble = new HashSet<Ensamble>();
         }
     
-        public int idAlmacenamento { get; set; }
-        public string nombre { get; set; }
-        public string tipo { get; set; }
-        public string capacidad { get; set; }
+        public int idFuentePoder { get; set; }
         public double costoProveedor { get; set; }
         public double costoVenta { get; set; }
-        public bool estatus { get; set; }
         public string marca { get; set; }
-        public Nullable<double> rpm { get; set; }
+        public string modelo { get; set; }
+        public bool estatus { get; set; }
+        public double watts { get; set; }
+        public string tamaño { get; set; }
+        public string certificado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ensamble> Ensamble { get; set; }

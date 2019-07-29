@@ -29,7 +29,8 @@ namespace MRP_Ratboy.Models
         public int idPersona_FK { get; set; }
         public string correo { get; set; }
         public bool checkestatus { get; set; }
-    
+        public bool tipoUsuario { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<correoElectronico> correoElectronico { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -38,3 +39,4 @@ namespace MRP_Ratboy.Models
         public virtual tipo_usuarios tipo_usuarios { get; set; }
     }
 }
+

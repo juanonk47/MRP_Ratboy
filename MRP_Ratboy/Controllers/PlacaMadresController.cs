@@ -50,7 +50,7 @@ namespace MRP_Ratboy.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idPlacaMadre,Nombre,idtipoMemoria,maxVelocidadMemoria,statusM2,cantidadM2,Descripcion,Gaming,idTamaño_FK,codBarras,PCIexpress,SATA,estatus,idEnsamble,costoProveedor,costoVenta,marca,modelo,watts,idSocket_FK")] PlacaMadre placaMadre)
+        public ActionResult Create([Bind(Include = "idPlacaMadre,Nombre,idtipoMemoria,maxVelocidadMemoria,statusM2,cantidadM2,Descripcion,Gaming,idTamaño_FK,codBarras,PCIexpress,SATA,estatus,costoProveedor,costoVenta,marca,modelo,watts,idSocket_FK")] PlacaMadre placaMadre)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace MRP_Ratboy.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idPlacaMadre,Nombre,idtipoMemoria,maxVelocidadMemoria,statusM2,cantidadM2,Descripcion,Gaming,idTamaño_FK,codBarras,PCIexpress,SATA,estatus,idEnsamble,costoProveedor,costoVenta,marca,modelo,watts,idSocket_FK")] PlacaMadre placaMadre)
+        public ActionResult Edit([Bind(Include = "idPlacaMadre,Nombre,idtipoMemoria,maxVelocidadMemoria,statusM2,cantidadM2,Descripcion,Gaming,idTamaño_FK,codBarras,PCIexpress,SATA,estatus,costoProveedor,costoVenta,marca,modelo,watts,idSocket_FK")] PlacaMadre placaMadre)
         {
             if (ModelState.IsValid)
             {

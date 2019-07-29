@@ -142,6 +142,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Accesorio.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Almacenamiento.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
@@ -173,6 +176,12 @@
       <DependentUpon>EntityRatboy.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\EUsuarioPersona.cs" />
+    <Compile Include="Models\fuentePoder.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Gabinete.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GeneracionSoportadaPlacaMadre.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
@@ -183,6 +192,9 @@
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\modeloVideo.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Monitor.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Perfiles.cs">
@@ -198,6 +210,12 @@
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\procesador.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proveedor.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PRUEBA.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\socket.cs">
