@@ -19,11 +19,11 @@ namespace MRP_Ratboy.Models
         {
             this.Usuarios = new HashSet<Usuarios>();
         }
-
+    
         public int id { get; set; }
         public string descripcion { get; set; }
         public bool estatus { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Usuarios> Usuarios { get; set; }
     }

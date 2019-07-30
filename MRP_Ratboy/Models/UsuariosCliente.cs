@@ -12,16 +12,13 @@ namespace MRP_Ratboy.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Accesorio
+    public partial class UsuariosCliente
     {
-        public int idAccesorio { get; set; }
-        public bool categoria { get; set; }
+        public int idUserCliente { get; set; }
         public string nombre { get; set; }
-        public string marca { get; set; }
-        public string modelo { get; set; }
-        public double precioProveedor { get; set; }
-        public double precioVenta { get; set; }
-        public bool estatus { get; set; }
-        public string descripcion { get; set; }
+        public string apellidos { get; set; }
+        public string correo { get; set; }
+        public string password { get; set; }
+        public Nullable<bool> isValid { get; set; }
     }
 }

@@ -36,6 +36,7 @@ namespace MRP_Ratboy.Models
         public virtual DbSet<fuentePoder> fuentePoder { get; set; }
         public virtual DbSet<Gabinete> Gabinete { get; set; }
         public virtual DbSet<GeneracionSoportadaPlacaMadre> GeneracionSoportadaPlacaMadre { get; set; }
+        public virtual DbSet<inventario> inventario { get; set; }
         public virtual DbSet<LogEmpleado> LogEmpleado { get; set; }
         public virtual DbSet<memoriaRAM> memoriaRAM { get; set; }
         public virtual DbSet<modeloVideo> modeloVideo { get; set; }
@@ -54,6 +55,7 @@ namespace MRP_Ratboy.Models
         public virtual DbSet<tipo_usuarios> tipo_usuarios { get; set; }
         public virtual DbSet<tipoMemoria> tipoMemoria { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<UsuariosCliente> UsuariosCliente { get; set; }
         public virtual DbSet<URLImagenes> URLImagenes { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
