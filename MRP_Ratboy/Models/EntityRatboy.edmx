@@ -1191,7 +1191,6 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="estatus" Type="Int32" Nullable="false" />
           <Property Name="idPersona_FK" Type="Int32" Nullable="false" />
           <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="checkestatus" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="correoElectronico" Relationship="BD_ArmadoPcModel.FK_correoElectronico_Usuarios" FromRole="Usuarios" ToRole="correoElectronico" />
           <NavigationProperty Name="LogEmpleado" Relationship="BD_ArmadoPcModel.FK_LogEmpleado_Usuarios" FromRole="Usuarios" ToRole="LogEmpleado" />
           <NavigationProperty Name="Persona" Relationship="BD_ArmadoPcModel.FK_Usuarios_Persona" FromRole="Usuarios" ToRole="Persona" />
@@ -1796,7 +1795,6 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="BD_ArmadoPcModel.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
-                <ScalarProperty Name="checkestatus" ColumnName="checkestatus" />
                 <ScalarProperty Name="correo" ColumnName="correo" />
                 <ScalarProperty Name="idPersona_FK" ColumnName="idPersona_FK" />
                 <ScalarProperty Name="estatus" ColumnName="estatus" />
