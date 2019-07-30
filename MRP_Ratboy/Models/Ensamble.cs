@@ -35,10 +35,11 @@ namespace MRP_Ratboy.Models
         public virtual Almacenamiento Almacenamiento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cuelloBotella> cuelloBotella { get; set; }
+        public virtual fuentePoder fuentePoder { get; set; }
+        public virtual Gabinete Gabinete { get; set; }
         public virtual LogEmpleado LogEmpleado { get; set; }
         public virtual memoriaRAM memoriaRAM { get; set; }
         public virtual modeloVideo modeloVideo { get; set; }
-        public virtual PlacaMadre PlacaMadre { get; set; }
         public virtual procesador procesador { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Perfil_Ensamble> Perfil_Ensamble { get; set; }

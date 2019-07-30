@@ -128,12 +128,25 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\CompatibilidadController.cs" />
+
+
+    <Compile Include="Controllers\AlmacenamientoesController.cs" />
+    <Compile Include="Controllers\cuelloBotellasController.cs" />
+
     <Compile Include="Controllers\detalleGeneracionProcesadorsController.cs" />
+    <Compile Include="Controllers\EnsamblesController.cs" />
+    <Compile Include="Controllers\fuentePodersController.cs" />
+    <Compile Include="Controllers\GabinetesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndexLogoutController.cs" />
     <Compile Include="Controllers\memoriaRAMsController.cs" />
+
     <Compile Include="Controllers\PaypalController.cs" />
+
+    <Compile Include="Controllers\modeloVideosController.cs" />
+    <Compile Include="Controllers\PerfilesController.cs" />
+    <Compile Include="Controllers\Perfil_EnsambleController.cs" />
+
     <Compile Include="Controllers\PlacaMadresController.cs" />
     <Compile Include="Controllers\procesadorsController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
@@ -143,6 +156,9 @@
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Accesorio.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Almacenamiento.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
@@ -175,7 +191,16 @@
       <DependentUpon>EntityRatboy.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\EUsuarioPersona.cs" />
+    <Compile Include="Models\fuentePoder.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Gabinete.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GeneracionSoportadaPlacaMadre.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\inventario.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LogEmpleado.cs">
@@ -185,6 +210,9 @@
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\modeloVideo.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Monitor.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Perfiles.cs">
@@ -200,6 +228,12 @@
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\procesador.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proveedor.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PRUEBA.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\socket.cs">
@@ -232,6 +266,9 @@
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuarios.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UsuariosCliente.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -504,7 +541,50 @@
     <Content Include="Views\PlacaMadres\Details.cshtml" />
     <Content Include="Views\PlacaMadres\Edit.cshtml" />
     <Content Include="Views\PlacaMadres\Index.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Paypal\Index.cshtml" />
+=======
+    <Content Include="Views\fuentePoders\Create.cshtml" />
+    <Content Include="Views\fuentePoders\Delete.cshtml" />
+    <Content Include="Views\fuentePoders\Details.cshtml" />
+    <Content Include="Views\fuentePoders\Edit.cshtml" />
+    <Content Include="Views\fuentePoders\Index.cshtml" />
+    <Content Include="Views\modeloVideos\Create.cshtml" />
+    <Content Include="Views\modeloVideos\Delete.cshtml" />
+    <Content Include="Views\modeloVideos\Details.cshtml" />
+    <Content Include="Views\modeloVideos\Edit.cshtml" />
+    <Content Include="Views\modeloVideos\Index.cshtml" />
+    <Content Include="Views\Almacenamientoes\Create.cshtml" />
+    <Content Include="Views\Almacenamientoes\Delete.cshtml" />
+    <Content Include="Views\Almacenamientoes\Details.cshtml" />
+    <Content Include="Views\Almacenamientoes\Edit.cshtml" />
+    <Content Include="Views\Almacenamientoes\Index.cshtml" />
+    <Content Include="Views\Gabinetes\Create.cshtml" />
+    <Content Include="Views\Gabinetes\Delete.cshtml" />
+    <Content Include="Views\Gabinetes\Details.cshtml" />
+    <Content Include="Views\Gabinetes\Edit.cshtml" />
+    <Content Include="Views\Gabinetes\Index.cshtml" />
+    <Content Include="Views\Perfiles\Create.cshtml" />
+    <Content Include="Views\Perfiles\Delete.cshtml" />
+    <Content Include="Views\Perfiles\Details.cshtml" />
+    <Content Include="Views\Perfiles\Edit.cshtml" />
+    <Content Include="Views\Perfiles\Index.cshtml" />
+    <Content Include="Views\cuelloBotellas\Create.cshtml" />
+    <Content Include="Views\cuelloBotellas\Delete.cshtml" />
+    <Content Include="Views\cuelloBotellas\Details.cshtml" />
+    <Content Include="Views\cuelloBotellas\Edit.cshtml" />
+    <Content Include="Views\cuelloBotellas\Index.cshtml" />
+    <Content Include="Views\Ensambles\Create.cshtml" />
+    <Content Include="Views\Ensambles\Delete.cshtml" />
+    <Content Include="Views\Ensambles\Details.cshtml" />
+    <Content Include="Views\Ensambles\Edit.cshtml" />
+    <Content Include="Views\Ensambles\Index.cshtml" />
+    <Content Include="Views\Perfil_Ensamble\Create.cshtml" />
+    <Content Include="Views\Perfil_Ensamble\Delete.cshtml" />
+    <Content Include="Views\Perfil_Ensamble\Details.cshtml" />
+    <Content Include="Views\Perfil_Ensamble\Edit.cshtml" />
+    <Content Include="Views\Perfil_Ensamble\Index.cshtml" />
+>>>>>>> roberto
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

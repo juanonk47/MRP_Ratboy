@@ -1,0 +1,82 @@
+﻿@model IEnumerable<MRP_Ratboy.Models.Ensamble>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idPlacaMadre_FK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Almacenamiento.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fuentePoder.marca)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gabinete.marca)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LogEmpleado.idEmpleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.memoriaRAM.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.modeloVideo.modelo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.procesador.nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idPlacaMadre_FK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Almacenamiento.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fuentePoder.marca)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gabinete.marca)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LogEmpleado.idEmpleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.memoriaRAM.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.modeloVideo.modelo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.procesador.nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idEnsamble }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idEnsamble }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idEnsamble })
+        </td>
+    </tr>
+}
+
+</table>

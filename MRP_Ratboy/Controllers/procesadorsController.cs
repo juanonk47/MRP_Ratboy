@@ -52,12 +52,21 @@ namespace MRP_Ratboy.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "idProcesador,nombre,cantidadNucleos,cantidadSubProcesos,frecuenciaBasica,idTipoMemoria_FK,idSocket_FK,graficosIntegrados,optane,costoProveedor,costoVenta,marca,estatus,watts,idGeneracionProcesador_FK")] procesador procesador)
         {
-            if (ModelState.IsValid)
+            if (!(ValidarNombre(procesador.nombre)))
             {
-                db.procesador.Add(procesador);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.procesador.Add(procesador);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
+            else
+            {
+                ViewBag.Error = "El nombre del procesador ya ha sido registrado, utilice otro nombre";
+                
+            }
+
 
             ViewBag.idGeneracionProcesador_FK = new SelectList(db.detalleGeneracionProcesador, "idGeneracionProcesador", "DetalleGeneracionProcesador1", procesador.idGeneracionProcesador_FK);
             ViewBag.idSocket_FK = new SelectList(db.socket, "idSocket", "nombre", procesador.idSocket_FK);
@@ -90,11 +99,19 @@ namespace MRP_Ratboy.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "idProcesador,nombre,cantidadNucleos,cantidadSubProcesos,frecuenciaBasica,idTipoMemoria_FK,idSocket_FK,graficosIntegrados,optane,costoProveedor,costoVenta,marca,estatus,watts,idGeneracionProcesador_FK")] procesador procesador)
         {
-            if (ModelState.IsValid)
+            if (!(ValidarNombre(procesador.nombre)))
             {
-                db.Entry(procesador).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(procesador).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            else
+            {
+                ViewBag.Error = "El nombre del procesador ya ha sido registrado, utilice otro nombre";
+
             }
             ViewBag.idGeneracionProcesador_FK = new SelectList(db.detalleGeneracionProcesador, "idGeneracionProcesador", "DetalleGeneracionProcesador1", procesador.idGeneracionProcesador_FK);
             ViewBag.idSocket_FK = new SelectList(db.socket, "idSocket", "nombre", procesador.idSocket_FK);
@@ -135,6 +152,12 @@ namespace MRP_Ratboy.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        
+
+        private bool ValidarNombre(string nombre)
+        {
+            return db.procesador.Any(x => x.nombre.Equals(nombre)); //Reducir el ámbito del contexto
         }
     }
 }

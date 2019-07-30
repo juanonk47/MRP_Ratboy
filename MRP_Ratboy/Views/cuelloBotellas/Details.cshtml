@@ -1,0 +1,67 @@
+﻿@model MRP_Ratboy.Models.cuelloBotella
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>cuelloBotella</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.estatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.comnetarios)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.comnetarios)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ensamble.idEnsamble)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ensamble.idEnsamble)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.procesador.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.procesador.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tarjetaVideo.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tarjetaVideo.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idCuelloBotella }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

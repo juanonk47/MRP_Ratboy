@@ -1,0 +1,76 @@
+﻿@model IEnumerable<MRP_Ratboy.Models.Almacenamiento>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.capacidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.costoProveedor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.costoVenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.marca)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rpm)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.capacidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.costoProveedor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.costoVenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.marca)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rpm)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idAlmacenamento }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idAlmacenamento }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idAlmacenamento })
+        </td>
+    </tr>
+}
+
+</table>
