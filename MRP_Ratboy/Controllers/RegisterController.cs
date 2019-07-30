@@ -133,16 +133,21 @@ namespace MRP_Ratboy.Controllers
             try
             {
                 var userDetails = db.Usuarios.Where(x => x.username == usuarios.username).FirstOrDefault();
-                var correo = db.correoElectronico.Where(x => x.idUsuario_FK == userDetails.idUsuario).FirstOrDefault();
-                if (userDetails != null && correo != null) {
-                    if (ce.SendEmailForForgotePassword(userDetails, correo.campoAutogenerado))
+                
+                if (userDetails != null) {
+                    
+                    var correo = db.correoElectronico.Where(x => x.idUsuario_FK == userDetails.idUsuario).FirstOrDefault();
+                    if (correo != null)
                     {
-                        return RedirectToAction("Login", "Home");
-                    }
-                    else
-                    {
-                        ViewBag.Error = "No se pudo enviar el correo de restablecimiento";
-                        return View();
+                        if (ce.SendEmailForForgotePassword(userDetails, correo.campoAutogenerado))
+                        {
+                            return RedirectToAction("Login", "Home");
+                        }
+                        else
+                        {
+                            ViewBag.Error = "No se pudo enviar el correo de restablecimiento";
+                            return View();
+                        }
                     }
                 }
                 ViewBag.Error = "No se encontro el usuario";
