@@ -29,6 +29,7 @@ namespace MRP_Ratboy.Models
     
         public virtual DbSet<Accesorio> Accesorio { get; set; }
         public virtual DbSet<Almacenamiento> Almacenamiento { get; set; }
+        public virtual DbSet<Almacenamiento_Ensamble> Almacenamiento_Ensamble { get; set; }
         public virtual DbSet<correoElectronico> correoElectronico { get; set; }
         public virtual DbSet<cuelloBotella> cuelloBotella { get; set; }
         public virtual DbSet<detalleGeneracionProcesador> detalleGeneracionProcesador { get; set; }
@@ -39,6 +40,7 @@ namespace MRP_Ratboy.Models
         public virtual DbSet<inventario> inventario { get; set; }
         public virtual DbSet<LogEmpleado> LogEmpleado { get; set; }
         public virtual DbSet<memoriaRAM> memoriaRAM { get; set; }
+        public virtual DbSet<memoriaRAM_Ensamble> memoriaRAM_Ensamble { get; set; }
         public virtual DbSet<modeloVideo> modeloVideo { get; set; }
         public virtual DbSet<Monitor> Monitor { get; set; }
         public virtual DbSet<Perfil_Ensamble> Perfil_Ensamble { get; set; }

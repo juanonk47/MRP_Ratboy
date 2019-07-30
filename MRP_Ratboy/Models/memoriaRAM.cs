@@ -17,7 +17,7 @@ namespace MRP_Ratboy.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public memoriaRAM()
         {
-            this.Ensamble = new HashSet<Ensamble>();
+            this.memoriaRAM_Ensamble = new HashSet<memoriaRAM_Ensamble>();
         }
     
         public int idRAM { get; set; }
@@ -32,7 +32,7 @@ namespace MRP_Ratboy.Models
         public int watts { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ensamble> Ensamble { get; set; }
+        public virtual ICollection<memoriaRAM_Ensamble> memoriaRAM_Ensamble { get; set; }
         public virtual tipoMemoria tipoMemoria { get; set; }
     }
 }

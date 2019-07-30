@@ -17,10 +17,10 @@ namespace MRP_Ratboy.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Almacenamiento()
         {
-            this.Ensamble = new HashSet<Ensamble>();
+            this.Almacenamiento_Ensamble = new HashSet<Almacenamiento_Ensamble>();
         }
     
-        public int idAlmacenamento { get; set; }
+        public int idAlmacenamiento { get; set; }
         public string nombre { get; set; }
         public string tipo { get; set; }
         public string capacidad { get; set; }
@@ -31,6 +31,6 @@ namespace MRP_Ratboy.Models
         public Nullable<double> rpm { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ensamble> Ensamble { get; set; }
+        public virtual ICollection<Almacenamiento_Ensamble> Almacenamiento_Ensamble { get; set; }
     }
 }

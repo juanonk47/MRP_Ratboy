@@ -17,7 +17,9 @@ namespace MRP_Ratboy.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Ensamble()
         {
+            this.Almacenamiento_Ensamble = new HashSet<Almacenamiento_Ensamble>();
             this.cuelloBotella = new HashSet<cuelloBotella>();
+            this.memoriaRAM_Ensamble = new HashSet<memoriaRAM_Ensamble>();
             this.Perfil_Ensamble = new HashSet<Perfil_Ensamble>();
         }
     
@@ -32,15 +34,17 @@ namespace MRP_Ratboy.Models
         public bool estatus { get; set; }
         public int idEmpleado_FK { get; set; }
     
-        public virtual Almacenamiento Almacenamiento { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Almacenamiento_Ensamble> Almacenamiento_Ensamble { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cuelloBotella> cuelloBotella { get; set; }
         public virtual fuentePoder fuentePoder { get; set; }
         public virtual Gabinete Gabinete { get; set; }
         public virtual LogEmpleado LogEmpleado { get; set; }
-        public virtual memoriaRAM memoriaRAM { get; set; }
         public virtual modeloVideo modeloVideo { get; set; }
         public virtual procesador procesador { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<memoriaRAM_Ensamble> memoriaRAM_Ensamble { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Perfil_Ensamble> Perfil_Ensamble { get; set; }
     }

@@ -128,23 +128,17 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-
-
     <Compile Include="Controllers\AlmacenamientoesController.cs" />
     <Compile Include="Controllers\cuelloBotellasController.cs" />
-
     <Compile Include="Controllers\CompatibilidadController.cs" />
     <Compile Include="Controllers\detalleGeneracionProcesadorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndexLogoutController.cs" />
     <Compile Include="Controllers\memoriaRAMsController.cs" />
-
     <Compile Include="Controllers\PaypalController.cs" />
-
     <Compile Include="Controllers\modeloVideosController.cs" />
     <Compile Include="Controllers\PerfilesController.cs" />
     <Compile Include="Controllers\Perfil_EnsambleController.cs" />
-
     <Compile Include="Controllers\PlacaMadresController.cs" />
     <Compile Include="Controllers\procesadorsController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
@@ -155,7 +149,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Accesorio.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Almacenamiento.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Almacenamiento_Ensamble.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\correoElectronico.cs">
@@ -186,7 +186,16 @@
       <DependentUpon>EntityRatboy.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\EUsuarioPersona.cs" />
+    <Compile Include="Models\fuentePoder.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Gabinete.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GeneracionSoportadaPlacaMadre.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\inventario.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LogEmpleado.cs">
@@ -195,7 +204,13 @@
     <Compile Include="Models\memoriaRAM.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\memoriaRAM_Ensamble.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\modeloVideo.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Monitor.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Perfiles.cs">
@@ -211,6 +226,12 @@
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\procesador.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\proveedor.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PRUEBA.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\socket.cs">
@@ -243,6 +264,9 @@
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuarios.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UsuariosCliente.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -515,10 +539,7 @@
     <Content Include="Views\PlacaMadres\Details.cshtml" />
     <Content Include="Views\PlacaMadres\Edit.cshtml" />
     <Content Include="Views\PlacaMadres\Index.cshtml" />
-<<<<<<< HEAD
-<<<<<<< HEAD
     <Content Include="Views\Paypal\Index.cshtml" />
-=======
     <Content Include="Views\fuentePoders\Create.cshtml" />
     <Content Include="Views\fuentePoders\Delete.cshtml" />
     <Content Include="Views\fuentePoders\Details.cshtml" />
@@ -559,10 +580,7 @@
     <Content Include="Views\Perfil_Ensamble\Details.cshtml" />
     <Content Include="Views\Perfil_Ensamble\Edit.cshtml" />
     <Content Include="Views\Perfil_Ensamble\Index.cshtml" />
->>>>>>> roberto
-=======
     <Content Include="Views\Paypal\Index.cshtml" />
->>>>>>> bc1491b3851837ad5c21c6bee574d955240525b7
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
