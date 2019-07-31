@@ -88,11 +88,11 @@ namespace MRP_Ratboy.Controllers
             ViewBag.tipo_id = new SelectList(db.tipo_usuarios, "id", "descripcion", usuarios.tipo_id_FK);
             if (usuarios.estatus == 1)
             {
-                usuarios.checkestatus = true;
+                ViewBag.checkestatus = true;
             }
             if (usuarios.estatus == 0)
             {
-                usuarios.checkestatus = false;
+                ViewBag.checkestatus = false;
             }
             return View(usuarios);
         }
@@ -104,7 +104,7 @@ namespace MRP_Ratboy.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "idUsuario,username,password,tipo_id,estatus,checkestatus,persona")] Usuarios usuarios)
         {
-            if (usuarios.checkestatus)
+            if (ViewBag.checkestatus)
             {
                 usuarios.estatus = 1;
             }

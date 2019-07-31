@@ -28,8 +28,6 @@ namespace MRP_Ratboy.Models
         public int idPersona_FK { get; set; }
         public string correo { get; set; }
         public int tipo_id_FK { get; set; }
-
-        public bool checkestatus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<correoElectronico> correoElectronico { get; set; }

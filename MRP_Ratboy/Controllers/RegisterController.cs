@@ -54,6 +54,7 @@ namespace MRP_Ratboy.Controllers
                 usuario.password = eUsuarioPersona.password;
                 usuario.idPersona_FK = persona.idPersona;
                 usuario.estatus = 0;
+                usuario.correo = eUsuarioPersona.username;
                 db.Usuarios.Add(usuario);
                 db.SaveChanges();
 
