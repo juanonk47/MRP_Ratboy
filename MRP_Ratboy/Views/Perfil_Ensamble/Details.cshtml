@@ -1,0 +1,35 @@
+﻿@model MRP_Ratboy.Models.Perfil_Ensamble
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Perfil_Ensamble</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ensamble.idEnsamble)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ensamble.idEnsamble)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Perfiles.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Perfiles.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idPerfil_Ensamble }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

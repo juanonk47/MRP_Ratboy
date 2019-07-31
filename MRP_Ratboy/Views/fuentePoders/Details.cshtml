@@ -1,0 +1,83 @@
+﻿@model MRP_Ratboy.Models.fuentePoder
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>fuentePoder</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.costoProveedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.costoProveedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.costoVenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.costoVenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.marca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.watts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.watts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tamaño)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tamaño)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.certificado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.certificado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idFuentePoder }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,67 @@
+﻿@model MRP_Ratboy.Models.Gabinete
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Gabinete</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.costoProveedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.costoProveedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.costoVenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.costoVenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.marca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.medida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.medida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estatus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idGabinete }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

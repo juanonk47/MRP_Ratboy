@@ -17,7 +17,6 @@ namespace MRP_Ratboy.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PlacaMadre()
         {
-            this.Ensamble = new HashSet<Ensamble>();
             this.GeneracionSoportadaPlacaMadre = new HashSet<GeneracionSoportadaPlacaMadre>();
         }
     
@@ -34,7 +33,6 @@ namespace MRP_Ratboy.Models
         public int PCIexpress { get; set; }
         public int SATA { get; set; }
         public bool estatus { get; set; }
-        public int idEnsamble { get; set; }
         public double costoProveedor { get; set; }
         public double costoVenta { get; set; }
         public string marca { get; set; }
@@ -42,8 +40,6 @@ namespace MRP_Ratboy.Models
         public Nullable<double> watts { get; set; }
         public int idSocket_FK { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ensamble> Ensamble { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GeneracionSoportadaPlacaMadre> GeneracionSoportadaPlacaMadre { get; set; }
         public virtual socket socket { get; set; }

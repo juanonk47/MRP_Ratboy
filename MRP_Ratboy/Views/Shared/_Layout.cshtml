@@ -54,12 +54,14 @@
                 </ul>
                 
                 <ul class="nav navbar-nav navbar-right">
-                    @if (u.tipo_id==1)
+                    @*@if (u.tipo_id_FK==1)*@
+                    @if(true)
                     {
                         <li>@Html.ActionLink("Control de usuarios", "Index", "Usuarios")</li>
                         <li>@Html.ActionLink("Control de tipos de usuario", "Index", "tipo_usuarios")</li>
                     }
-                    <li><a href="@Url.Action("session_detalle","Usuarios")">@u.username</a></li>
+                    @*<li><a href="@Url.Action("session_detalle","Usuarios")">@u.username</a></li>*@
+                    <li><a href="">Nombre</a></li>
                     <li><a href="@Url.Action("Login","Home")">Salir</a></li>
 
                 </ul>

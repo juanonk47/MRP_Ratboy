@@ -1,0 +1,73 @@
+﻿@model MRP_Ratboy.Models.cuelloBotella
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>cuelloBotella</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.estatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.comnetarios)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.comnetarios)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ensamble.idEnsamble)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ensamble.idEnsamble)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.procesador.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.procesador.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tarjetaVideo.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tarjetaVideo.nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
