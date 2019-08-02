@@ -17,7 +17,9 @@ namespace MRP_Ratboy.Controllers
         // GET: Ensambles
         public ActionResult Index()
         {
-            var ensamble = db.Ensamble.Include(e => e.Almacenamiento).Include(e => e.fuentePoder).Include(e => e.Gabinete).Include(e => e.LogEmpleado).Include(e => e.memoriaRAM).Include(e => e.modeloVideo).Include(e => e.procesador);
+            var ensamble = db.Ensamble.Include(e => e.fuentePoder).Include(e => e.Gabinete).Include(e => e.LogEmpleado).Include(e => e.modeloVideo).Include(e => e.procesador);
+            List<Ensamble> ensambles = new List<Ensamble>();
+
             return View(ensamble.ToList());
         }
 
@@ -42,7 +44,7 @@ namespace MRP_Ratboy.Controllers
             ViewBag.idAlmacenamiento_FK = new SelectList(db.Almacenamiento, "idAlmacenamento", "nombre");
             ViewBag.idFuentePoder_FK = new SelectList(db.fuentePoder, "idFuentePoder", "marca");
             ViewBag.idGabinete_FK = new SelectList(db.Gabinete, "idGabinete", "marca");
-            ViewBag.idEmpleado_FK = new SelectList(db.LogEmpleado, "idEmpleado", "idEmpleado");
+            //ViewBag.idEmpleado_FK = new SelectList(db.LogEmpleado, "idEmpleado", "idEmpleado");
             ViewBag.idRAM_FK = new SelectList(db.memoriaRAM, "idRAM", "nombre");
             ViewBag.idTarjetaVideo_FK = new SelectList(db.modeloVideo, "idModeloVideo", "modelo");
             ViewBag.idProcesador_FK = new SelectList(db.procesador, "idProcesador", "nombre");

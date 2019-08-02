@@ -132,6 +132,9 @@
     <Compile Include="Controllers\cuelloBotellasController.cs" />
     <Compile Include="Controllers\CompatibilidadController.cs" />
     <Compile Include="Controllers\detalleGeneracionProcesadorsController.cs" />
+    <Compile Include="Controllers\EnsamblesController.cs" />
+    <Compile Include="Controllers\fuentePodersController.cs" />
+    <Compile Include="Controllers\GabinetesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndexLogoutController.cs" />
     <Compile Include="Controllers\memoriaRAMsController.cs" />
@@ -167,6 +170,7 @@
     <Compile Include="Models\detalleGeneracionProcesador.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EEnsambleConListMemoriaRamAlmacenamiento.cs" />
     <Compile Include="Models\Ensamble.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
@@ -570,21 +574,16 @@
     <Content Include="Views\cuelloBotellas\Details.cshtml" />
     <Content Include="Views\cuelloBotellas\Edit.cshtml" />
     <Content Include="Views\cuelloBotellas\Index.cshtml" />
-    <Content Include="Views\Ensambles\Create.cshtml" />
-    <Content Include="Views\Ensambles\Delete.cshtml" />
-    <Content Include="Views\Ensambles\Details.cshtml" />
-    <Content Include="Views\Ensambles\Edit.cshtml" />
-    <Content Include="Views\Ensambles\Index.cshtml" />
     <Content Include="Views\Perfil_Ensamble\Create.cshtml" />
     <Content Include="Views\Perfil_Ensamble\Delete.cshtml" />
     <Content Include="Views\Perfil_Ensamble\Details.cshtml" />
     <Content Include="Views\Perfil_Ensamble\Edit.cshtml" />
     <Content Include="Views\Perfil_Ensamble\Index.cshtml" />
     <Content Include="Views\Paypal\Index.cshtml" />
+    <Content Include="Views\Compatibilidad\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Compatibilidad\" />
     <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
