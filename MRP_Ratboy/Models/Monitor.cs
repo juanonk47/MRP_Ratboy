@@ -17,10 +17,12 @@ namespace MRP_Ratboy.Models
         public int idMonitor { get; set; }
         public string resolucion { get; set; }
         public string tamaño { get; set; }
-        public string marca { get; set; }
+        public int marca { get; set; }
         public string modelo { get; set; }
         public bool estatus { get; set; }
         public double precioProveedor { get; set; }
         public double precioVenta { get; set; }
+    
+        public virtual Marca Marca1 { get; set; }
     }
 }

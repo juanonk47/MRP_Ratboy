@@ -40,6 +40,8 @@ namespace MRP_Ratboy.Controllers
         public ActionResult Create()
         {
             ViewBag.idTipoMemoria = new SelectList(db.tipoMemoria, "idTipoMemoria", "tipo");
+            ViewBag.marca = new SelectList(db.Marca, "idMarca", "nombre");
+
             return View();
         }
 
@@ -48,8 +50,9 @@ namespace MRP_Ratboy.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idRAM,nombre,idTipoMemoria,cantidad,velocidad,estatus,costoVendedor,costoVenta,marca,watts")] memoriaRAM memoriaRAM)
+        public ActionResult Create([Bind(Include = "idRAM,nombre,idTipoMemoria,cantidad,velocidad,costoVendedor,costoVenta,marca,watts")] memoriaRAM memoriaRAM)
         {
+            memoriaRAM.estatus = true;
             if (ModelState.IsValid)
             {
                 db.memoriaRAM.Add(memoriaRAM);
@@ -58,6 +61,7 @@ namespace MRP_Ratboy.Controllers
             }
 
             ViewBag.idTipoMemoria = new SelectList(db.tipoMemoria, "idTipoMemoria", "tipo", memoriaRAM.idTipoMemoria);
+            ViewBag.marca = new SelectList(db.Marca, "idMarca", "nombre",memoriaRAM.marca);
             return View(memoriaRAM);
         }
 
@@ -74,6 +78,7 @@ namespace MRP_Ratboy.Controllers
                 return HttpNotFound();
             }
             ViewBag.idTipoMemoria = new SelectList(db.tipoMemoria, "idTipoMemoria", "tipo", memoriaRAM.idTipoMemoria);
+            ViewBag.marca = new SelectList(db.Marca, "idMarca", "nombre", memoriaRAM.marca);
             return View(memoriaRAM);
         }
 
@@ -91,6 +96,7 @@ namespace MRP_Ratboy.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.idTipoMemoria = new SelectList(db.tipoMemoria, "idTipoMemoria", "tipo", memoriaRAM.idTipoMemoria);
+            ViewBag.marca = new SelectList(db.Marca, "idMarca", "nombre", memoriaRAM.marca);
             return View(memoriaRAM);
         }
 

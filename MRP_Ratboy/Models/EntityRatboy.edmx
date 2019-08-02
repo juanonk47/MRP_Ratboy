@@ -10,14 +10,14 @@
             <PropertyRef Name="idAccesorio" />
           </Key>
           <Property Name="idAccesorio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="categoria" Type="bit" Nullable="false" />
-          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="marca" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="modelo" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="precioProveedor" Type="float" Nullable="false" />
-          <Property Name="precioVenta" Type="float" Nullable="false" />
+          <Property Name="categoria" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="marca" Type="int" Nullable="false" />
+          <Property Name="modelo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="precioProveedor" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="precioVenta" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="estatus" Type="bit" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Almacenamiento">
           <Key>
@@ -25,12 +25,12 @@
           </Key>
           <Property Name="idAlmacenamiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="tipo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="tipo" Type="int" Nullable="false" />
           <Property Name="capacidad" Type="varchar" MaxLength="50" />
           <Property Name="costoProveedor" Type="float" Nullable="false" />
           <Property Name="costoVenta" Type="float" Nullable="false" />
           <Property Name="estatus" Type="bit" Nullable="false" />
-          <Property Name="marca" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="marca" Type="int" Nullable="false" />
           <Property Name="rpm" Type="float" />
         </EntityType>
         <EntityType Name="Almacenamiento_Ensamble">
@@ -41,6 +41,13 @@
           <Property Name="idAlmacenamiento_FK" Type="int" Nullable="false" />
           <Property Name="idEnsamble_FK" Type="int" Nullable="false" />
           <Property Name="estatus" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="componente">
+          <Key>
+            <PropertyRef Name="idComponente" />
+          </Key>
+          <Property Name="idComponente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreComponente" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="correoElectronico">
           <Key>
@@ -63,6 +70,19 @@
           <Property Name="modelo" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="comnetarios" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="idTarjetaVideo_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="detalle_pedido">
+          <Key>
+            <PropertyRef Name="idDetallePedido" />
+          </Key>
+          <Property Name="idDetallePedido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPedido" Type="int" Nullable="false" />
+          <Property Name="idComponente" Type="int" Nullable="false" />
+          <Property Name="idModulo" Type="int" Nullable="false" />
+          <Property Name="idMarca" Type="int" Nullable="false" />
+          <Property Name="modelo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cantidad" Type="int" Nullable="false" />
+          <Property Name="precioUnitario" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="detalleGeneracionProcesador">
           <Key>
@@ -94,10 +114,10 @@
           <Property Name="idFuentePoder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="costoProveedor" Type="float" Nullable="false" />
           <Property Name="costoVenta" Type="float" Nullable="false" />
-          <Property Name="marca" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="marca" Type="int" Nullable="false" />
           <Property Name="modelo" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="estatus" Type="bit" Nullable="false" />
-          <Property Name="watts" Type="float" Nullable="false" />
+          <Property Name="watts" Type="int" Nullable="false" />
           <Property Name="tamaño" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="certificado" Type="varchar" MaxLength="40" Nullable="false" />
         </EntityType>
@@ -108,7 +128,7 @@
           <Property Name="idGabinete" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="costoProveedor" Type="float" Nullable="false" />
           <Property Name="costoVenta" Type="float" Nullable="false" />
-          <Property Name="marca" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="marca" Type="int" Nullable="false" />
           <Property Name="modelo" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="medida" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="estatus" Type="bit" Nullable="false" />
@@ -132,7 +152,7 @@
           <Property Name="idComponente" Type="int" Nullable="false" />
           <Property Name="codigoBarra" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="tipoProducto" Type="int" Nullable="false" />
-          <Property Name="marca" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="marca" Type="int" Nullable="false" />
           <Property Name="modelo" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="precio" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="idProveedor" Type="int" Nullable="false" />
@@ -148,6 +168,14 @@
           <Property Name="estatus" Type="bit" Nullable="false" />
           <Property Name="idUsuario_FK" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="idMarca" />
+          </Key>
+          <Property Name="idMarca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="memoriaRAM">
           <Key>
             <PropertyRef Name="idRAM" />
@@ -156,11 +184,11 @@
           <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="idTipoMemoria" Type="int" Nullable="false" />
           <Property Name="cantidad" Type="int" Nullable="false" />
-          <Property Name="velocidad" Type="float" Nullable="false" />
+          <Property Name="velocidad" Type="int" Nullable="false" />
           <Property Name="estatus" Type="bit" Nullable="false" />
           <Property Name="costoVendedor" Type="float" Nullable="false" />
           <Property Name="costoVenta" Type="float" Nullable="false" />
-          <Property Name="marca" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="marca" Type="int" Nullable="false" />
           <Property Name="watts" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="memoriaRAM_Ensamble">
@@ -188,11 +216,24 @@
           <Property Name="idMonitor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="resolucion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="tamaño" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="marca" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="marca" Type="int" Nullable="false" />
           <Property Name="modelo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="estatus" Type="bit" Nullable="false" />
           <Property Name="precioProveedor" Type="float" Nullable="false" />
           <Property Name="precioVenta" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pedido">
+          <Key>
+            <PropertyRef Name="idPedido" />
+          </Key>
+          <Property Name="idPedido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idProveedor" Type="int" Nullable="false" />
+          <Property Name="idEmpleado" Type="int" />
+          <Property Name="fechaHoraPedido" Type="datetime" />
+          <Property Name="codPedido" Type="varchar" MaxLength="15" />
+          <Property Name="subTotal" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="total" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="estatus" Type="bit" />
         </EntityType>
         <EntityType Name="Perfil_Ensamble">
           <Key>
@@ -201,6 +242,8 @@
           <Property Name="idPerfil_Ensamble" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idPerfil_FK" Type="int" Nullable="false" />
           <Property Name="idEnsamble_FK" Type="int" Nullable="false" />
+          <Property Name="nivel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="estatus" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Perfiles">
           <Key>
@@ -232,10 +275,10 @@
           <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="idtipoMemoria" Type="int" Nullable="false" />
           <Property Name="maxVelocidadMemoria" Type="int" Nullable="false" />
-          <Property Name="statusM2" Type="int" Nullable="false" />
+          <Property Name="statusM2" Type="bit" Nullable="false" />
           <Property Name="cantidadM2" Type="int" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Gaming" Type="int" Nullable="false" />
+          <Property Name="Gaming" Type="bit" Nullable="false" />
           <Property Name="idTamaño_FK" Type="int" Nullable="false" />
           <Property Name="codBarras" Type="image" />
           <Property Name="PCIexpress" Type="int" Nullable="false" />
@@ -243,9 +286,9 @@
           <Property Name="estatus" Type="bit" Nullable="false" />
           <Property Name="costoProveedor" Type="float" Nullable="false" />
           <Property Name="costoVenta" Type="float" Nullable="false" />
-          <Property Name="marca" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="marca" Type="int" Nullable="false" />
           <Property Name="modelo" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="watts" Type="float" />
+          <Property Name="watts" Type="int" Nullable="false" />
           <Property Name="idSocket_FK" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="procesador">
@@ -260,12 +303,12 @@
           <Property Name="idTipoMemoria_FK" Type="int" Nullable="false" />
           <Property Name="idSocket_FK" Type="int" Nullable="false" />
           <Property Name="graficosIntegrados" Type="bit" Nullable="false" />
-          <Property Name="optane" Type="int" Nullable="false" />
+          <Property Name="optane" Type="bit" Nullable="false" />
           <Property Name="costoProveedor" Type="float" Nullable="false" />
           <Property Name="costoVenta" Type="float" Nullable="false" />
-          <Property Name="marca" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="marca" Type="int" Nullable="false" />
           <Property Name="estatus" Type="bit" Nullable="false" />
-          <Property Name="watts" Type="float" Nullable="false" />
+          <Property Name="watts" Type="int" Nullable="false" />
           <Property Name="idGeneracionProcesador_FK" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="proveedor">
@@ -282,7 +325,7 @@
           </Key>
           <Property Name="idPrueba" Type="int" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="50" />
-          <Property Name="apellido" Type="varchar" MaxLength="50" />
+          <Property Name="apellido" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="socket">
           <Key>
@@ -332,6 +375,14 @@
           <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="estatus" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="TipoAlmacenamiento">
+          <Key>
+            <PropertyRef Name="idTipoAlmacenamiento" />
+          </Key>
+          <Property Name="idTipoAlmacenamiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="tipoMemoria">
           <Key>
             <PropertyRef Name="idTipoMemoria" />
@@ -352,6 +403,15 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="tipo" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="URL" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="estatus" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userIdCliente" Type="int" />
+          <Property Name="userIdAdmin" Type="int" />
+          <Property Name="rol" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -376,6 +436,78 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="password" Type="nvarchar" MaxLength="50" />
           <Property Name="isValid" Type="bit" />
         </EntityType>
+        <Association Name="FK__detalle_p__idCom__375B2DB9">
+          <End Role="componente" Type="Self.componente" Multiplicity="1" />
+          <End Role="detalle_pedido" Type="Self.detalle_pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="componente">
+              <PropertyRef Name="idComponente" />
+            </Principal>
+            <Dependent Role="detalle_pedido">
+              <PropertyRef Name="idComponente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__detalle_p__idMar__384F51F2">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+          <End Role="detalle_pedido" Type="Self.detalle_pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="idMarca" />
+            </Principal>
+            <Dependent Role="detalle_pedido">
+              <PropertyRef Name="idMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__detalle_p__idPed__36670980">
+          <End Role="pedido" Type="Self.pedido" Multiplicity="1" />
+          <End Role="detalle_pedido" Type="Self.detalle_pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedido">
+              <PropertyRef Name="idPedido" />
+            </Principal>
+            <Dependent Role="detalle_pedido">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido__idEmplea__338A9CD5">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="pedido">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido__idProvee__3296789C">
+          <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
+          <End Role="pedido" Type="Self.pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedor">
+              <PropertyRef Name="idProveedor" />
+            </Principal>
+            <Dependent Role="pedido">
+              <PropertyRef Name="idProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accesorio_Marca">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+          <End Role="Accesorio" Type="Self.Accesorio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="idMarca" />
+            </Principal>
+            <Dependent Role="Accesorio">
+              <PropertyRef Name="marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Almacenamiento_Ensamble_Almacenamiento">
           <End Role="Almacenamiento" Type="Self.Almacenamiento" Multiplicity="1" />
           <End Role="Almacenamiento_Ensamble" Type="Self.Almacenamiento_Ensamble" Multiplicity="*" />
@@ -397,6 +529,30 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             </Principal>
             <Dependent Role="Almacenamiento_Ensamble">
               <PropertyRef Name="idEnsamble_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Almacenamiento_Marca">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+          <End Role="Almacenamiento" Type="Self.Almacenamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="idMarca" />
+            </Principal>
+            <Dependent Role="Almacenamiento">
+              <PropertyRef Name="marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Almacenamiento_TipoAlmacenamiento">
+          <End Role="TipoAlmacenamiento" Type="Self.TipoAlmacenamiento" Multiplicity="1" />
+          <End Role="Almacenamiento" Type="Self.Almacenamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAlmacenamiento">
+              <PropertyRef Name="idTipoAlmacenamiento" />
+            </Principal>
+            <Dependent Role="Almacenamiento">
+              <PropertyRef Name="tipo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -508,6 +664,18 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Gabinete_Marca">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+          <End Role="Gabinete" Type="Self.Gabinete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="idMarca" />
+            </Principal>
+            <Dependent Role="Gabinete">
+              <PropertyRef Name="marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Generacion_detalleGeneracionProcesador">
           <End Role="detalleGeneracionProcesador" Type="Self.detalleGeneracionProcesador" Multiplicity="1" />
           <End Role="GeneracionSoportadaPlacaMadre" Type="Self.GeneracionSoportadaPlacaMadre" Multiplicity="*" />
@@ -568,6 +736,18 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_memoriaRAM_marca">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+          <End Role="memoriaRAM" Type="Self.memoriaRAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="idMarca" />
+            </Principal>
+            <Dependent Role="memoriaRAM">
+              <PropertyRef Name="marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_memoriaRAM_tipoMemoria">
           <End Role="tipoMemoria" Type="Self.tipoMemoria" Multiplicity="1" />
           <End Role="memoriaRAM" Type="Self.memoriaRAM" Multiplicity="*" />
@@ -592,6 +772,18 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Monitor_Marca">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+          <End Role="Monitor" Type="Self.Monitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="idMarca" />
+            </Principal>
+            <Dependent Role="Monitor">
+              <PropertyRef Name="marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Perfil_Ensamble_Ensamble">
           <End Role="Ensamble" Type="Self.Ensamble" Multiplicity="1" />
           <End Role="Perfil_Ensamble" Type="Self.Perfil_Ensamble" Multiplicity="*" />
@@ -613,6 +805,18 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             </Principal>
             <Dependent Role="Perfil_Ensamble">
               <PropertyRef Name="idPerfil_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlacaMadre_Marca">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+          <End Role="PlacaMadre" Type="Self.PlacaMadre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="idMarca" />
+            </Principal>
+            <Dependent Role="PlacaMadre">
+              <PropertyRef Name="marca" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -664,6 +868,18 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_procesador_marca">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+          <End Role="procesador" Type="Self.procesador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="idMarca" />
+            </Principal>
+            <Dependent Role="procesador">
+              <PropertyRef Name="marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_procesador_socket">
           <End Role="socket" Type="Self.socket" Multiplicity="1" />
           <End Role="procesador" Type="Self.procesador" Multiplicity="*" />
@@ -685,6 +901,30 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             </Principal>
             <Dependent Role="procesador">
               <PropertyRef Name="idTipoMemoria_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_Usuarios">
+          <End Role="UsuariosCliente" Type="Self.UsuariosCliente" Multiplicity="0..1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsuariosCliente">
+              <PropertyRef Name="idUserCliente" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="userIdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_Usuarios1">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="userIdAdmin" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -749,8 +989,10 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <EntitySet Name="Accesorio" EntityType="Self.Accesorio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Almacenamiento" EntityType="Self.Almacenamiento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Almacenamiento_Ensamble" EntityType="Self.Almacenamiento_Ensamble" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="componente" EntityType="Self.componente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="correoElectronico" EntityType="Self.correoElectronico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cuelloBotella" EntityType="Self.cuelloBotella" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="detalle_pedido" EntityType="Self.detalle_pedido" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="detalleGeneracionProcesador" EntityType="Self.detalleGeneracionProcesador" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ensamble" EntityType="Self.Ensamble" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="fuentePoder" EntityType="Self.fuentePoder" Schema="dbo" store:Type="Tables" />
@@ -758,10 +1000,12 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <EntitySet Name="GeneracionSoportadaPlacaMadre" EntityType="Self.GeneracionSoportadaPlacaMadre" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="inventario" EntityType="Self.inventario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LogEmpleado" EntityType="Self.LogEmpleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marca" EntityType="Self.Marca" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="memoriaRAM" EntityType="Self.memoriaRAM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="memoriaRAM_Ensamble" EntityType="Self.memoriaRAM_Ensamble" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="modeloVideo" EntityType="Self.modeloVideo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Monitor" EntityType="Self.Monitor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pedido" EntityType="Self.pedido" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Perfil_Ensamble" EntityType="Self.Perfil_Ensamble" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Perfiles" EntityType="Self.Perfiles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
@@ -774,7 +1018,9 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <EntitySet Name="Tamaño" EntityType="Self.Tamaño" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tarjetaVideo" EntityType="Self.tarjetaVideo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipo_usuarios" EntityType="Self.tipo_usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoAlmacenamiento" EntityType="Self.TipoAlmacenamiento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipoMemoria" EntityType="Self.tipoMemoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsuariosCliente" EntityType="Self.UsuariosCliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="URLImagenes" EntityType="Self.URLImagenes" store:Type="Tables" store:Schema="dbo">
@@ -785,6 +1031,30 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
     [URLImagenes].[estatus] AS [estatus]
     FROM [dbo].[URLImagenes] AS [URLImagenes]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK__detalle_p__idCom__375B2DB9" Association="Self.FK__detalle_p__idCom__375B2DB9">
+            <End Role="componente" EntitySet="componente" />
+            <End Role="detalle_pedido" EntitySet="detalle_pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__detalle_p__idMar__384F51F2" Association="Self.FK__detalle_p__idMar__384F51F2">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="detalle_pedido" EntitySet="detalle_pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__detalle_p__idPed__36670980" Association="Self.FK__detalle_p__idPed__36670980">
+            <End Role="pedido" EntitySet="pedido" />
+            <End Role="detalle_pedido" EntitySet="detalle_pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido__idEmplea__338A9CD5" Association="Self.FK__pedido__idEmplea__338A9CD5">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="pedido" EntitySet="pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido__idProvee__3296789C" Association="Self.FK__pedido__idProvee__3296789C">
+            <End Role="proveedor" EntitySet="proveedor" />
+            <End Role="pedido" EntitySet="pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accesorio_Marca" Association="Self.FK_Accesorio_Marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Accesorio" EntitySet="Accesorio" />
+          </AssociationSet>
           <AssociationSet Name="FK_Almacenamiento_Ensamble_Almacenamiento" Association="Self.FK_Almacenamiento_Ensamble_Almacenamiento">
             <End Role="Almacenamiento" EntitySet="Almacenamiento" />
             <End Role="Almacenamiento_Ensamble" EntitySet="Almacenamiento_Ensamble" />
@@ -792,6 +1062,14 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <AssociationSet Name="FK_Almacenamiento_Ensamble_Ensamble" Association="Self.FK_Almacenamiento_Ensamble_Ensamble">
             <End Role="Ensamble" EntitySet="Ensamble" />
             <End Role="Almacenamiento_Ensamble" EntitySet="Almacenamiento_Ensamble" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Almacenamiento_Marca" Association="Self.FK_Almacenamiento_Marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Almacenamiento" EntitySet="Almacenamiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Almacenamiento_TipoAlmacenamiento" Association="Self.FK_Almacenamiento_TipoAlmacenamiento">
+            <End Role="TipoAlmacenamiento" EntitySet="TipoAlmacenamiento" />
+            <End Role="Almacenamiento" EntitySet="Almacenamiento" />
           </AssociationSet>
           <AssociationSet Name="FK_correoElectronico_Usuarios" Association="Self.FK_correoElectronico_Usuarios">
             <End Role="Usuarios" EntitySet="Usuarios" />
@@ -829,6 +1107,10 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             <End Role="procesador" EntitySet="procesador" />
             <End Role="Ensamble" EntitySet="Ensamble" />
           </AssociationSet>
+          <AssociationSet Name="FK_Gabinete_Marca" Association="Self.FK_Gabinete_Marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Gabinete" EntitySet="Gabinete" />
+          </AssociationSet>
           <AssociationSet Name="FK_Generacion_detalleGeneracionProcesador" Association="Self.FK_Generacion_detalleGeneracionProcesador">
             <End Role="detalleGeneracionProcesador" EntitySet="detalleGeneracionProcesador" />
             <End Role="GeneracionSoportadaPlacaMadre" EntitySet="GeneracionSoportadaPlacaMadre" />
@@ -849,6 +1131,10 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             <End Role="memoriaRAM" EntitySet="memoriaRAM" />
             <End Role="memoriaRAM_Ensamble" EntitySet="memoriaRAM_Ensamble" />
           </AssociationSet>
+          <AssociationSet Name="FK_memoriaRAM_marca" Association="Self.FK_memoriaRAM_marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="memoriaRAM" EntitySet="memoriaRAM" />
+          </AssociationSet>
           <AssociationSet Name="FK_memoriaRAM_tipoMemoria" Association="Self.FK_memoriaRAM_tipoMemoria">
             <End Role="tipoMemoria" EntitySet="tipoMemoria" />
             <End Role="memoriaRAM" EntitySet="memoriaRAM" />
@@ -857,6 +1143,10 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             <End Role="tarjetaVideo" EntitySet="tarjetaVideo" />
             <End Role="modeloVideo" EntitySet="modeloVideo" />
           </AssociationSet>
+          <AssociationSet Name="FK_Monitor_Marca" Association="Self.FK_Monitor_Marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Monitor" EntitySet="Monitor" />
+          </AssociationSet>
           <AssociationSet Name="FK_Perfil_Ensamble_Ensamble" Association="Self.FK_Perfil_Ensamble_Ensamble">
             <End Role="Ensamble" EntitySet="Ensamble" />
             <End Role="Perfil_Ensamble" EntitySet="Perfil_Ensamble" />
@@ -864,6 +1154,10 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <AssociationSet Name="FK_Perfil_Ensamble_Perfiles" Association="Self.FK_Perfil_Ensamble_Perfiles">
             <End Role="Perfiles" EntitySet="Perfiles" />
             <End Role="Perfil_Ensamble" EntitySet="Perfil_Ensamble" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlacaMadre_Marca" Association="Self.FK_PlacaMadre_Marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="PlacaMadre" EntitySet="PlacaMadre" />
           </AssociationSet>
           <AssociationSet Name="FK_PlacaMadre_socket" Association="Self.FK_PlacaMadre_socket">
             <End Role="socket" EntitySet="socket" />
@@ -881,6 +1175,10 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             <End Role="detalleGeneracionProcesador" EntitySet="detalleGeneracionProcesador" />
             <End Role="procesador" EntitySet="procesador" />
           </AssociationSet>
+          <AssociationSet Name="FK_procesador_marca" Association="Self.FK_procesador_marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="procesador" EntitySet="procesador" />
+          </AssociationSet>
           <AssociationSet Name="FK_procesador_socket" Association="Self.FK_procesador_socket">
             <End Role="socket" EntitySet="socket" />
             <End Role="procesador" EntitySet="procesador" />
@@ -888,6 +1186,14 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <AssociationSet Name="FK_procesador_tipoMemoria" Association="Self.FK_procesador_tipoMemoria">
             <End Role="tipoMemoria" EntitySet="tipoMemoria" />
             <End Role="procesador" EntitySet="procesador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_Usuarios" Association="Self.FK_UserRole_Usuarios">
+            <End Role="UsuariosCliente" EntitySet="UsuariosCliente" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_Usuarios1" Association="Self.FK_UserRole_Usuarios1">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="UserRole" EntitySet="UserRole" />
           </AssociationSet>
           <AssociationSet Name="FK_Usuarios_Persona" Association="Self.FK_Usuarios_Persona">
             <End Role="Persona" EntitySet="Persona" />
@@ -936,8 +1242,10 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <EntitySet Name="Accesorio" EntityType="BD_ArmadoPcModel.Accesorio" />
           <EntitySet Name="Almacenamiento" EntityType="BD_ArmadoPcModel.Almacenamiento" />
           <EntitySet Name="Almacenamiento_Ensamble" EntityType="BD_ArmadoPcModel.Almacenamiento_Ensamble" />
+          <EntitySet Name="componente" EntityType="BD_ArmadoPcModel.componente" />
           <EntitySet Name="correoElectronico" EntityType="BD_ArmadoPcModel.correoElectronico" />
           <EntitySet Name="cuelloBotella" EntityType="BD_ArmadoPcModel.cuelloBotella" />
+          <EntitySet Name="detalle_pedido" EntityType="BD_ArmadoPcModel.detalle_pedido" />
           <EntitySet Name="detalleGeneracionProcesador" EntityType="BD_ArmadoPcModel.detalleGeneracionProcesador" />
           <EntitySet Name="Ensamble" EntityType="BD_ArmadoPcModel.Ensamble" />
           <EntitySet Name="fuentePoder" EntityType="BD_ArmadoPcModel.fuentePoder" />
@@ -945,10 +1253,12 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <EntitySet Name="GeneracionSoportadaPlacaMadre" EntityType="BD_ArmadoPcModel.GeneracionSoportadaPlacaMadre" />
           <EntitySet Name="inventario" EntityType="BD_ArmadoPcModel.inventario" />
           <EntitySet Name="LogEmpleado" EntityType="BD_ArmadoPcModel.LogEmpleado" />
+          <EntitySet Name="Marca" EntityType="BD_ArmadoPcModel.Marca" />
           <EntitySet Name="memoriaRAM" EntityType="BD_ArmadoPcModel.memoriaRAM" />
           <EntitySet Name="memoriaRAM_Ensamble" EntityType="BD_ArmadoPcModel.memoriaRAM_Ensamble" />
           <EntitySet Name="modeloVideo" EntityType="BD_ArmadoPcModel.modeloVideo" />
           <EntitySet Name="Monitor" EntityType="BD_ArmadoPcModel.Monitor" />
+          <EntitySet Name="pedido" EntityType="BD_ArmadoPcModel.pedido" />
           <EntitySet Name="Perfil_Ensamble" EntityType="BD_ArmadoPcModel.Perfil_Ensamble" />
           <EntitySet Name="Perfiles" EntityType="BD_ArmadoPcModel.Perfiles" />
           <EntitySet Name="Persona" EntityType="BD_ArmadoPcModel.Persona" />
@@ -961,17 +1271,35 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <EntitySet Name="Tamaño" EntityType="BD_ArmadoPcModel.Tamaño" />
           <EntitySet Name="tarjetaVideo" EntityType="BD_ArmadoPcModel.tarjetaVideo" />
           <EntitySet Name="tipo_usuarios" EntityType="BD_ArmadoPcModel.tipo_usuarios" />
+          <EntitySet Name="TipoAlmacenamiento" EntityType="BD_ArmadoPcModel.TipoAlmacenamiento" />
           <EntitySet Name="tipoMemoria" EntityType="BD_ArmadoPcModel.tipoMemoria" />
+          <EntitySet Name="UserRole" EntityType="BD_ArmadoPcModel.UserRole" />
           <EntitySet Name="Usuarios" EntityType="BD_ArmadoPcModel.Usuarios" />
           <EntitySet Name="UsuariosCliente" EntityType="BD_ArmadoPcModel.UsuariosCliente" />
           <EntitySet Name="URLImagenes" EntityType="BD_ArmadoPcModel.URLImagenes" />
+          <AssociationSet Name="FK_Accesorio_Marca" Association="BD_ArmadoPcModel.FK_Accesorio_Marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Accesorio" EntitySet="Accesorio" />
+          </AssociationSet>
           <AssociationSet Name="FK_Almacenamiento_Ensamble_Almacenamiento" Association="BD_ArmadoPcModel.FK_Almacenamiento_Ensamble_Almacenamiento">
             <End Role="Almacenamiento" EntitySet="Almacenamiento" />
             <End Role="Almacenamiento_Ensamble" EntitySet="Almacenamiento_Ensamble" />
           </AssociationSet>
+          <AssociationSet Name="FK_Almacenamiento_Marca" Association="BD_ArmadoPcModel.FK_Almacenamiento_Marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Almacenamiento" EntitySet="Almacenamiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Almacenamiento_TipoAlmacenamiento" Association="BD_ArmadoPcModel.FK_Almacenamiento_TipoAlmacenamiento">
+            <End Role="TipoAlmacenamiento" EntitySet="TipoAlmacenamiento" />
+            <End Role="Almacenamiento" EntitySet="Almacenamiento" />
+          </AssociationSet>
           <AssociationSet Name="FK_Almacenamiento_Ensamble_Ensamble" Association="BD_ArmadoPcModel.FK_Almacenamiento_Ensamble_Ensamble">
             <End Role="Ensamble" EntitySet="Ensamble" />
             <End Role="Almacenamiento_Ensamble" EntitySet="Almacenamiento_Ensamble" />
+          </AssociationSet>
+          <AssociationSet Name="FK__detalle_p__idCom__375B2DB9" Association="BD_ArmadoPcModel.FK__detalle_p__idCom__375B2DB9">
+            <End Role="componente" EntitySet="componente" />
+            <End Role="detalle_pedido" EntitySet="detalle_pedido" />
           </AssociationSet>
           <AssociationSet Name="FK_correoElectronico_Usuarios" Association="BD_ArmadoPcModel.FK_correoElectronico_Usuarios">
             <End Role="Usuarios" EntitySet="Usuarios" />
@@ -988,6 +1316,14 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <AssociationSet Name="FK_cuelloBotella_tarjetaVideo" Association="BD_ArmadoPcModel.FK_cuelloBotella_tarjetaVideo">
             <End Role="tarjetaVideo" EntitySet="tarjetaVideo" />
             <End Role="cuelloBotella" EntitySet="cuelloBotella" />
+          </AssociationSet>
+          <AssociationSet Name="FK__detalle_p__idMar__384F51F2" Association="BD_ArmadoPcModel.FK__detalle_p__idMar__384F51F2">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="detalle_pedido" EntitySet="detalle_pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__detalle_p__idPed__36670980" Association="BD_ArmadoPcModel.FK__detalle_p__idPed__36670980">
+            <End Role="pedido" EntitySet="pedido" />
+            <End Role="detalle_pedido" EntitySet="detalle_pedido" />
           </AssociationSet>
           <AssociationSet Name="FK_Generacion_detalleGeneracionProcesador" Association="BD_ArmadoPcModel.FK_Generacion_detalleGeneracionProcesador">
             <End Role="detalleGeneracionProcesador" EntitySet="detalleGeneracionProcesador" />
@@ -1025,6 +1361,10 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             <End Role="Ensamble" EntitySet="Ensamble" />
             <End Role="Perfil_Ensamble" EntitySet="Perfil_Ensamble" />
           </AssociationSet>
+          <AssociationSet Name="FK_Gabinete_Marca" Association="BD_ArmadoPcModel.FK_Gabinete_Marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Gabinete" EntitySet="Gabinete" />
+          </AssociationSet>
           <AssociationSet Name="FK_Generacion_PlacaMadre" Association="BD_ArmadoPcModel.FK_Generacion_PlacaMadre">
             <End Role="PlacaMadre" EntitySet="PlacaMadre" />
             <End Role="GeneracionSoportadaPlacaMadre" EntitySet="GeneracionSoportadaPlacaMadre" />
@@ -1032,6 +1372,22 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <AssociationSet Name="FK_LogEmpleado_Usuarios" Association="BD_ArmadoPcModel.FK_LogEmpleado_Usuarios">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="LogEmpleado" EntitySet="LogEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_memoriaRAM_marca" Association="BD_ArmadoPcModel.FK_memoriaRAM_marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="memoriaRAM" EntitySet="memoriaRAM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Monitor_Marca" Association="BD_ArmadoPcModel.FK_Monitor_Marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Monitor" EntitySet="Monitor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlacaMadre_Marca" Association="BD_ArmadoPcModel.FK_PlacaMadre_Marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="PlacaMadre" EntitySet="PlacaMadre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_procesador_marca" Association="BD_ArmadoPcModel.FK_procesador_marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="procesador" EntitySet="procesador" />
           </AssociationSet>
           <AssociationSet Name="FK_memoriaRAM_Ensamble_memoriaRAM" Association="BD_ArmadoPcModel.FK_memoriaRAM_Ensamble_memoriaRAM">
             <End Role="memoriaRAM" EntitySet="memoriaRAM" />
@@ -1044,6 +1400,14 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <AssociationSet Name="FK_modeloVideo_tarjetaVideo" Association="BD_ArmadoPcModel.FK_modeloVideo_tarjetaVideo">
             <End Role="tarjetaVideo" EntitySet="tarjetaVideo" />
             <End Role="modeloVideo" EntitySet="modeloVideo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido__idEmplea__338A9CD5" Association="BD_ArmadoPcModel.FK__pedido__idEmplea__338A9CD5">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="pedido" EntitySet="pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pedido__idProvee__3296789C" Association="BD_ArmadoPcModel.FK__pedido__idProvee__3296789C">
+            <End Role="proveedor" EntitySet="proveedor" />
+            <End Role="pedido" EntitySet="pedido" />
           </AssociationSet>
           <AssociationSet Name="FK_Perfil_Ensamble_Perfiles" Association="BD_ArmadoPcModel.FK_Perfil_Ensamble_Perfiles">
             <End Role="Perfiles" EntitySet="Perfiles" />
@@ -1077,6 +1441,14 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             <End Role="tipo_usuarios" EntitySet="tipo_usuarios" />
             <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
+          <AssociationSet Name="FK_UserRole_Usuarios" Association="BD_ArmadoPcModel.FK_UserRole_Usuarios">
+            <End Role="UsuariosCliente" EntitySet="UsuariosCliente" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_Usuarios1" Association="BD_ArmadoPcModel.FK_UserRole_Usuarios1">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1094,14 +1466,15 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             <PropertyRef Name="idAccesorio" />
           </Key>
           <Property Name="idAccesorio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="categoria" Type="Boolean" Nullable="false" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="marca" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="modelo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="precioProveedor" Type="Double" Nullable="false" />
-          <Property Name="precioVenta" Type="Double" Nullable="false" />
+          <Property Name="categoria" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="marca" Type="Int32" Nullable="false" />
+          <Property Name="modelo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="precioProveedor" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="precioVenta" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="estatus" Type="Boolean" Nullable="false" />
-          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Marca1" Relationship="BD_ArmadoPcModel.FK_Accesorio_Marca" FromRole="Accesorio" ToRole="Marca" />
         </EntityType>
         <EntityType Name="Almacenamiento">
           <Key>
@@ -1109,14 +1482,16 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           </Key>
           <Property Name="idAlmacenamiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="tipo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="tipo" Type="Int32" Nullable="false" />
           <Property Name="capacidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="costoProveedor" Type="Double" Nullable="false" />
           <Property Name="costoVenta" Type="Double" Nullable="false" />
           <Property Name="estatus" Type="Boolean" Nullable="false" />
-          <Property Name="marca" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="marca" Type="Int32" Nullable="false" />
           <Property Name="rpm" Type="Double" />
           <NavigationProperty Name="Almacenamiento_Ensamble" Relationship="BD_ArmadoPcModel.FK_Almacenamiento_Ensamble_Almacenamiento" FromRole="Almacenamiento" ToRole="Almacenamiento_Ensamble" />
+          <NavigationProperty Name="Marca1" Relationship="BD_ArmadoPcModel.FK_Almacenamiento_Marca" FromRole="Almacenamiento" ToRole="Marca" />
+          <NavigationProperty Name="TipoAlmacenamiento" Relationship="BD_ArmadoPcModel.FK_Almacenamiento_TipoAlmacenamiento" FromRole="Almacenamiento" ToRole="TipoAlmacenamiento" />
         </EntityType>
         <EntityType Name="Almacenamiento_Ensamble">
           <Key>
@@ -1128,6 +1503,14 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="estatus" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Almacenamiento" Relationship="BD_ArmadoPcModel.FK_Almacenamiento_Ensamble_Almacenamiento" FromRole="Almacenamiento_Ensamble" ToRole="Almacenamiento" />
           <NavigationProperty Name="Ensamble" Relationship="BD_ArmadoPcModel.FK_Almacenamiento_Ensamble_Ensamble" FromRole="Almacenamiento_Ensamble" ToRole="Ensamble" />
+        </EntityType>
+        <EntityType Name="componente">
+          <Key>
+            <PropertyRef Name="idComponente" />
+          </Key>
+          <Property Name="idComponente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreComponente" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="detalle_pedido" Relationship="BD_ArmadoPcModel.FK__detalle_p__idCom__375B2DB9" FromRole="componente" ToRole="detalle_pedido" />
         </EntityType>
         <EntityType Name="correoElectronico">
           <Key>
@@ -1154,6 +1537,22 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <NavigationProperty Name="Ensamble" Relationship="BD_ArmadoPcModel.FK_cuelloBotella_Ensamble" FromRole="cuelloBotella" ToRole="Ensamble" />
           <NavigationProperty Name="procesador" Relationship="BD_ArmadoPcModel.FK_cuelloBotella_procesador" FromRole="cuelloBotella" ToRole="procesador" />
           <NavigationProperty Name="tarjetaVideo" Relationship="BD_ArmadoPcModel.FK_cuelloBotella_tarjetaVideo" FromRole="cuelloBotella" ToRole="tarjetaVideo" />
+        </EntityType>
+        <EntityType Name="detalle_pedido">
+          <Key>
+            <PropertyRef Name="idDetallePedido" />
+          </Key>
+          <Property Name="idDetallePedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPedido" Type="Int32" Nullable="false" />
+          <Property Name="idComponente" Type="Int32" Nullable="false" />
+          <Property Name="idModulo" Type="Int32" Nullable="false" />
+          <Property Name="idMarca" Type="Int32" Nullable="false" />
+          <Property Name="modelo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <Property Name="precioUnitario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="componente" Relationship="BD_ArmadoPcModel.FK__detalle_p__idCom__375B2DB9" FromRole="detalle_pedido" ToRole="componente" />
+          <NavigationProperty Name="Marca" Relationship="BD_ArmadoPcModel.FK__detalle_p__idMar__384F51F2" FromRole="detalle_pedido" ToRole="Marca" />
+          <NavigationProperty Name="pedido" Relationship="BD_ArmadoPcModel.FK__detalle_p__idPed__36670980" FromRole="detalle_pedido" ToRole="pedido" />
         </EntityType>
         <EntityType Name="detalleGeneracionProcesador">
           <Key>
@@ -1196,10 +1595,10 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="idFuentePoder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="costoProveedor" Type="Double" Nullable="false" />
           <Property Name="costoVenta" Type="Double" Nullable="false" />
-          <Property Name="marca" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="marca" Type="Int32" Nullable="false" />
           <Property Name="modelo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="estatus" Type="Boolean" Nullable="false" />
-          <Property Name="watts" Type="Double" Nullable="false" />
+          <Property Name="watts" Type="Int32" Nullable="false" />
           <Property Name="tamaño" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="certificado" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Ensamble" Relationship="BD_ArmadoPcModel.FK_Ensamble_fuentePoder" FromRole="fuentePoder" ToRole="Ensamble" />
@@ -1211,11 +1610,12 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="idGabinete" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="costoProveedor" Type="Double" Nullable="false" />
           <Property Name="costoVenta" Type="Double" Nullable="false" />
-          <Property Name="marca" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="marca" Type="Int32" Nullable="false" />
           <Property Name="modelo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="medida" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="estatus" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Ensamble" Relationship="BD_ArmadoPcModel.FK_Ensamble_Gabinete" FromRole="Gabinete" ToRole="Ensamble" />
+          <NavigationProperty Name="Marca1" Relationship="BD_ArmadoPcModel.FK_Gabinete_Marca" FromRole="Gabinete" ToRole="Marca" />
         </EntityType>
         <EntityType Name="GeneracionSoportadaPlacaMadre">
           <Key>
@@ -1238,7 +1638,7 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="idComponente" Type="Int32" Nullable="false" />
           <Property Name="codigoBarra" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="tipoProducto" Type="Int32" Nullable="false" />
-          <Property Name="marca" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="marca" Type="Int32" Nullable="false" />
           <Property Name="modelo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="precio" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="idProveedor" Type="Int32" Nullable="false" />
@@ -1256,6 +1656,22 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <NavigationProperty Name="Ensamble" Relationship="BD_ArmadoPcModel.FK_Ensamble_LogEmpleado" FromRole="LogEmpleado" ToRole="Ensamble" />
           <NavigationProperty Name="Usuarios" Relationship="BD_ArmadoPcModel.FK_LogEmpleado_Usuarios" FromRole="LogEmpleado" ToRole="Usuarios" />
         </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="idMarca" />
+          </Key>
+          <Property Name="idMarca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accesorio" Relationship="BD_ArmadoPcModel.FK_Accesorio_Marca" FromRole="Marca" ToRole="Accesorio" />
+          <NavigationProperty Name="Almacenamiento" Relationship="BD_ArmadoPcModel.FK_Almacenamiento_Marca" FromRole="Marca" ToRole="Almacenamiento" />
+          <NavigationProperty Name="detalle_pedido" Relationship="BD_ArmadoPcModel.FK__detalle_p__idMar__384F51F2" FromRole="Marca" ToRole="detalle_pedido" />
+          <NavigationProperty Name="Gabinete" Relationship="BD_ArmadoPcModel.FK_Gabinete_Marca" FromRole="Marca" ToRole="Gabinete" />
+          <NavigationProperty Name="memoriaRAM" Relationship="BD_ArmadoPcModel.FK_memoriaRAM_marca" FromRole="Marca" ToRole="memoriaRAM" />
+          <NavigationProperty Name="Monitor" Relationship="BD_ArmadoPcModel.FK_Monitor_Marca" FromRole="Marca" ToRole="Monitor" />
+          <NavigationProperty Name="PlacaMadre" Relationship="BD_ArmadoPcModel.FK_PlacaMadre_Marca" FromRole="Marca" ToRole="PlacaMadre" />
+          <NavigationProperty Name="procesador" Relationship="BD_ArmadoPcModel.FK_procesador_marca" FromRole="Marca" ToRole="procesador" />
+        </EntityType>
         <EntityType Name="memoriaRAM">
           <Key>
             <PropertyRef Name="idRAM" />
@@ -1264,12 +1680,13 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="idTipoMemoria" Type="Int32" Nullable="false" />
           <Property Name="cantidad" Type="Int32" Nullable="false" />
-          <Property Name="velocidad" Type="Double" Nullable="false" />
+          <Property Name="velocidad" Type="Int32" Nullable="false" />
           <Property Name="estatus" Type="Boolean" Nullable="false" />
           <Property Name="costoVendedor" Type="Double" Nullable="false" />
           <Property Name="costoVenta" Type="Double" Nullable="false" />
-          <Property Name="marca" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="marca" Type="Int32" Nullable="false" />
           <Property Name="watts" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Marca1" Relationship="BD_ArmadoPcModel.FK_memoriaRAM_marca" FromRole="memoriaRAM" ToRole="Marca" />
           <NavigationProperty Name="memoriaRAM_Ensamble" Relationship="BD_ArmadoPcModel.FK_memoriaRAM_Ensamble_memoriaRAM" FromRole="memoriaRAM" ToRole="memoriaRAM_Ensamble" />
           <NavigationProperty Name="tipoMemoria" Relationship="BD_ArmadoPcModel.FK_memoriaRAM_tipoMemoria" FromRole="memoriaRAM" ToRole="tipoMemoria" />
         </EntityType>
@@ -1302,11 +1719,28 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="idMonitor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="resolucion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="tamaño" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="marca" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="marca" Type="Int32" Nullable="false" />
           <Property Name="modelo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="estatus" Type="Boolean" Nullable="false" />
           <Property Name="precioProveedor" Type="Double" Nullable="false" />
           <Property Name="precioVenta" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Marca1" Relationship="BD_ArmadoPcModel.FK_Monitor_Marca" FromRole="Monitor" ToRole="Marca" />
+        </EntityType>
+        <EntityType Name="pedido">
+          <Key>
+            <PropertyRef Name="idPedido" />
+          </Key>
+          <Property Name="idPedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idProveedor" Type="Int32" Nullable="false" />
+          <Property Name="idEmpleado" Type="Int32" />
+          <Property Name="fechaHoraPedido" Type="DateTime" Precision="3" />
+          <Property Name="codPedido" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="subTotal" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="total" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="estatus" Type="Boolean" />
+          <NavigationProperty Name="detalle_pedido" Relationship="BD_ArmadoPcModel.FK__detalle_p__idPed__36670980" FromRole="pedido" ToRole="detalle_pedido" />
+          <NavigationProperty Name="Usuarios" Relationship="BD_ArmadoPcModel.FK__pedido__idEmplea__338A9CD5" FromRole="pedido" ToRole="Usuarios" />
+          <NavigationProperty Name="proveedor" Relationship="BD_ArmadoPcModel.FK__pedido__idProvee__3296789C" FromRole="pedido" ToRole="proveedor" />
         </EntityType>
         <EntityType Name="Perfil_Ensamble">
           <Key>
@@ -1315,6 +1749,8 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="idPerfil_Ensamble" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idPerfil_FK" Type="Int32" Nullable="false" />
           <Property Name="idEnsamble_FK" Type="Int32" Nullable="false" />
+          <Property Name="nivel" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="estatus" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Ensamble" Relationship="BD_ArmadoPcModel.FK_Perfil_Ensamble_Ensamble" FromRole="Perfil_Ensamble" ToRole="Ensamble" />
           <NavigationProperty Name="Perfiles" Relationship="BD_ArmadoPcModel.FK_Perfil_Ensamble_Perfiles" FromRole="Perfil_Ensamble" ToRole="Perfiles" />
         </EntityType>
@@ -1350,10 +1786,10 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="idtipoMemoria" Type="Int32" Nullable="false" />
           <Property Name="maxVelocidadMemoria" Type="Int32" Nullable="false" />
-          <Property Name="statusM2" Type="Int32" Nullable="false" />
+          <Property Name="statusM2" Type="Boolean" Nullable="false" />
           <Property Name="cantidadM2" Type="Int32" Nullable="false" />
           <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Gaming" Type="Int32" Nullable="false" />
+          <Property Name="Gaming" Type="Boolean" Nullable="false" />
           <Property Name="idTamaño_FK" Type="Int32" Nullable="false" />
           <Property Name="codBarras" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="PCIexpress" Type="Int32" Nullable="false" />
@@ -1361,11 +1797,12 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="estatus" Type="Boolean" Nullable="false" />
           <Property Name="costoProveedor" Type="Double" Nullable="false" />
           <Property Name="costoVenta" Type="Double" Nullable="false" />
-          <Property Name="marca" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="marca" Type="Int32" Nullable="false" />
           <Property Name="modelo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="watts" Type="Double" />
+          <Property Name="watts" Type="Int32" Nullable="false" />
           <Property Name="idSocket_FK" Type="Int32" Nullable="false" />
           <NavigationProperty Name="GeneracionSoportadaPlacaMadre" Relationship="BD_ArmadoPcModel.FK_Generacion_PlacaMadre" FromRole="PlacaMadre" ToRole="GeneracionSoportadaPlacaMadre" />
+          <NavigationProperty Name="Marca1" Relationship="BD_ArmadoPcModel.FK_PlacaMadre_Marca" FromRole="PlacaMadre" ToRole="Marca" />
           <NavigationProperty Name="socket" Relationship="BD_ArmadoPcModel.FK_PlacaMadre_socket" FromRole="PlacaMadre" ToRole="socket" />
           <NavigationProperty Name="Tamaño" Relationship="BD_ArmadoPcModel.FK_PlacaMadre_Tamaño" FromRole="PlacaMadre" ToRole="Tamaño" />
           <NavigationProperty Name="tipoMemoria" Relationship="BD_ArmadoPcModel.FK_PlacaMadre_tipoMemoria" FromRole="PlacaMadre" ToRole="tipoMemoria" />
@@ -1382,16 +1819,17 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="idTipoMemoria_FK" Type="Int32" Nullable="false" />
           <Property Name="idSocket_FK" Type="Int32" Nullable="false" />
           <Property Name="graficosIntegrados" Type="Boolean" Nullable="false" />
-          <Property Name="optane" Type="Int32" Nullable="false" />
+          <Property Name="optane" Type="Boolean" Nullable="false" />
           <Property Name="costoProveedor" Type="Double" Nullable="false" />
           <Property Name="costoVenta" Type="Double" Nullable="false" />
-          <Property Name="marca" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="marca" Type="Int32" Nullable="false" />
           <Property Name="estatus" Type="Boolean" Nullable="false" />
-          <Property Name="watts" Type="Double" Nullable="false" />
+          <Property Name="watts" Type="Int32" Nullable="false" />
           <Property Name="idGeneracionProcesador_FK" Type="Int32" Nullable="false" />
           <NavigationProperty Name="cuelloBotella" Relationship="BD_ArmadoPcModel.FK_cuelloBotella_procesador" FromRole="procesador" ToRole="cuelloBotella" />
           <NavigationProperty Name="detalleGeneracionProcesador" Relationship="BD_ArmadoPcModel.FK_procesador_detalleGeneracionProcesador" FromRole="procesador" ToRole="detalleGeneracionProcesador" />
           <NavigationProperty Name="Ensamble" Relationship="BD_ArmadoPcModel.FK_Ensamble_procesador" FromRole="procesador" ToRole="Ensamble" />
+          <NavigationProperty Name="Marca1" Relationship="BD_ArmadoPcModel.FK_procesador_marca" FromRole="procesador" ToRole="Marca" />
           <NavigationProperty Name="socket" Relationship="BD_ArmadoPcModel.FK_procesador_socket" FromRole="procesador" ToRole="socket" />
           <NavigationProperty Name="tipoMemoria" Relationship="BD_ArmadoPcModel.FK_procesador_tipoMemoria" FromRole="procesador" ToRole="tipoMemoria" />
         </EntityType>
@@ -1402,6 +1840,7 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="idProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombreProveedor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="nombreEmpresa" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="pedido" Relationship="BD_ArmadoPcModel.FK__pedido__idProvee__3296789C" FromRole="proveedor" ToRole="pedido" />
         </EntityType>
         <EntityType Name="PRUEBA">
           <Key>
@@ -1409,7 +1848,7 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           </Key>
           <Property Name="idPrueba" Type="Int32" Nullable="false" />
           <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="socket">
           <Key>
@@ -1465,6 +1904,15 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="estatus" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Usuarios" Relationship="BD_ArmadoPcModel.FK_Usuarios_tipo_usuarios" FromRole="tipo_usuarios" ToRole="Usuarios" />
         </EntityType>
+        <EntityType Name="TipoAlmacenamiento">
+          <Key>
+            <PropertyRef Name="idTipoAlmacenamiento" />
+          </Key>
+          <Property Name="idTipoAlmacenamiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Almacenamiento" Relationship="BD_ArmadoPcModel.FK_Almacenamiento_TipoAlmacenamiento" FromRole="TipoAlmacenamiento" ToRole="Almacenamiento" />
+        </EntityType>
         <EntityType Name="tipoMemoria">
           <Key>
             <PropertyRef Name="idTipoMemoria" />
@@ -1475,6 +1923,17 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <NavigationProperty Name="memoriaRAM" Relationship="BD_ArmadoPcModel.FK_memoriaRAM_tipoMemoria" FromRole="tipoMemoria" ToRole="memoriaRAM" />
           <NavigationProperty Name="PlacaMadre" Relationship="BD_ArmadoPcModel.FK_PlacaMadre_tipoMemoria" FromRole="tipoMemoria" ToRole="PlacaMadre" />
           <NavigationProperty Name="procesador" Relationship="BD_ArmadoPcModel.FK_procesador_tipoMemoria" FromRole="tipoMemoria" ToRole="procesador" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userIdCliente" Type="Int32" />
+          <Property Name="userIdAdmin" Type="Int32" />
+          <Property Name="rol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UsuariosCliente" Relationship="BD_ArmadoPcModel.FK_UserRole_Usuarios" FromRole="UserRole" ToRole="UsuariosCliente" />
+          <NavigationProperty Name="Usuarios" Relationship="BD_ArmadoPcModel.FK_UserRole_Usuarios1" FromRole="UserRole" ToRole="Usuarios" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -1489,8 +1948,10 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="tipo_id_FK" Type="Int32" Nullable="false" />
           <NavigationProperty Name="correoElectronico" Relationship="BD_ArmadoPcModel.FK_correoElectronico_Usuarios" FromRole="Usuarios" ToRole="correoElectronico" />
           <NavigationProperty Name="LogEmpleado" Relationship="BD_ArmadoPcModel.FK_LogEmpleado_Usuarios" FromRole="Usuarios" ToRole="LogEmpleado" />
+          <NavigationProperty Name="pedido" Relationship="BD_ArmadoPcModel.FK__pedido__idEmplea__338A9CD5" FromRole="Usuarios" ToRole="pedido" />
           <NavigationProperty Name="Persona" Relationship="BD_ArmadoPcModel.FK_Usuarios_Persona" FromRole="Usuarios" ToRole="Persona" />
           <NavigationProperty Name="tipo_usuarios" Relationship="BD_ArmadoPcModel.FK_Usuarios_tipo_usuarios" FromRole="Usuarios" ToRole="tipo_usuarios" />
+          <NavigationProperty Name="UserRole" Relationship="BD_ArmadoPcModel.FK_UserRole_Usuarios1" FromRole="Usuarios" ToRole="UserRole" />
         </EntityType>
         <EntityType Name="UsuariosCliente">
           <Key>
@@ -1502,6 +1963,7 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="isValid" Type="Boolean" />
+          <NavigationProperty Name="UserRole" Relationship="BD_ArmadoPcModel.FK_UserRole_Usuarios" FromRole="UsuariosCliente" ToRole="UserRole" />
         </EntityType>
         <EntityType Name="URLImagenes">
           <Key>
@@ -1514,6 +1976,18 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="URL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="estatus" Type="Boolean" />
         </EntityType>
+        <Association Name="FK_Accesorio_Marca">
+          <End Type="BD_ArmadoPcModel.Marca" Role="Marca" Multiplicity="1" />
+          <End Type="BD_ArmadoPcModel.Accesorio" Role="Accesorio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="idMarca" />
+            </Principal>
+            <Dependent Role="Accesorio">
+              <PropertyRef Name="marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Almacenamiento_Ensamble_Almacenamiento">
           <End Type="BD_ArmadoPcModel.Almacenamiento" Role="Almacenamiento" Multiplicity="1" />
           <End Type="BD_ArmadoPcModel.Almacenamiento_Ensamble" Role="Almacenamiento_Ensamble" Multiplicity="*" />
@@ -1526,6 +2000,30 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Almacenamiento_Marca">
+          <End Type="BD_ArmadoPcModel.Marca" Role="Marca" Multiplicity="1" />
+          <End Type="BD_ArmadoPcModel.Almacenamiento" Role="Almacenamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="idMarca" />
+            </Principal>
+            <Dependent Role="Almacenamiento">
+              <PropertyRef Name="marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Almacenamiento_TipoAlmacenamiento">
+          <End Type="BD_ArmadoPcModel.TipoAlmacenamiento" Role="TipoAlmacenamiento" Multiplicity="1" />
+          <End Type="BD_ArmadoPcModel.Almacenamiento" Role="Almacenamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAlmacenamiento">
+              <PropertyRef Name="idTipoAlmacenamiento" />
+            </Principal>
+            <Dependent Role="Almacenamiento">
+              <PropertyRef Name="tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Almacenamiento_Ensamble_Ensamble">
           <End Type="BD_ArmadoPcModel.Ensamble" Role="Ensamble" Multiplicity="1" />
           <End Type="BD_ArmadoPcModel.Almacenamiento_Ensamble" Role="Almacenamiento_Ensamble" Multiplicity="*" />
@@ -1535,6 +2033,18 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             </Principal>
             <Dependent Role="Almacenamiento_Ensamble">
               <PropertyRef Name="idEnsamble_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__detalle_p__idCom__375B2DB9">
+          <End Type="BD_ArmadoPcModel.componente" Role="componente" Multiplicity="1" />
+          <End Type="BD_ArmadoPcModel.detalle_pedido" Role="detalle_pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="componente">
+              <PropertyRef Name="idComponente" />
+            </Principal>
+            <Dependent Role="detalle_pedido">
+              <PropertyRef Name="idComponente" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1583,6 +2093,30 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             </Principal>
             <Dependent Role="cuelloBotella">
               <PropertyRef Name="idTarjetaVideo_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__detalle_p__idMar__384F51F2">
+          <End Type="BD_ArmadoPcModel.Marca" Role="Marca" Multiplicity="1" />
+          <End Type="BD_ArmadoPcModel.detalle_pedido" Role="detalle_pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="idMarca" />
+            </Principal>
+            <Dependent Role="detalle_pedido">
+              <PropertyRef Name="idMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__detalle_p__idPed__36670980">
+          <End Type="BD_ArmadoPcModel.pedido" Role="pedido" Multiplicity="1" />
+          <End Type="BD_ArmadoPcModel.detalle_pedido" Role="detalle_pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pedido">
+              <PropertyRef Name="idPedido" />
+            </Principal>
+            <Dependent Role="detalle_pedido">
+              <PropertyRef Name="idPedido" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1694,6 +2228,18 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Gabinete_Marca">
+          <End Type="BD_ArmadoPcModel.Marca" Role="Marca" Multiplicity="1" />
+          <End Type="BD_ArmadoPcModel.Gabinete" Role="Gabinete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="idMarca" />
+            </Principal>
+            <Dependent Role="Gabinete">
+              <PropertyRef Name="marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Generacion_PlacaMadre">
           <End Type="BD_ArmadoPcModel.PlacaMadre" Role="PlacaMadre" Multiplicity="1" />
           <End Type="BD_ArmadoPcModel.GeneracionSoportadaPlacaMadre" Role="GeneracionSoportadaPlacaMadre" Multiplicity="*" />
@@ -1715,6 +2261,54 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             </Principal>
             <Dependent Role="LogEmpleado">
               <PropertyRef Name="idUsuario_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_memoriaRAM_marca">
+          <End Type="BD_ArmadoPcModel.Marca" Role="Marca" Multiplicity="1" />
+          <End Type="BD_ArmadoPcModel.memoriaRAM" Role="memoriaRAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="idMarca" />
+            </Principal>
+            <Dependent Role="memoriaRAM">
+              <PropertyRef Name="marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Monitor_Marca">
+          <End Type="BD_ArmadoPcModel.Marca" Role="Marca" Multiplicity="1" />
+          <End Type="BD_ArmadoPcModel.Monitor" Role="Monitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="idMarca" />
+            </Principal>
+            <Dependent Role="Monitor">
+              <PropertyRef Name="marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlacaMadre_Marca">
+          <End Type="BD_ArmadoPcModel.Marca" Role="Marca" Multiplicity="1" />
+          <End Type="BD_ArmadoPcModel.PlacaMadre" Role="PlacaMadre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="idMarca" />
+            </Principal>
+            <Dependent Role="PlacaMadre">
+              <PropertyRef Name="marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_procesador_marca">
+          <End Type="BD_ArmadoPcModel.Marca" Role="Marca" Multiplicity="1" />
+          <End Type="BD_ArmadoPcModel.procesador" Role="procesador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="idMarca" />
+            </Principal>
+            <Dependent Role="procesador">
+              <PropertyRef Name="marca" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1751,6 +2345,30 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             </Principal>
             <Dependent Role="modeloVideo">
               <PropertyRef Name="idTarjetaVideo_FK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido__idEmplea__338A9CD5">
+          <End Type="BD_ArmadoPcModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
+          <End Type="BD_ArmadoPcModel.pedido" Role="pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="pedido">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pedido__idProvee__3296789C">
+          <End Type="BD_ArmadoPcModel.proveedor" Role="proveedor" Multiplicity="1" />
+          <End Type="BD_ArmadoPcModel.pedido" Role="pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedor">
+              <PropertyRef Name="idProveedor" />
+            </Principal>
+            <Dependent Role="pedido">
+              <PropertyRef Name="idProveedor" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1852,6 +2470,30 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserRole_Usuarios">
+          <End Type="BD_ArmadoPcModel.UsuariosCliente" Role="UsuariosCliente" Multiplicity="0..1" />
+          <End Type="BD_ArmadoPcModel.UserRole" Role="UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsuariosCliente">
+              <PropertyRef Name="idUserCliente" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="userIdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_Usuarios1">
+          <End Type="BD_ArmadoPcModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
+          <End Type="BD_ArmadoPcModel.UserRole" Role="UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="userIdAdmin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1922,6 +2564,14 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="componente">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.componente">
+              <MappingFragment StoreEntitySet="componente">
+                <ScalarProperty Name="nombreComponente" ColumnName="nombreComponente" />
+                <ScalarProperty Name="idComponente" ColumnName="idComponente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="correoElectronico">
             <EntityTypeMapping TypeName="BD_ArmadoPcModel.correoElectronico">
               <MappingFragment StoreEntitySet="correoElectronico">
@@ -1943,6 +2593,20 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
                 <ScalarProperty Name="estatus" ColumnName="estatus" />
                 <ScalarProperty Name="idEnsamble_FK" ColumnName="idEnsamble_FK" />
                 <ScalarProperty Name="idCuelloBotella" ColumnName="idCuelloBotella" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="detalle_pedido">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.detalle_pedido">
+              <MappingFragment StoreEntitySet="detalle_pedido">
+                <ScalarProperty Name="precioUnitario" ColumnName="precioUnitario" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="modelo" ColumnName="modelo" />
+                <ScalarProperty Name="idMarca" ColumnName="idMarca" />
+                <ScalarProperty Name="idModulo" ColumnName="idModulo" />
+                <ScalarProperty Name="idComponente" ColumnName="idComponente" />
+                <ScalarProperty Name="idPedido" ColumnName="idPedido" />
+                <ScalarProperty Name="idDetallePedido" ColumnName="idDetallePedido" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2035,6 +2699,15 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Marca">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.Marca">
+              <MappingFragment StoreEntitySet="Marca">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idMarca" ColumnName="idMarca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="memoriaRAM">
             <EntityTypeMapping TypeName="BD_ArmadoPcModel.memoriaRAM">
               <MappingFragment StoreEntitySet="memoriaRAM">
@@ -2085,9 +2758,25 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="pedido">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.pedido">
+              <MappingFragment StoreEntitySet="pedido">
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="subTotal" ColumnName="subTotal" />
+                <ScalarProperty Name="codPedido" ColumnName="codPedido" />
+                <ScalarProperty Name="fechaHoraPedido" ColumnName="fechaHoraPedido" />
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+                <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
+                <ScalarProperty Name="idPedido" ColumnName="idPedido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Perfil_Ensamble">
             <EntityTypeMapping TypeName="BD_ArmadoPcModel.Perfil_Ensamble">
               <MappingFragment StoreEntitySet="Perfil_Ensamble">
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="nivel" ColumnName="nivel" />
                 <ScalarProperty Name="idEnsamble_FK" ColumnName="idEnsamble_FK" />
                 <ScalarProperty Name="idPerfil_FK" ColumnName="idPerfil_FK" />
                 <ScalarProperty Name="idPerfil_Ensamble" ColumnName="idPerfil_Ensamble" />
@@ -2235,12 +2924,31 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TipoAlmacenamiento">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.TipoAlmacenamiento">
+              <MappingFragment StoreEntitySet="TipoAlmacenamiento">
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idTipoAlmacenamiento" ColumnName="idTipoAlmacenamiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tipoMemoria">
             <EntityTypeMapping TypeName="BD_ArmadoPcModel.tipoMemoria">
               <MappingFragment StoreEntitySet="tipoMemoria">
                 <ScalarProperty Name="estatus" ColumnName="estatus" />
                 <ScalarProperty Name="tipo" ColumnName="tipo" />
                 <ScalarProperty Name="idTipoMemoria" ColumnName="idTipoMemoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRole">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="rol" ColumnName="rol" />
+                <ScalarProperty Name="userIdAdmin" ColumnName="userIdAdmin" />
+                <ScalarProperty Name="userIdCliente" ColumnName="userIdCliente" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

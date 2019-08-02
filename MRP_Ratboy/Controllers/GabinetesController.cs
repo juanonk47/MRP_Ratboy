@@ -17,7 +17,8 @@ namespace MRP_Ratboy.Controllers
         // GET: Gabinetes
         public ActionResult Index()
         {
-            return View(db.Gabinete.ToList());
+            var gabinete = db.Gabinete.Include(g => g.Marca1);
+            return View(gabinete.ToList());
         }
 
         // GET: Gabinetes/Details/5
@@ -38,6 +39,7 @@ namespace MRP_Ratboy.Controllers
         // GET: Gabinetes/Create
         public ActionResult Create()
         {
+            ViewBag.marca = new SelectList(db.Marca, "idMarca", "nombre");
             return View();
         }
 
@@ -46,8 +48,9 @@ namespace MRP_Ratboy.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idGabinete,costoProveedor,costoVenta,marca,modelo,medida,estatus")] Gabinete gabinete)
+        public ActionResult Create([Bind(Include = "idGabinete,costoProveedor,costoVenta,marca,modelo,medida")] Gabinete gabinete)
         {
+            gabinete.estatus = true;
             if (ModelState.IsValid)
             {
                 db.Gabinete.Add(gabinete);
@@ -55,6 +58,7 @@ namespace MRP_Ratboy.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.marca = new SelectList(db.Marca, "idMarca", "nombre", gabinete.marca);
             return View(gabinete);
         }
 
@@ -70,6 +74,7 @@ namespace MRP_Ratboy.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.marca = new SelectList(db.Marca, "idMarca", "nombre", gabinete.marca);
             return View(gabinete);
         }
 
@@ -86,6 +91,7 @@ namespace MRP_Ratboy.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.marca = new SelectList(db.Marca, "idMarca", "nombre", gabinete.marca);
             return View(gabinete);
         }
 

@@ -30,8 +30,10 @@ namespace MRP_Ratboy.Models
         public virtual DbSet<Accesorio> Accesorio { get; set; }
         public virtual DbSet<Almacenamiento> Almacenamiento { get; set; }
         public virtual DbSet<Almacenamiento_Ensamble> Almacenamiento_Ensamble { get; set; }
+        public virtual DbSet<componente> componente { get; set; }
         public virtual DbSet<correoElectronico> correoElectronico { get; set; }
         public virtual DbSet<cuelloBotella> cuelloBotella { get; set; }
+        public virtual DbSet<detalle_pedido> detalle_pedido { get; set; }
         public virtual DbSet<detalleGeneracionProcesador> detalleGeneracionProcesador { get; set; }
         public virtual DbSet<Ensamble> Ensamble { get; set; }
         public virtual DbSet<fuentePoder> fuentePoder { get; set; }
@@ -39,10 +41,12 @@ namespace MRP_Ratboy.Models
         public virtual DbSet<GeneracionSoportadaPlacaMadre> GeneracionSoportadaPlacaMadre { get; set; }
         public virtual DbSet<inventario> inventario { get; set; }
         public virtual DbSet<LogEmpleado> LogEmpleado { get; set; }
+        public virtual DbSet<Marca> Marca { get; set; }
         public virtual DbSet<memoriaRAM> memoriaRAM { get; set; }
         public virtual DbSet<memoriaRAM_Ensamble> memoriaRAM_Ensamble { get; set; }
         public virtual DbSet<modeloVideo> modeloVideo { get; set; }
         public virtual DbSet<Monitor> Monitor { get; set; }
+        public virtual DbSet<pedido> pedido { get; set; }
         public virtual DbSet<Perfil_Ensamble> Perfil_Ensamble { get; set; }
         public virtual DbSet<Perfiles> Perfiles { get; set; }
         public virtual DbSet<Persona> Persona { get; set; }
@@ -55,7 +59,9 @@ namespace MRP_Ratboy.Models
         public virtual DbSet<Tamaño> Tamaño { get; set; }
         public virtual DbSet<tarjetaVideo> tarjetaVideo { get; set; }
         public virtual DbSet<tipo_usuarios> tipo_usuarios { get; set; }
+        public virtual DbSet<TipoAlmacenamiento> TipoAlmacenamiento { get; set; }
         public virtual DbSet<tipoMemoria> tipoMemoria { get; set; }
+        public virtual DbSet<UserRole> UserRole { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<UsuariosCliente> UsuariosCliente { get; set; }
         public virtual DbSet<URLImagenes> URLImagenes { get; set; }

@@ -24,13 +24,14 @@ namespace MRP_Ratboy.Models
         public string nombre { get; set; }
         public int idTipoMemoria { get; set; }
         public int cantidad { get; set; }
-        public double velocidad { get; set; }
+        public int velocidad { get; set; }
         public bool estatus { get; set; }
         public double costoVendedor { get; set; }
         public double costoVenta { get; set; }
-        public string marca { get; set; }
+        public int marca { get; set; }
         public int watts { get; set; }
     
+        public virtual Marca Marca1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<memoriaRAM_Ensamble> memoriaRAM_Ensamble { get; set; }
         public virtual tipoMemoria tipoMemoria { get; set; }

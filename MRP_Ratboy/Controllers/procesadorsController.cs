@@ -42,6 +42,7 @@ namespace MRP_Ratboy.Controllers
             ViewBag.idGeneracionProcesador_FK = new SelectList(db.detalleGeneracionProcesador, "idGeneracionProcesador", "DetalleGeneracionProcesador1");
             ViewBag.idSocket_FK = new SelectList(db.socket, "idSocket", "nombre");
             ViewBag.idTipoMemoria_FK = new SelectList(db.tipoMemoria, "idTipoMemoria", "tipo");
+            ViewBag.marca = new SelectList(db.Marca, "idMarca", "nombre");
             return View();
         }
 
@@ -50,10 +51,11 @@ namespace MRP_Ratboy.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idProcesador,nombre,cantidadNucleos,cantidadSubProcesos,frecuenciaBasica,idTipoMemoria_FK,idSocket_FK,graficosIntegrados,optane,costoProveedor,costoVenta,marca,estatus,watts,idGeneracionProcesador_FK")] procesador procesador)
+        public ActionResult Create([Bind(Include = "idProcesador,nombre,cantidadNucleos,cantidadSubProcesos,frecuenciaBasica,idTipoMemoria_FK,idSocket_FK,graficosIntegrados,optane,costoProveedor,costoVenta,marca,watts,idGeneracionProcesador_FK")] procesador procesador)
         {
             if (!(ValidarNombre(procesador.nombre)))
             {
+                procesador.estatus = true;
                 if (ModelState.IsValid)
                 {
                     db.procesador.Add(procesador);
@@ -71,6 +73,7 @@ namespace MRP_Ratboy.Controllers
             ViewBag.idGeneracionProcesador_FK = new SelectList(db.detalleGeneracionProcesador, "idGeneracionProcesador", "DetalleGeneracionProcesador1", procesador.idGeneracionProcesador_FK);
             ViewBag.idSocket_FK = new SelectList(db.socket, "idSocket", "nombre", procesador.idSocket_FK);
             ViewBag.idTipoMemoria_FK = new SelectList(db.tipoMemoria, "idTipoMemoria", "tipo", procesador.idTipoMemoria_FK);
+            ViewBag.marca = new SelectList(db.Marca, "idMarca", "nombre",procesador.marca);
             return View(procesador);
         }
 
@@ -89,6 +92,7 @@ namespace MRP_Ratboy.Controllers
             ViewBag.idGeneracionProcesador_FK = new SelectList(db.detalleGeneracionProcesador, "idGeneracionProcesador", "DetalleGeneracionProcesador1", procesador.idGeneracionProcesador_FK);
             ViewBag.idSocket_FK = new SelectList(db.socket, "idSocket", "nombre", procesador.idSocket_FK);
             ViewBag.idTipoMemoria_FK = new SelectList(db.tipoMemoria, "idTipoMemoria", "tipo", procesador.idTipoMemoria_FK);
+            ViewBag.marca = new SelectList(db.Marca, "idMarca", "nombre", procesador.marca);
             return View(procesador);
         }
 
@@ -116,6 +120,7 @@ namespace MRP_Ratboy.Controllers
             ViewBag.idGeneracionProcesador_FK = new SelectList(db.detalleGeneracionProcesador, "idGeneracionProcesador", "DetalleGeneracionProcesador1", procesador.idGeneracionProcesador_FK);
             ViewBag.idSocket_FK = new SelectList(db.socket, "idSocket", "nombre", procesador.idSocket_FK);
             ViewBag.idTipoMemoria_FK = new SelectList(db.tipoMemoria, "idTipoMemoria", "tipo", procesador.idTipoMemoria_FK);
+            ViewBag.marca = new SelectList(db.Marca, "idMarca", "nombre", procesador.marca);
             return View(procesador);
         }
 

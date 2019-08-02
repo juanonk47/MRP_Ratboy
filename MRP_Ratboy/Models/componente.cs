@@ -12,19 +12,18 @@ namespace MRP_Ratboy.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class proveedor
+    public partial class componente
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public proveedor()
+        public componente()
         {
-            this.pedido = new HashSet<pedido>();
+            this.detalle_pedido = new HashSet<detalle_pedido>();
         }
     
-        public int idProveedor { get; set; }
-        public string nombreProveedor { get; set; }
-        public string nombreEmpresa { get; set; }
+        public int idComponente { get; set; }
+        public string nombreComponente { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<pedido> pedido { get; set; }
+        public virtual ICollection<detalle_pedido> detalle_pedido { get; set; }
     }
 }

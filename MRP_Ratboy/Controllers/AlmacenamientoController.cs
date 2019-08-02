@@ -10,17 +10,18 @@ using MRP_Ratboy.Models;
 
 namespace MRP_Ratboy.Controllers
 {
-    public class AlmacenamientoesController : Controller
+    public class AlmacenamientoController : Controller
     {
         private BD_ArmadoPcEntities db = new BD_ArmadoPcEntities();
 
-        // GET: Almacenamientoes
+        // GET: Almacenamiento
         public ActionResult Index()
         {
-            return View(db.Almacenamiento.ToList());
+            var almacenamiento = db.Almacenamiento.Include(a => a.Marca1).Include(a => a.TipoAlmacenamiento);
+            return View(almacenamiento.ToList());
         }
 
-        // GET: Almacenamientoes/Details/5
+        // GET: Almacenamiento/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,19 +36,22 @@ namespace MRP_Ratboy.Controllers
             return View(almacenamiento);
         }
 
-        // GET: Almacenamientoes/Create
+        // GET: Almacenamiento/Create
         public ActionResult Create()
         {
+            ViewBag.marca = new SelectList(db.Marca, "idMarca", "nombre");
+            ViewBag.tipo = new SelectList(db.TipoAlmacenamiento, "idTipoAlmacenamiento", "nombre");
             return View();
         }
 
-        // POST: Almacenamientoes/Create
+        // POST: Almacenamiento/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idAlmacenamento,nombre,tipo,capacidad,costoProveedor,costoVenta,estatus,marca,rpm")] Almacenamiento almacenamiento)
+        public ActionResult Create([Bind(Include = "idAlmacenamiento,nombre,tipo,capacidad,costoProveedor,costoVenta,marca,rpm")] Almacenamiento almacenamiento)
         {
+            almacenamiento.estatus = true;
             if (ModelState.IsValid)
             {
                 db.Almacenamiento.Add(almacenamiento);
@@ -55,10 +59,12 @@ namespace MRP_Ratboy.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.marca = new SelectList(db.Marca, "idMarca", "nombre", almacenamiento.marca);
+            ViewBag.tipo = new SelectList(db.TipoAlmacenamiento, "idTipoAlmacenamiento", "nombre", almacenamiento.tipo);
             return View(almacenamiento);
         }
 
-        // GET: Almacenamientoes/Edit/5
+        // GET: Almacenamiento/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -70,15 +76,17 @@ namespace MRP_Ratboy.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.marca = new SelectList(db.Marca, "idMarca", "nombre", almacenamiento.marca);
+            ViewBag.tipo = new SelectList(db.TipoAlmacenamiento, "idTipoAlmacenamiento", "nombre", almacenamiento.tipo);
             return View(almacenamiento);
         }
 
-        // POST: Almacenamientoes/Edit/5
+        // POST: Almacenamiento/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idAlmacenamento,nombre,tipo,capacidad,costoProveedor,costoVenta,estatus,marca,rpm")] Almacenamiento almacenamiento)
+        public ActionResult Edit([Bind(Include = "idAlmacenamiento,nombre,tipo,capacidad,costoProveedor,costoVenta,estatus,marca,rpm")] Almacenamiento almacenamiento)
         {
             if (ModelState.IsValid)
             {
@@ -86,10 +94,12 @@ namespace MRP_Ratboy.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.marca = new SelectList(db.Marca, "idMarca", "nombre", almacenamiento.marca);
+            ViewBag.tipo = new SelectList(db.TipoAlmacenamiento, "idTipoAlmacenamiento", "nombre", almacenamiento.tipo);
             return View(almacenamiento);
         }
 
-        // GET: Almacenamientoes/Delete/5
+        // GET: Almacenamiento/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +114,7 @@ namespace MRP_Ratboy.Controllers
             return View(almacenamiento);
         }
 
-        // POST: Almacenamientoes/Delete/5
+        // POST: Almacenamiento/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

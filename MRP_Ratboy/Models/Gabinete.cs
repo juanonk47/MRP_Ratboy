@@ -23,12 +23,13 @@ namespace MRP_Ratboy.Models
         public int idGabinete { get; set; }
         public double costoProveedor { get; set; }
         public double costoVenta { get; set; }
-        public string marca { get; set; }
+        public int marca { get; set; }
         public string modelo { get; set; }
         public string medida { get; set; }
         public bool estatus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ensamble> Ensamble { get; set; }
+        public virtual Marca Marca1 { get; set; }
     }
 }
