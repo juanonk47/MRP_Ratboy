@@ -4,45 +4,57 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="73108df68e7b4165a3a81639199652b1" Name="Diagram1" ZoomLevel="63">
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.Accesorio" Width="1.5" PointX="0.75" PointY="1.75" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.Almacenamiento" Width="1.5" PointX="8.25" PointY="0.75" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.Almacenamiento_Ensamble" Width="1.5" PointX="10.5" PointY="5.125" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.correoElectronico" Width="1.5" PointX="6" PointY="35.5" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.cuelloBotella" Width="1.5" PointX="10.5" PointY="8.25" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.detalleGeneracionProcesador" Width="1.5" PointX="6" PointY="6.25" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.Ensamble" Width="1.5" PointX="8.25" PointY="4.875" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.fuentePoder" Width="1.5" PointX="6" PointY="26.375" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.Gabinete" Width="1.5" PointX="6" PointY="16" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.GeneracionSoportadaPlacaMadre" Width="1.5" PointX="8.25" PointY="11.125" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.inventario" Width="1.5" PointX="0.75" PointY="5.75" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.LogEmpleado" Width="1.5" PointX="6" PointY="31.375" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.memoriaRAM" Width="1.5" PointX="3" PointY="22.375" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.memoriaRAM_Ensamble" Width="1.5" PointX="5.25" PointY="23" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.modeloVideo" Width="1.5" PointX="6" PointY="2.625" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.Monitor" Width="1.5" PointX="10.75" PointY="12.75" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.Perfil_Ensamble" Width="1.5" PointX="13.5" PointY="6.25" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.Perfiles" Width="1.5" PointX="11.25" PointY="2.125" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.Persona" Width="1.5" PointX="1.5" PointY="30" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.PlacaMadre" Width="1.5" PointX="6" PointY="9.5" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.procesador" Width="1.5" PointX="3" PointY="9.75" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.proveedor" Width="1.5" PointX="12.75" PointY="9.75" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.PRUEBA" Width="1.5" PointX="12.75" PointY="12.75" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.socket" Width="1.5" PointX="3.75" PointY="15.5" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.sysdiagrams" Width="1.5" PointX="13.75" PointY="1.75" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.Tamaño" Width="1.5" PointX="3.75" PointY="7" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.tarjetaVideo" Width="1.5" PointX="3.75" PointY="2.125" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.tipo_usuarios" Width="1.5" PointX="1.5" PointY="33.375" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.tipoMemoria" Width="1.5" PointX="0.75" PointY="11.125" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.Usuarios" Width="1.5" PointX="3.75" PointY="31" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.UsuariosCliente" Width="1.5" PointX="0.75" PointY="15.75" />
-        <EntityTypeShape EntityType="BD_ArmadoPcModel.URLImagenes" Width="1.5" PointX="14.75" PointY="9.75" />
+      <Diagram DiagramId="73108df68e7b4165a3a81639199652b1" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.Accesorio" Width="1.5" PointX="3" PointY="39.25" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.Almacenamiento" Width="1.5" PointX="3" PointY="22" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.Almacenamiento_Ensamble" Width="1.5" PointX="10.5" PointY="28.75" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.componente" Width="1.5" PointX="3.75" PointY="14" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.correoElectronico" Width="1.5" PointX="3.75" PointY="2.625" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.cuelloBotella" Width="1.5" PointX="10.5" PointY="24.875" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.detalle_pedido" Width="1.5" PointX="6" PointY="17.125" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.detalleGeneracionProcesador" Width="1.5" PointX="3.75" PointY="6.25" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.Ensamble" Width="1.5" PointX="8.25" PointY="33" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.fuentePoder" Width="1.5" PointX="6" PointY="31.625" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.Gabinete" Width="1.5" PointX="3" PointY="46.75" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.GeneracionSoportadaPlacaMadre" Width="1.5" PointX="5.25" PointY="28.625" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.inventario" Width="1.5" PointX="5.75" PointY="1.25" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.LogEmpleado" Width="1.5" PointX="6" PointY="39.25" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.Marca" Width="1.5" PointX="0.75" PointY="22.125" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.memoriaRAM" Width="1.5" PointX="3" PointY="16.875" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.memoriaRAM_Ensamble" Width="1.5" PointX="13.5" PointY="26.25" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.modeloVideo" Width="1.5" PointX="6" PointY="35.875" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.Monitor" Width="1.5" PointX="3" PointY="50.25" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.pedido" Width="1.5" PointX="3.75" PointY="9.875" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.Perfil_Ensamble" Width="1.5" PointX="10.5" PointY="34.125" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.Perfiles" Width="1.5" PointX="8.25" PointY="29.25" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.Persona" Width="1.5" PointX="1.5" PointY="0.75" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.PlacaMadre" Width="1.5" PointX="3" PointY="26.875" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.procesador" Width="1.5" PointX="6" PointY="21.125" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.proveedor" Width="1.5" PointX="1.5" PointY="7.625" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.PRUEBA" Width="1.5" PointX="5.75" PointY="5.25" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.socket" Width="1.5" PointX="3.75" PointY="43" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="1.25" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.Tamaño" Width="1.5" PointX="0.75" PointY="29.75" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.tarjetaVideo" Width="1.5" PointX="3.75" PointY="35.375" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.tipo_usuarios" Width="1.5" PointX="1.5" PointY="4.25" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.TipoAlmacenamiento" Width="1.5" PointX="0.75" PointY="26.75" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.tipoMemoria" Width="1.5" PointX="0.75" PointY="17.625" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.UserRole" Width="1.5" PointX="6.75" PointY="11.625" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.Usuarios" Width="1.5" PointX="1.5" PointY="11" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.UsuariosCliente" Width="1.5" PointX="4.5" PointY="54.625" />
+        <EntityTypeShape EntityType="BD_ArmadoPcModel.URLImagenes" Width="1.5" PointX="7.75" PointY="4.25" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_Accesorio_Marca" />
         <AssociationConnector Association="BD_ArmadoPcModel.FK_Almacenamiento_Ensamble_Almacenamiento" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_Almacenamiento_Marca" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_Almacenamiento_TipoAlmacenamiento" />
         <AssociationConnector Association="BD_ArmadoPcModel.FK_Almacenamiento_Ensamble_Ensamble" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK__detalle_p__idCom__375B2DB9" />
         <AssociationConnector Association="BD_ArmadoPcModel.FK_correoElectronico_Usuarios" />
         <AssociationConnector Association="BD_ArmadoPcModel.FK_cuelloBotella_Ensamble" />
         <AssociationConnector Association="BD_ArmadoPcModel.FK_cuelloBotella_procesador" />
         <AssociationConnector Association="BD_ArmadoPcModel.FK_cuelloBotella_tarjetaVideo" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK__detalle_p__idMar__384F51F2" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK__detalle_p__idPed__36670980" />
         <AssociationConnector Association="BD_ArmadoPcModel.FK_Generacion_detalleGeneracionProcesador" />
         <AssociationConnector Association="BD_ArmadoPcModel.FK_procesador_detalleGeneracionProcesador" />
         <AssociationConnector Association="BD_ArmadoPcModel.FK_Ensamble_fuentePoder" />
@@ -52,11 +64,18 @@
         <AssociationConnector Association="BD_ArmadoPcModel.FK_Ensamble_procesador" />
         <AssociationConnector Association="BD_ArmadoPcModel.FK_memoriaRAM_Ensamble_Ensamble" />
         <AssociationConnector Association="BD_ArmadoPcModel.FK_Perfil_Ensamble_Ensamble" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_Gabinete_Marca" />
         <AssociationConnector Association="BD_ArmadoPcModel.FK_Generacion_PlacaMadre" />
         <AssociationConnector Association="BD_ArmadoPcModel.FK_LogEmpleado_Usuarios" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_memoriaRAM_marca" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_Monitor_Marca" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_PlacaMadre_Marca" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_procesador_marca" />
         <AssociationConnector Association="BD_ArmadoPcModel.FK_memoriaRAM_Ensamble_memoriaRAM" />
         <AssociationConnector Association="BD_ArmadoPcModel.FK_memoriaRAM_tipoMemoria" />
         <AssociationConnector Association="BD_ArmadoPcModel.FK_modeloVideo_tarjetaVideo" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK__pedido__idEmplea__338A9CD5" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK__pedido__idProvee__3296789C" />
         <AssociationConnector Association="BD_ArmadoPcModel.FK_Perfil_Ensamble_Perfiles" />
         <AssociationConnector Association="BD_ArmadoPcModel.FK_Usuarios_Persona" />
         <AssociationConnector Association="BD_ArmadoPcModel.FK_PlacaMadre_socket" />
@@ -65,6 +84,8 @@
         <AssociationConnector Association="BD_ArmadoPcModel.FK_procesador_socket" />
         <AssociationConnector Association="BD_ArmadoPcModel.FK_procesador_tipoMemoria" />
         <AssociationConnector Association="BD_ArmadoPcModel.FK_Usuarios_tipo_usuarios" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_UserRole_Usuarios" />
+        <AssociationConnector Association="BD_ArmadoPcModel.FK_UserRole_Usuarios1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

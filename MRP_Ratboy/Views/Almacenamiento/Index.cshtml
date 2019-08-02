@@ -16,9 +16,6 @@
             @Html.DisplayNameFor(model => model.nombre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tipo)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.capacidad)
         </th>
         <th>
@@ -31,10 +28,13 @@
             @Html.DisplayNameFor(model => model.estatus)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.marca)
+            @Html.DisplayNameFor(model => model.rpm)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.rpm)
+            @Html.DisplayNameFor(model => model.Marca1.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoAlmacenamiento.nombre)
         </th>
         <th></th>
     </tr>
@@ -43,9 +43,6 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tipo)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.capacidad)
@@ -60,15 +57,18 @@
             @Html.DisplayFor(modelItem => item.estatus)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.marca)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.rpm)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idAlmacenamento }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idAlmacenamento }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idAlmacenamento })
+            @Html.DisplayFor(modelItem => item.Marca1.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoAlmacenamiento.nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idAlmacenamiento }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idAlmacenamiento }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idAlmacenamiento })
         </td>
     </tr>
 }

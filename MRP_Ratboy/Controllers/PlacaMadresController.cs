@@ -42,6 +42,7 @@ namespace MRP_Ratboy.Controllers
             ViewBag.idSocket_FK = new SelectList(db.socket, "idSocket", "nombre");
             ViewBag.idTamaño_FK = new SelectList(db.Tamaño, "idTamaño", "nombreTamaño");
             ViewBag.idtipoMemoria = new SelectList(db.tipoMemoria, "idTipoMemoria", "tipo");
+            ViewBag.marca = new SelectList(db.Marca, "idMarca", "nombre");
             return View();
         }
 
@@ -50,8 +51,9 @@ namespace MRP_Ratboy.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idPlacaMadre,Nombre,idtipoMemoria,maxVelocidadMemoria,statusM2,cantidadM2,Descripcion,Gaming,idTamaño_FK,codBarras,PCIexpress,SATA,estatus,costoProveedor,costoVenta,marca,modelo,watts,idSocket_FK")] PlacaMadre placaMadre)
+        public ActionResult Create([Bind(Include = "idPlacaMadre,Nombre,idtipoMemoria,maxVelocidadMemoria,statusM2,cantidadM2,Descripcion,Gaming,idTamaño_FK,codBarras,PCIexpress,SATA,costoProveedor,costoVenta,marca,modelo,watts,idSocket_FK")] PlacaMadre placaMadre)
         {
+            placaMadre.estatus = true;
             if (ModelState.IsValid)
             {
                 db.PlacaMadre.Add(placaMadre);
@@ -62,6 +64,7 @@ namespace MRP_Ratboy.Controllers
             ViewBag.idSocket_FK = new SelectList(db.socket, "idSocket", "nombre", placaMadre.idSocket_FK);
             ViewBag.idTamaño_FK = new SelectList(db.Tamaño, "idTamaño", "nombreTamaño", placaMadre.idTamaño_FK);
             ViewBag.idtipoMemoria = new SelectList(db.tipoMemoria, "idTipoMemoria", "tipo", placaMadre.idtipoMemoria);
+            ViewBag.marca = new SelectList(db.Marca, "idMarca", "nombre", placaMadre.marca);
             return View(placaMadre);
         }
 
@@ -80,6 +83,7 @@ namespace MRP_Ratboy.Controllers
             ViewBag.idSocket_FK = new SelectList(db.socket, "idSocket", "nombre", placaMadre.idSocket_FK);
             ViewBag.idTamaño_FK = new SelectList(db.Tamaño, "idTamaño", "nombreTamaño", placaMadre.idTamaño_FK);
             ViewBag.idtipoMemoria = new SelectList(db.tipoMemoria, "idTipoMemoria", "tipo", placaMadre.idtipoMemoria);
+            ViewBag.marca = new SelectList(db.Marca, "idMarca", "nombre", placaMadre.marca);
             return View(placaMadre);
         }
 
@@ -99,6 +103,7 @@ namespace MRP_Ratboy.Controllers
             ViewBag.idSocket_FK = new SelectList(db.socket, "idSocket", "nombre", placaMadre.idSocket_FK);
             ViewBag.idTamaño_FK = new SelectList(db.Tamaño, "idTamaño", "nombreTamaño", placaMadre.idTamaño_FK);
             ViewBag.idtipoMemoria = new SelectList(db.tipoMemoria, "idTipoMemoria", "tipo", placaMadre.idtipoMemoria);
+            ViewBag.marca = new SelectList(db.Marca, "idMarca", "nombre", placaMadre.marca);
             return View(placaMadre);
         }
 

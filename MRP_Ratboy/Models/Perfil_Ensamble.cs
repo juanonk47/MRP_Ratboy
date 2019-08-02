@@ -17,6 +17,8 @@ namespace MRP_Ratboy.Models
         public int idPerfil_Ensamble { get; set; }
         public int idPerfil_FK { get; set; }
         public int idEnsamble_FK { get; set; }
+        public string nivel { get; set; }
+        public bool estatus { get; set; }
     
         public virtual Ensamble Ensamble { get; set; }
         public virtual Perfiles Perfiles { get; set; }

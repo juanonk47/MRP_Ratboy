@@ -29,12 +29,12 @@ namespace MRP_Ratboy.Models
         public int idTipoMemoria_FK { get; set; }
         public int idSocket_FK { get; set; }
         public bool graficosIntegrados { get; set; }
-        public int optane { get; set; }
+        public bool optane { get; set; }
         public double costoProveedor { get; set; }
         public double costoVenta { get; set; }
-        public string marca { get; set; }
+        public int marca { get; set; }
         public bool estatus { get; set; }
-        public double watts { get; set; }
+        public int watts { get; set; }
         public int idGeneracionProcesador_FK { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -42,6 +42,7 @@ namespace MRP_Ratboy.Models
         public virtual detalleGeneracionProcesador detalleGeneracionProcesador { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ensamble> Ensamble { get; set; }
+        public virtual Marca Marca1 { get; set; }
         public virtual socket socket { get; set; }
         public virtual tipoMemoria tipoMemoria { get; set; }
     }

@@ -12,18 +12,19 @@ namespace MRP_Ratboy.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Accesorio
+    public partial class TipoAlmacenamiento
     {
-        public int idAccesorio { get; set; }
-        public int categoria { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TipoAlmacenamiento()
+        {
+            this.Almacenamiento = new HashSet<Almacenamiento>();
+        }
+    
+        public int idTipoAlmacenamiento { get; set; }
         public string nombre { get; set; }
-        public int marca { get; set; }
-        public string modelo { get; set; }
-        public decimal precioProveedor { get; set; }
-        public decimal precioVenta { get; set; }
-        public bool estatus { get; set; }
         public string descripcion { get; set; }
     
-        public virtual Marca Marca1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Almacenamiento> Almacenamiento { get; set; }
     }
 }

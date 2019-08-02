@@ -13,6 +13,12 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.nivel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estatus)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Ensamble.idEnsamble)
         </th>
         <th>
@@ -23,6 +29,12 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nivel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estatus)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Ensamble.idEnsamble)
         </td>

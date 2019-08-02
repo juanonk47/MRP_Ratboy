@@ -49,8 +49,9 @@ namespace MRP_Ratboy.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idPerfil_Ensamble,idPerfil_FK,idEnsamble_FK")] Perfil_Ensamble perfil_Ensamble)
+        public ActionResult Create([Bind(Include = "idPerfil_Ensamble,idPerfil_FK,idEnsamble_FK,nivel")] Perfil_Ensamble perfil_Ensamble)
         {
+            perfil_Ensamble.estatus = true;
             if (ModelState.IsValid)
             {
                 db.Perfil_Ensamble.Add(perfil_Ensamble);
@@ -85,7 +86,7 @@ namespace MRP_Ratboy.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idPerfil_Ensamble,idPerfil_FK,idEnsamble_FK")] Perfil_Ensamble perfil_Ensamble)
+        public ActionResult Edit([Bind(Include = "idPerfil_Ensamble,idPerfil_FK,idEnsamble_FK,nivel,estatus")] Perfil_Ensamble perfil_Ensamble)
         {
             if (ModelState.IsValid)
             {

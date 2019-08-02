@@ -24,10 +24,10 @@ namespace MRP_Ratboy.Models
         public string Nombre { get; set; }
         public int idtipoMemoria { get; set; }
         public int maxVelocidadMemoria { get; set; }
-        public int statusM2 { get; set; }
+        public bool statusM2 { get; set; }
         public int cantidadM2 { get; set; }
         public string Descripcion { get; set; }
-        public int Gaming { get; set; }
+        public bool Gaming { get; set; }
         public int idTamaño_FK { get; set; }
         public byte[] codBarras { get; set; }
         public int PCIexpress { get; set; }
@@ -35,13 +35,14 @@ namespace MRP_Ratboy.Models
         public bool estatus { get; set; }
         public double costoProveedor { get; set; }
         public double costoVenta { get; set; }
-        public string marca { get; set; }
+        public int marca { get; set; }
         public string modelo { get; set; }
-        public Nullable<double> watts { get; set; }
+        public int watts { get; set; }
         public int idSocket_FK { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GeneracionSoportadaPlacaMadre> GeneracionSoportadaPlacaMadre { get; set; }
+        public virtual Marca Marca1 { get; set; }
         public virtual socket socket { get; set; }
         public virtual Tamaño Tamaño { get; set; }
         public virtual tipoMemoria tipoMemoria { get; set; }

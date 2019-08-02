@@ -14,11 +14,20 @@ namespace MRP_Ratboy.Models
     
     public partial class UsuariosCliente
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public UsuariosCliente()
+        {
+            this.UserRole = new HashSet<UserRole>();
+        }
+    
         public int idUserCliente { get; set; }
         public string nombre { get; set; }
         public string apellidos { get; set; }
         public string correo { get; set; }
         public string password { get; set; }
         public Nullable<bool> isValid { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserRole> UserRole { get; set; }
     }
 }

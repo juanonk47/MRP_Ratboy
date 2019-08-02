@@ -46,8 +46,9 @@ namespace MRP_Ratboy.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idSocket,nombre,estatus")] socket socket)
+        public ActionResult Create([Bind(Include = "idSocket,nombre")] socket socket)
         {
+            socket.estatus = true;
             if (ModelState.IsValid)
             {
                 db.socket.Add(socket);

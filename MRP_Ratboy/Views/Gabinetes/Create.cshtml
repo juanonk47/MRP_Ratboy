@@ -32,9 +32,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.marca, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.marca, "marca", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.marca, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("marca", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.marca, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -52,16 +52,6 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.medida, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.medida, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.estatus, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.estatus)
-                    @Html.ValidationMessageFor(model => model.estatus, "", new { @class = "text-danger" })
-                </div>
             </div>
         </div>
 

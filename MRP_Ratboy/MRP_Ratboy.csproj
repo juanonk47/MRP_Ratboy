@@ -128,10 +128,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AlmacenamientoesController.cs" />
+    <Compile Include="Controllers\AlmacenamientoController.cs" />
     <Compile Include="Controllers\cuelloBotellasController.cs" />
     <Compile Include="Controllers\CompatibilidadController.cs" />
     <Compile Include="Controllers\detalleGeneracionProcesadorsController.cs" />
+    <Compile Include="Controllers\fuentePodersController.cs" />
+    <Compile Include="Controllers\GabinetesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndexLogoutController.cs" />
     <Compile Include="Controllers\memoriaRAMsController.cs" />
@@ -158,6 +160,9 @@
     <Compile Include="Models\Almacenamiento_Ensamble.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\componente.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\correoElectronico.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
@@ -165,6 +170,9 @@
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\detalleGeneracionProcesador.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\detalle_pedido.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ensamble.cs">
@@ -201,6 +209,9 @@
     <Compile Include="Models\LogEmpleado.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Marca.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\memoriaRAM.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
@@ -211,6 +222,9 @@
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Monitor.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\pedido.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Perfiles.cs">
@@ -253,6 +267,9 @@
     <Compile Include="Models\tarjetaVideo.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TipoAlmacenamiento.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tipoMemoria.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
@@ -261,6 +278,9 @@
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\URLImagenes.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserRole.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuarios.cs">
@@ -540,21 +560,16 @@
     <Content Include="Views\PlacaMadres\Edit.cshtml" />
     <Content Include="Views\PlacaMadres\Index.cshtml" />
     <Content Include="Views\Paypal\Index.cshtml" />
-    <Content Include="Views\fuentePoders\Create.cshtml" />
-    <Content Include="Views\fuentePoders\Delete.cshtml" />
-    <Content Include="Views\fuentePoders\Details.cshtml" />
-    <Content Include="Views\fuentePoders\Edit.cshtml" />
-    <Content Include="Views\fuentePoders\Index.cshtml" />
     <Content Include="Views\modeloVideos\Create.cshtml" />
     <Content Include="Views\modeloVideos\Delete.cshtml" />
     <Content Include="Views\modeloVideos\Details.cshtml" />
     <Content Include="Views\modeloVideos\Edit.cshtml" />
     <Content Include="Views\modeloVideos\Index.cshtml" />
-    <Content Include="Views\Almacenamientoes\Create.cshtml" />
-    <Content Include="Views\Almacenamientoes\Delete.cshtml" />
-    <Content Include="Views\Almacenamientoes\Details.cshtml" />
-    <Content Include="Views\Almacenamientoes\Edit.cshtml" />
-    <Content Include="Views\Almacenamientoes\Index.cshtml" />
+    <Content Include="Views\Almacenamiento\Create.cshtml" />
+    <Content Include="Views\Almacenamiento\Delete.cshtml" />
+    <Content Include="Views\Almacenamiento\Details.cshtml" />
+    <Content Include="Views\Almacenamiento\Edit.cshtml" />
+    <Content Include="Views\Almacenamiento\Index.cshtml" />
     <Content Include="Views\Gabinetes\Create.cshtml" />
     <Content Include="Views\Gabinetes\Delete.cshtml" />
     <Content Include="Views\Gabinetes\Details.cshtml" />
@@ -581,6 +596,11 @@
     <Content Include="Views\Perfil_Ensamble\Edit.cshtml" />
     <Content Include="Views\Perfil_Ensamble\Index.cshtml" />
     <Content Include="Views\Paypal\Index.cshtml" />
+    <Content Include="Views\fuentePoders\Create.cshtml" />
+    <Content Include="Views\fuentePoders\Delete.cshtml" />
+    <Content Include="Views\fuentePoders\Details.cshtml" />
+    <Content Include="Views\fuentePoders\Edit.cshtml" />
+    <Content Include="Views\fuentePoders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
