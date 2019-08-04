@@ -20,19 +20,17 @@ namespace MRP_Ratboy.Models
             this.Almacenamiento_Ensamble = new HashSet<Almacenamiento_Ensamble>();
             this.cuelloBotella = new HashSet<cuelloBotella>();
             this.memoriaRAM_Ensamble = new HashSet<memoriaRAM_Ensamble>();
+            this.pedido_ensamble = new HashSet<pedido_ensamble>();
             this.Perfil_Ensamble = new HashSet<Perfil_Ensamble>();
         }
     
         public int idEnsamble { get; set; }
         public int idPlacaMadre_FK { get; set; }
         public int idProcesador_FK { get; set; }
-        public int idRAM_FK { get; set; }
-        public int idAlmacenamiento_FK { get; set; }
         public int idFuentePoder_FK { get; set; }
         public int idTarjetaVideo_FK { get; set; }
         public int idGabinete_FK { get; set; }
         public bool estatus { get; set; }
-        public int idEmpleado_FK { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Almacenamiento_Ensamble> Almacenamiento_Ensamble { get; set; }
@@ -40,11 +38,12 @@ namespace MRP_Ratboy.Models
         public virtual ICollection<cuelloBotella> cuelloBotella { get; set; }
         public virtual fuentePoder fuentePoder { get; set; }
         public virtual Gabinete Gabinete { get; set; }
-        public virtual LogEmpleado LogEmpleado { get; set; }
         public virtual modeloVideo modeloVideo { get; set; }
         public virtual procesador procesador { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<memoriaRAM_Ensamble> memoriaRAM_Ensamble { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<pedido_ensamble> pedido_ensamble { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Perfil_Ensamble> Perfil_Ensamble { get; set; }
     }

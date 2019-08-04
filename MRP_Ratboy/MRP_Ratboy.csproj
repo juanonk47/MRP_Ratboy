@@ -139,11 +139,13 @@
     <Compile Include="Controllers\memoriaRAMsController.cs" />
     <Compile Include="Controllers\PaypalController.cs" />
     <Compile Include="Controllers\modeloVideosController.cs" />
+    <Compile Include="Controllers\PedidoClienteController.cs" />
     <Compile Include="Controllers\PerfilesController.cs" />
     <Compile Include="Controllers\Perfil_EnsambleController.cs" />
     <Compile Include="Controllers\PlacaMadresController.cs" />
     <Compile Include="Controllers\procesadorsController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\SeguimientoProduccionController.cs" />
     <Compile Include="Controllers\socketsController.cs" />
     <Compile Include="Controllers\tarjetaVideosController.cs" />
     <Compile Include="Controllers\tipo_usuariosController.cs" />
@@ -225,7 +227,11 @@
     <Compile Include="Models\Monitor.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PantallaDeProduccion.cs" />
     <Compile Include="Models\pedido.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\pedido_ensamble.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Perfiles.cs">

@@ -12,14 +12,16 @@ namespace MRP_Ratboy.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class LogEmpleado
+    public partial class pedido_ensamble
     {
-        public int idEmpleado { get; set; }
-        public int idEnsamble { get; set; }
-        public System.DateTime fecha { get; set; }
-        public bool estatus { get; set; }
-        public int idUsuario_FK { get; set; }
+        public int pedido_id { get; set; }
+        public byte[] fecha_pedido { get; set; }
+        public int ensamble_id { get; set; }
+        public Nullable<bool> estatus { get; set; }
+        public int usuario_id { get; set; }
+        public Nullable<int> departamento { get; set; }
     
+        public virtual Ensamble Ensamble { get; set; }
         public virtual Usuarios Usuarios { get; set; }
     }
 }

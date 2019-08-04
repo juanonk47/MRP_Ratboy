@@ -47,6 +47,7 @@ namespace MRP_Ratboy.Models
         public virtual DbSet<modeloVideo> modeloVideo { get; set; }
         public virtual DbSet<Monitor> Monitor { get; set; }
         public virtual DbSet<pedido> pedido { get; set; }
+        public virtual DbSet<pedido_ensamble> pedido_ensamble { get; set; }
         public virtual DbSet<Perfil_Ensamble> Perfil_Ensamble { get; set; }
         public virtual DbSet<Perfiles> Perfiles { get; set; }
         public virtual DbSet<Persona> Persona { get; set; }

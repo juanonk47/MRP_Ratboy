@@ -77,5 +77,41 @@ namespace MRP_Ratboy.Controllers
             List<PlacaMadre> p = this.entities.PlacaMadre.ToList();
             return View(p);
         }
+        [HttpPost]
+        public ActionResult creacionEnsamblePedido(EEnsambleConListMemoriaRamAlmacenamiento eEnsambleConListMemoriaRamAlmacenamiento)
+        {
+            Ensamble creacion = new Ensamble();
+            pedido_ensamble pedido = new pedido_ensamble();
+            
+            creacion.idFuentePoder_FK = eEnsambleConListMemoriaRamAlmacenamiento.ensamble.idFuentePoder_FK;
+            creacion.idGabinete_FK = eEnsambleConListMemoriaRamAlmacenamiento.ensamble.idGabinete_FK;
+            creacion.idPlacaMadre_FK = eEnsambleConListMemoriaRamAlmacenamiento.ensamble.idPlacaMadre_FK;
+            creacion.idProcesador_FK = eEnsambleConListMemoriaRamAlmacenamiento.ensamble.idProcesador_FK;
+            creacion.idTarjetaVideo_FK = eEnsambleConListMemoriaRamAlmacenamiento.ensamble.idTarjetaVideo_FK;
+            this.entities.Ensamble.Add(creacion);
+            this.entities.SaveChanges();
+            foreach(memoriaRAM item in eEnsambleConListMemoriaRamAlmacenamiento.memoriaRAMs)
+            {
+                memoriaRAM_Ensamble memoriaRAM_Ensamble = new memoriaRAM_Ensamble();
+                memoriaRAM_Ensamble.idRAM_FK = memoriaRAM_Ensamble.idRAM_FK;
+                memoriaRAM_Ensamble.idEnsamble_FK = creacion.idEnsamble;
+                this.entities.memoriaRAM_Ensamble.Add(memoriaRAM_Ensamble);
+            }
+            this.entities.SaveChanges();
+            foreach(Almacenamiento item in eEnsambleConListMemoriaRamAlmacenamiento.almacenamientos)
+            {
+                Almacenamiento_Ensamble almacenamiento_Ensamble = new Almacenamiento_Ensamble();
+                almacenamiento_Ensamble.idAlmacenamiento_FK = item.idAlmacenamiento;
+                almacenamiento_Ensamble.idEnsamble_FK = creacion.idEnsamble;
+                this.entities.Almacenamiento_Ensamble.Add(almacenamiento_Ensamble);
+            }
+            this.entities.SaveChanges();
+            pedido.ensamble_id = creacion.idEnsamble;
+            Usuarios user = (Usuarios)Session["usuario"];
+            pedido.usuario_id = user.idUsuario;
+            this.entities.pedido_ensamble.Add(pedido);
+            this.entities.SaveChanges();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
