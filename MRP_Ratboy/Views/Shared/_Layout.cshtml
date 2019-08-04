@@ -15,7 +15,7 @@
     }
 </head>
 <body>
-    <!--<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -33,7 +33,7 @@
 
         </div>
     </div>
-    -->
+    
     <nav class="navbar navbar-default navbar-fixed-top" style="background: #3C9DE7  !important;">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -54,16 +54,16 @@
                 </ul>
                 
                 <ul class="nav navbar-nav navbar-right">
-                    @*@if (u.tipo_id_FK==1)*@
-                    @if(true)
+
+                    @if (Session["usuario"] != null)
                     {
                         <li>@Html.ActionLink("Control de usuarios", "Index", "Usuarios")</li>
                         <li>@Html.ActionLink("Control de tipos de usuario", "Index", "tipo_usuarios")</li>
-                    }
-                    @*<li><a href="@Url.Action("session_detalle","Usuarios")">@u.username</a></li>*@
-                    <li><a href="">Nombre</a></li>
-                    <li><a href="@Url.Action("Login","Home")">Salir</a></li>
 
+                        @*<li><a href="@Url.Action("session_detalle","Usuarios")">@u.username</a></li>*@
+                        <li><a href="">Nombre</a></li>
+                        <li><a href="@Url.Action("Login", "Home")">Salir</a></li>
+                    }
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

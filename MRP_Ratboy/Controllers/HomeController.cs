@@ -21,6 +21,13 @@ namespace MRP_Ratboy.Controllers
             Session["usuario"] = null;
             return View();
         }
+
+        public ActionResult Logout()
+        {
+            Session["usuario"] = null;
+            return RedirectToAction("Index", "IndexLogout");
+        }
+
         [HttpPost]
         public ActionResult Autorizacion(Usuarios usuario) {
             //CHECAR EL REGISTRO DEL CORREO ELECTRONICO
