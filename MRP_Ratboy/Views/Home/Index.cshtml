@@ -1,6 +1,81 @@
 ﻿@using MRP_Ratboy.Models;
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMenuCliente.cshtml";
 }
 
-<h2>Index Prueba1</h2>
+
+@*<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">*@
+<link href="~/Content/cssRatboy/bootstrap.min.css" rel="stylesheet" rel="stylesheet" id="bootstrap-css" />
+@*<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>*@
+<script src="~/Scripts/bootstrap.min.js"></script>
+@*<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+<script src="~/Scripts/js/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link href="~/Content/cssRatboy/styleMiCuenta.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<section>
+    <h2>Mi cuenta</h2>
+    <div class="container">
+        <div class="row mbr-justify-content-center">
+            <a href="#">
+                <div class="col-lg-6 mbr-col-md-10">
+                    <div class="wrap">
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Mis pedidos</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                        </div>
+                        <div class="ico-wrap">
+                            <span class="mbr-iconfont glyphicon glyphicon-tag"></span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href='#'>
+                <div class="col-lg-6 mbr-col-md-10">
+                    <div class="wrap">
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">
+                                Mi perfil
+                            </h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                        </div>
+                        <div class="ico-wrap">
+                            <span class="mbr-iconfont glyphicon glyphicon-user"></span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="#">
+                <div class="col-lg-6 mbr-col-md-10">
+                    <div class="wrap">
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">
+                                Mis direcciones
+                            </h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                        </div>
+                        <div class="ico-wrap">
+                            <span class="mbr-iconfont fa-globe fa"></span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="#">
+                <div class="col-lg-6 mbr-col-md-10">
+                    <div class="wrap">
+                        <div class="text-wrap vcenter">
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Mis opciones de pago</h2>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                        </div>
+                        <div class="ico-wrap">
+                            <span class="mbr-iconfont glyphicon glyphicon-credit-card"></span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>

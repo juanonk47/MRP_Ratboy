@@ -1,7 +1,6 @@
 ﻿@{
     MRP_Ratboy.Models.Usuarios u = (MRP_Ratboy.Models.Usuarios)Session["usuario"];
 }
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +15,7 @@
     <title>Gestor de Garantias</title>
 
     <!--links ColorBox-->
-    <script src="@Url.Content("~/Scripts/jquery-3.3.1.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery-3.4.1.min.js")"></script>
     <script src="@Url.Content("~/Scripts/js/spectrum.js")"></script>
     <link rel='stylesheet' href="@Url.Content("~/Content/cssRatboy/spectrum.css")" />
 
@@ -47,7 +46,6 @@
     <!-- Style -->
     <link rel="stylesheet" href="@Url.Content("~/Content/cssRatboy/styleERP.css")">
     <link rel="stylesheet" href="@Url.Content("~/Content/cssRatboy/style.css")">
-
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -78,7 +76,7 @@
         </div>
     </div>
 
-    loading End -->
+    loading End -->|
     <!-- Header -->
 
     <header id="header-wrap" data-spy="affix" data-offset-top="55">
@@ -101,10 +99,25 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right" id="top-menu">
-                                <li class="active"><a href="#">Perfiles</a></li>
+                                <li><a href="#">Perfiles</a></li>
                                 <li><a href="#">Personalizado</a></li>
                                 <li><a href="#">Productos</a></li>
-                                <li><a href="@Url.Action("Login","Home")">Login</a></li>
+                                @if (Session["usuario"] != null)
+                                {
+                                    <li>
+                                        <a href="/MiCuenta/Index">Mi cuenta</a>
+                                        <ul>
+                                            <li><a href="@Url.Action("Index","IndexLogout")">Mi cuenta</a></li>
+                                            <li><a href="">Mis pedidos</a></li>
+                                            <li><a href="@Url.Action("Logout","Home")">Cerrar sesión</a></li>
+                                        </ul>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li><a href="@Url.Action("Login","Home")">Login</a></li>
+                                }
+
                             </ul>
                         </div>
                         <!-- /.navbar-collapse -->
@@ -115,7 +128,8 @@
     </header>
 
     <!-- Header End -->
- 
+
+
 
     @RenderBody()
 
@@ -149,7 +163,7 @@
     <br />
     <br />
 
-    <div class="footer" >
+    <div class="footer">
 
         <!-- Subscribe Our Newsletter -->
         <!-- Subscribe Our Newsletter END -->
