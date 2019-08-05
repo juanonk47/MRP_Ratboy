@@ -18,7 +18,7 @@ namespace MRP_Ratboy.Controllers
         public JsonResult mostrarPlacasMadre()
         {
             List<PlacaMadre> placaMadres = this.entities.PlacaMadre.Where(x => x.cantidad > 0).ToList();
-            return Json(placaMadres);
+            return Json(placaMadres, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
