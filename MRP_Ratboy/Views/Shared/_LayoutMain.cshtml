@@ -76,7 +76,7 @@
         </div>
     </div>
 
-    loading End -->|
+    loading End -->
     <!-- Header -->
 
     <header id="header-wrap" data-spy="affix" data-offset-top="55">
@@ -105,9 +105,9 @@
                                 @if (Session["usuario"] != null)
                                 {
                                     <li>
-                                        <a href="/MiCuenta/Index">Mi cuenta</a>
+                                        <a href="@Url.Action("Index","Home")">Mi cuenta</a>
                                         <ul>
-                                            <li><a href="@Url.Action("Index","IndexLogout")">Mi cuenta</a></li>
+                                            <li><a href="@Url.Action("Index","Home")">Mi cuenta</a></li>
                                             <li><a href="">Mis pedidos</a></li>
                                             <li><a href="@Url.Action("Logout","Home")">Cerrar sesión</a></li>
                                         </ul>
