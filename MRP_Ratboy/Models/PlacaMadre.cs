@@ -39,6 +39,7 @@ namespace MRP_Ratboy.Models
         public string modelo { get; set; }
         public int watts { get; set; }
         public int idSocket_FK { get; set; }
+        public Nullable<int> cantidad { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GeneracionSoportadaPlacaMadre> GeneracionSoportadaPlacaMadre { get; set; }

@@ -29,6 +29,7 @@ namespace MRP_Ratboy.Models
         public int watts { get; set; }
         public string tamaño { get; set; }
         public string certificado { get; set; }
+        public Nullable<int> cantidad { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ensamble> Ensamble { get; set; }

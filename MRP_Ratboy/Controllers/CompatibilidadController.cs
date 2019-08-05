@@ -15,6 +15,11 @@ namespace MRP_Ratboy.Controllers
         {
             return View();
         }
+        public JsonResult mostrarPlacasMadre()
+        {
+            List<PlacaMadre> placaMadres = this.entities.PlacaMadre.Where(x => x.cantidad > 0).ToList();
+            return Json(placaMadres);
+        }
 
         [HttpGet]
         //RECIBO EL ID DE UNA PLACA MADRE PARA PODER FILTRAR LOS PROCESADORES DISPONIBLES

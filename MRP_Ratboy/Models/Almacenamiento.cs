@@ -29,6 +29,7 @@ namespace MRP_Ratboy.Models
         public bool estatus { get; set; }
         public int marca { get; set; }
         public Nullable<double> rpm { get; set; }
+        public Nullable<int> cantidad { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Almacenamiento_Ensamble> Almacenamiento_Ensamble { get; set; }

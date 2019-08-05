@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AlmacenamientoController.cs" />
+    <Compile Include="Controllers\AlmacenController.cs" />
     <Compile Include="Controllers\cuelloBotellasController.cs" />
     <Compile Include="Controllers\CompatibilidadController.cs" />
     <Compile Include="Controllers\detalleGeneracionProcesadorsController.cs" />
@@ -211,6 +212,7 @@
     <Compile Include="Models\inventario.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ListaDeProductosAlmacen.cs" />
     <Compile Include="Models\LogEmpleado.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
