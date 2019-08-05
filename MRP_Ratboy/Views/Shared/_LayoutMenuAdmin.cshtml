@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/fonts/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/fonts/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/fonts/css/Style.css">
+    <!-- Enlace para iconos -->
+    <script src="https://kit.fontawesome.com/ce32f95b11.js"></script>
+    <title>RATBOY - Admin</title>
+</head>
+<body>
+    <div class="row">
+        <div class="container">
+            <!-- Vertical navbar -->
+            <div class="vertical-nav bg-white" id="sidebar">
+                <div class="py-4 px-3 mb-4 bg-light">
+                    <div class="media d-flex align-items-center">
+                        <img src="https://res.cloudinary.com/mhmd/image/upload/v1556074849/avatar-1_tcnd60.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+                        <div class="media-body">
+                            <h4 class="m-0">RATBOY</h4>
+                            <p class="font-weight-light text-muted mb-0">@User.Identity.Name</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>
+
+                <ul class="nav flex-column bg-white mb-0">
+                    <li class="nav-item">
+                        <i class="fas fa-chart-line"></i>
+                        @Html.ActionLink("Overview", "Index", "Usuarios")
+                    </li>
+                    <li class="nav-item">
+                        <i class="fas fa-user-friends"></i>
+                        @Html.ActionLink("Usuarios", "Index", "Usuarios")
+                    </li>
+                    <li class="nav-item">
+                        <i class="fas fa-box-open"></i>
+                        @Html.ActionLink("Inventario", "Index", "Usuarios")
+                    </li>
+                    <li class="nav-item">
+                        <i class="fas fa-box-open"></i>
+                        @Html.ActionLink("Proveedores", "Index", "proveedors")
+                    </li>
+                    <li class="nav-item">
+                        <i class="fas fa-box-open"></i>
+                        @Html.ActionLink("Monitores", "Index", "Monitors")
+                    </li>
+                    <li class="nav-item">
+                        <i class="fas fa-box-open"></i>
+                        @Html.ActionLink("Accesorios", "Index", "Accesorios")
+                    </li>
+                    <li class="nav-item">
+                        <i class="fas fa-puzzle-piece"></i>
+                        @Html.ActionLink("Ensamble", "Index", "Usuarios")
+                    </li>
+                </ul>
+
+                <p class="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">Charts</p>
+
+                <ul class="nav flex-column bg-white mb-0">
+                    <li class="nav-item">
+                        <i class="fas fa-truck-moving"></i>
+                        @Html.ActionLink("Pedidos", "Index", "Usuarios")
+                    </li>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a href="/Admin/Logout" class="nav-link text-dark font-italic">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Cerrar sesión
+                            </a>
+                        </li>
+                    }
+                </ul>
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+                </footer>
+            </div>
+            <!-- End vertical navbar -->
+            <!-- Page content holder -->
+            <div class="page-content p-5" id="content">
+                <!-- Toggle button -->
+                <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Menú</small></button>
+
+                <!-- Content -->
+                @RenderBody()
+                <hr />
+            </div>
+            <!-- End Content -->
+        </div>
+    </div>
+    <script type="text/javascript" src="~/Scripts/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/jquery-3.3.1.slim.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/Script.js"></script>
+</body>
+</html>
