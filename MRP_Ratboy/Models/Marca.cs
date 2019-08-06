@@ -20,6 +20,7 @@ namespace MRP_Ratboy.Models
             this.Accesorio = new HashSet<Accesorio>();
             this.Almacenamiento = new HashSet<Almacenamiento>();
             this.detalle_pedido = new HashSet<detalle_pedido>();
+            this.Disipadores = new HashSet<Disipadores>();
             this.Gabinete = new HashSet<Gabinete>();
             this.memoriaRAM = new HashSet<memoriaRAM>();
             this.Monitor = new HashSet<Monitor>();
@@ -37,6 +38,8 @@ namespace MRP_Ratboy.Models
         public virtual ICollection<Almacenamiento> Almacenamiento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<detalle_pedido> detalle_pedido { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Disipadores> Disipadores { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Gabinete> Gabinete { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

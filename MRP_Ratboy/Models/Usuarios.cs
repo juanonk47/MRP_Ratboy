@@ -21,7 +21,6 @@ namespace MRP_Ratboy.Models
             this.LogEmpleado = new HashSet<LogEmpleado>();
             this.pedido = new HashSet<pedido>();
             this.pedido_ensamble = new HashSet<pedido_ensamble>();
-            this.UserRole = new HashSet<UserRole>();
         }
     
         public int idUsuario { get; set; }
@@ -42,7 +41,5 @@ namespace MRP_Ratboy.Models
         public virtual ICollection<pedido_ensamble> pedido_ensamble { get; set; }
         public virtual Persona Persona { get; set; }
         public virtual tipo_usuarios tipo_usuarios { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserRole> UserRole { get; set; }
     }
 }

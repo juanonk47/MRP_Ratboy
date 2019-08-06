@@ -17,6 +17,7 @@ namespace MRP_Ratboy.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PlacaMadre()
         {
+            this.Ensamble = new HashSet<Ensamble>();
             this.GeneracionSoportadaPlacaMadre = new HashSet<GeneracionSoportadaPlacaMadre>();
         }
     
@@ -41,6 +42,8 @@ namespace MRP_Ratboy.Models
         public int idSocket_FK { get; set; }
         public Nullable<int> cantidad { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ensamble> Ensamble { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GeneracionSoportadaPlacaMadre> GeneracionSoportadaPlacaMadre { get; set; }
         public virtual Marca Marca1 { get; set; }

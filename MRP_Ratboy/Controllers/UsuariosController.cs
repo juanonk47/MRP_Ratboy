@@ -10,6 +10,7 @@ using MRP_Ratboy.Models;
 
 namespace MRP_Ratboy.Controllers
 {
+    [Authorize]
     public class UsuariosController : Controller
     {
         private BD_ArmadoPcEntities db = new BD_ArmadoPcEntities();
@@ -18,7 +19,7 @@ namespace MRP_Ratboy.Controllers
         public ActionResult Index()
         {
             var session = Session["usuario"];
-            if (session == null)
+            if (false)
             {
                 return RedirectToAction("Login", "Home");
             }

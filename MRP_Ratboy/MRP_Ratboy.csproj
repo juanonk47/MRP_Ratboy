@@ -151,6 +151,7 @@
     <Compile Include="Controllers\socketsController.cs" />
     <Compile Include="Controllers\tarjetaVideosController.cs" />
     <Compile Include="Controllers\tipo_usuariosController.cs" />
+    <Compile Include="Controllers\UsuariosAdminsController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -177,6 +178,9 @@
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\detalle_pedido.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Disipadores.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EEnsambleConListMemoriaRamAlmacenamiento.cs" />
@@ -288,6 +292,9 @@
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuarios.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UsuariosAdmin.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UsuariosCliente.cs">
@@ -668,6 +675,11 @@
     <Content Include="Views\Admin\Panel.cshtml" />
     <Content Include="Views\Shared\_LayoutMenuAdmin.cshtml" />
     <Content Include="Views\Compatibilidad\Index.cshtml" />
+    <Content Include="Views\UsuariosAdmins\Create.cshtml" />
+    <Content Include="Views\UsuariosAdmins\Delete.cshtml" />
+    <Content Include="Views\UsuariosAdmins\Details.cshtml" />
+    <Content Include="Views\UsuariosAdmins\Edit.cshtml" />
+    <Content Include="Views\UsuariosAdmins\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

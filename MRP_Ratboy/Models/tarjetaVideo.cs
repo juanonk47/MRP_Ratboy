@@ -18,6 +18,7 @@ namespace MRP_Ratboy.Models
         public tarjetaVideo()
         {
             this.cuelloBotella = new HashSet<cuelloBotella>();
+            this.Ensamble = new HashSet<Ensamble>();
             this.modeloVideo = new HashSet<modeloVideo>();
         }
     
@@ -34,6 +35,8 @@ namespace MRP_Ratboy.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cuelloBotella> cuelloBotella { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ensamble> Ensamble { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<modeloVideo> modeloVideo { get; set; }
     }
