@@ -15,6 +15,7 @@ var fuentePoderArray = [];
 var memoriaRamArray = [];
 var procesadorArray = [];
 var tarjetaVideoArray = [];
+var gabineteArray = [];
 
 var objTarjetaMadre = []; // 1
 var objDisipador = []; // 1
@@ -23,6 +24,7 @@ var objFuentePoder = [];
 var objMemoriaRam = [];
 var objProcesador = []; // 1
 var objTarjetaVideo = [];
+var objGabinete = [];
 
 var ensamble = [];
 
@@ -76,6 +78,7 @@ function mandarId(id) {
             memoriaRamArray.push(respuesta.memoriaRAMs);
             procesadorArray.push(respuesta.procesadors);
             tarjetaVideoArray.push(respuesta.tarjetaVideos);
+            gabineteArray.push(respuesta.gabinete);
 
             // Pintamos los procesadores
             pintarTodas();
@@ -153,7 +156,6 @@ function pintarRam() {
     $("#content-component-div").empty();
     var arrayNuevoRam = [];
     arrayNuevoRam = memoriaRamArray[0];
-    console.log(arrayNuevoRam);
     for (var i = 0; i < arrayNuevoRam.length; i++) {
         let memoriaRam = arrayNuevoRam[i];
         var cardComponent = "<div class='card' style='width: 25rem; height: 18rem; margin: 5px; margin-left: 30px; float:left; background: #D2D1E8; padding: 10px; border-radius: 5px'>" +
@@ -171,10 +173,102 @@ function pintarRam() {
 function funciona4() {
     $(document).ready(function () {
         $('body').on('click', '#content-component-div input', function () {
-            objMemoriaRam = { "idDisipador": $(this).attr('id') }
+            objMemoriaRam = { "idMemoriaRam": $(this).attr('id') }
             $("#check-disipador").attr('checked', false);
             $("#check-ram").attr('checked', true);
             memoriaRamArray = [];
+            $("#content-component-div").empty();
+        });
+    });
+}
+
+function pintaTarjetaVideo() {
+    $("#content-component-div").empty();
+    var arrayNuevoTarjetaVideo = [];
+    arrayNuevoTarjetaVideo = tarjetaVideoArray[0];
+    for (var i = 0; i < arrayNuevoTarjetaVideo.length; i++) {
+        let tarjetaVideo = arrayNuevoTarjetaVideo[i];
+        var cardComponent = "<div class='card' style='width: 25rem; height: 18rem; margin: 5px; margin-left: 30px; float:left; background: #D2D1E8; padding: 10px; border-radius: 5px'>" +
+            "<img class='card-img-top'>" +
+            "<div class='card-body'>" +
+            "<h5 class='card-title' id='nombre'>" + tarjetaVideo.nombre + "</h5>" +
+            "<p class='card-text' id='" + tarjetaVideo.watts + "'>Waths: " + tarjetaVideo.watts + "</p>" +
+            "<input type='submit' class='btn btn-primary' id='" + tarjetaVideo.idTarjetaVideo + "' value='Aceptar Componente' onclick='funciona5()'/> " +
+            "</div>" +
+            "</div>";
+        $("#content-component-div").append(cardComponent);
+    }
+}
+
+function funciona5() {
+    $(document).ready(function () {
+        $('body').on('click', '#content-component-div input', function () {
+            objTarjetaVideo = { "idTarjetaVideo": $(this).attr('id') }
+            $("#check-ram").attr('checked', false);
+            $("#check-tarjetaVideo").attr('checked', true);
+            tarjetaVideoArray = [];
+            $("#content-component-div").empty();
+        });
+    });
+}
+
+function pintarAlmacenamiento() {
+    $("#content-component-div").empty();
+    var arrayNuevoAlmacenamiento = [];
+    console.log(almacenamientoArray);
+    arrayNuevoAlmacenamiento = almacenamientoArray[0];
+    for (var i = 0; i < arrayNuevoAlmacenamiento.length; i++) {
+        let almacenamiento = arrayNuevoAlmacenamiento[i];
+        var cardComponent = "<div class='card' style='width: 25rem; height: 18rem; margin: 5px; margin-left: 30px; float:left; background: #D2D1E8; padding: 10px; border-radius: 5px'>" +
+            "<img class='card-img-top'>" +
+            "<div class='card-body'>" +
+            "<h5 class='card-title' id='nombre'>" + almacenamiento.nombre + "</h5>" +
+            "<p class='card-text' id='" + almacenamiento.watts + "'>Waths: " + almacenamiento.watts + "</p>" +
+            "<input type='submit' class='btn btn-primary' id='" + almacenamiento.idTarjetaVideo + "' value='Aceptar Componente' onclick='funciona6()'/> " +
+            "</div>" +
+            "</div>";
+        $("#content-component-div").append(cardComponent);
+    }
+}
+
+function funciona6() {
+    $(document).ready(function () {
+        $('body').on('click', '#content-component-div input', function () {
+            objAlmacenamiento = { "idAlmacenamiento": $(this).attr('id') }
+            $("#check-tarjetaVideo").attr('checked', false);
+            $("#check-almacenamiento").attr('checked', true);
+            almacenamientoArray = [];
+            $("#content-component-div").empty();
+        });
+    });
+}
+
+function pintarGabinete() {
+    $("#content-component-div").empty();
+    var arrayNuevoGabinete = [];
+    console.log(gabineteArray);
+    arrayNuevoGabinete = gabineteArray[0];
+    for (var i = 0; i < arrayNuevoGabinete.length; i++) {
+        let gabinete = arrayNuevoGabinete[i];
+        var cardComponent = "<div class='card' style='width: 25rem; height: 18rem; margin: 5px; margin-left: 30px; float:left; background: #D2D1E8; padding: 10px; border-radius: 5px'>" +
+            "<img class='card-img-top'>" +
+            "<div class='card-body'>" +
+            "<h5 class='card-title' id='nombre'>" + gabinete.nombre + "</h5>" +
+            "<p class='card-text' id='" + gabinete.watts + "'>Waths: " + gabinete.watts + "</p>" +
+            "<input type='submit' class='btn btn-primary' id='" + gabinete.idTarjetaVideo + "' value='Aceptar Componente' onclick='funciona7()'/> " +
+            "</div>" +
+            "</div>";
+        $("#content-component-div").append(cardComponent);
+    }
+}
+
+function funciona7() {
+    $(document).ready(function () {
+        $('body').on('click', '#content-component-div input', function () {
+            objGabinete = { "idGabinete": $(this).attr('id') }
+            $("#check-almacenamiento").attr('checked', false);
+            $("#check-gabinete").attr('checked', true);
+            gabineteArray = [];
             $("#content-component-div").empty();
         });
     });
@@ -197,9 +291,21 @@ function pintarTodas() {
         }, 1000);
     }
 
-    if ($("#check-disipador").is(':checked')) {
+    if ($("#check-ram").is(':checked')) {
         setTimeout(function () {
+            pintaTarjetaVideo();
+        }, 1000);
+    }
 
+    if ($("#check-tarjetaVideo").is(':checked')) {
+        setTimeout(function () {
+            pintarAlmacenamiento();
+        }, 1000);
+    }
+
+    if ($("#check-almacenamiento").is(':checked')) {
+        setTimeout(function () {
+            pintarGabinete();
         }, 1000);
     }
 }
