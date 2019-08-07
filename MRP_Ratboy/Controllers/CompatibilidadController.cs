@@ -73,6 +73,7 @@ namespace MRP_Ratboy.Controllers
                 eEnsambleConPiezasDisponibles.memoriaRAMs = memoriasRamFiltradas;
                 eEnsambleConPiezasDisponibles.almacenamientos = almacenamiento;
                 eEnsambleConPiezasDisponibles.tarjetaVideos = tarjetaVideos;
+                var gabientes = this.entities.Gabinete.ToList();
                 var Disipadores = entities.Disipadores.Where(x => x.cantidad > 0).ToList();
                 var fuentePoders = entities.fuentePoder.Where(x => x.cantidad > 0).ToList();
                 return Json(new
@@ -108,6 +109,11 @@ namespace MRP_Ratboy.Controllers
                         idFuentePoder = x.idFuentePoder,
                         modelo = x.modelo,
                         watts = x.watts
+                    }),
+                    gabiente = gabientes.Select(x=> new
+                    {
+                        idGabinete = x.idGabinete,
+                        modelo = x.modelo
                     })
 
                 }, JsonRequestBehavior.AllowGet);
