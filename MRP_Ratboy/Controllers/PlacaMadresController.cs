@@ -55,7 +55,12 @@ namespace MRP_Ratboy.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "idPlacaMadre,Nombre,idtipoMemoria,maxVelocidadMemoria,statusM2,cantidadM2,Descripcion,Gaming,idTamaño_FK,codBarras,PCIexpress,SATA,costoProveedor,costoVenta,marca,modelo,watts,idSocket_FK,detalleGeneracionProcesador,detalleGeneracionProcesador2")] PlacaConDosGeneraciones placaMadre)
         {
-            
+
+            if (placaMadre.detalleGeneracionProcesador == placaMadre.detalleGeneracionProcesador2)
+            {
+                ViewBag.Error = "No pueden ser la misma generacion";
+                return View(placaMadre);
+            }
                 PlacaMadre placa = new PlacaMadre();
                 placa.cantidad = 0;
                 placa.cantidadM2 = placaMadre.cantidadM2;
@@ -84,8 +89,8 @@ namespace MRP_Ratboy.Controllers
                 db.GeneracionSoportadaPlacaMadre.Add(generacionSoportadaPlacaMadre);
                 db.SaveChanges();
                 GeneracionSoportadaPlacaMadre generacionSoportadaPlacaMadre2 = new GeneracionSoportadaPlacaMadre();
-                generacionSoportadaPlacaMadre.idGeneracionProcesador_FK = placaMadre.detalleGeneracionProcesador2;
-                generacionSoportadaPlacaMadre.idPlacaMadre_FK = placa.idPlacaMadre;
+                generacionSoportadaPlacaMadre2.idGeneracionProcesador_FK = placaMadre.detalleGeneracionProcesador2;
+                generacionSoportadaPlacaMadre2.idPlacaMadre_FK = placa.idPlacaMadre;
                 db.GeneracionSoportadaPlacaMadre.Add(generacionSoportadaPlacaMadre);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -23,7 +23,6 @@ namespace MRP_Ratboy.Models
         public int idPerfil { get; set; }
         public string Nombre { get; set; }
         public string Nivel { get; set; }
-        public int idEnsamble_FK { get; set; }
         public Nullable<bool> estatus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -46,10 +46,12 @@ namespace MRP_Ratboy.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idTipoMemoria,tipo,estatus")] tipoMemoria tipoMemoria)
+        public ActionResult Create([Bind(Include = "idTipoMemoria,tipo")] tipoMemoria tipoMemoria)
         {
+            tipoMemoria.estatus = true;
             if (ModelState.IsValid)
             {
+                
                 db.tipoMemoria.Add(tipoMemoria);
                 db.SaveChanges();
                 return RedirectToAction("Index");

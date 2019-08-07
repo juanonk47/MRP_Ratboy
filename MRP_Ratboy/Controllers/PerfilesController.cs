@@ -46,10 +46,11 @@ namespace MRP_Ratboy.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idPerfil,Nombre,Nivel,idEnsamble_FK,estatus")] Perfiles perfiles)
+        public ActionResult Create([Bind(Include = "idPerfil,Nombre,Nivel")] Perfiles perfiles)
         {
             if (ModelState.IsValid)
             {
+                perfiles.estatus = true;
                 db.Perfiles.Add(perfiles);
                 db.SaveChanges();
                 return RedirectToAction("Index");

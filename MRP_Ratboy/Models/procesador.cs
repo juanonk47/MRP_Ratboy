@@ -25,7 +25,7 @@ namespace MRP_Ratboy.Models
         public string nombre { get; set; }
         public int cantidadNucleos { get; set; }
         public int cantidadSubProcesos { get; set; }
-        public int frecuenciaBasica { get; set; }
+        public decimal frecuenciaBasica { get; set; }
         public int idTipoMemoria_FK { get; set; }
         public int idSocket_FK { get; set; }
         public bool graficosIntegrados { get; set; }
