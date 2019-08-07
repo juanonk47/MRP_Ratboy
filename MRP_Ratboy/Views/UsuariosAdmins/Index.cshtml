@@ -5,10 +5,11 @@
     Layout = "~/Views/Shared/_LayoutMenuAdmin.cshtml";
 }
 
-<h2>Usuarios ratmin</h2>
+<h2>Empleados Ratboy</h2>
 
-<p>
-    @Html.ActionLink("Crear nuevo", "Create")
+<p class="btn btn-info" style="cursor:pointer;">
+    @Html.ActionLink("NUEVO", "Create", null, 
+     new { @style="text-decoration: none; color: #fff;" })
 </p>
 <table class="table">
     <thead class="thead-light">
@@ -16,12 +17,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.correo)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.password)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.status)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.Persona.nombre)
             </th>
@@ -38,21 +34,15 @@
             @Html.DisplayFor(modelItem => item.correo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.status)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Persona.nombre)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.UserRole.nombre)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idUserAdmin }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idUserAdmin }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idUserAdmin })
+            @Html.ActionLink("Editar", "Edit", new { id=item.idUserAdmin }, new { @class="btn btn-info" }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.idUserAdmin }, new { @class="btn btn-info" }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.idUserAdmin }, new { @class="btn btn-danger" })
         </td>
     </tr>
 }

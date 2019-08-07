@@ -5,10 +5,11 @@
     Layout = "~/Views/Shared/_LayoutMenuAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Perfiles</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+<p class="btn btn-info" style="cursor:pointer;">
+    @Html.ActionLink("NUEVO", "Create", null, 
+     new { @style="text-decoration: none; color: #fff;" })
 </p>
 <table class="table">
     <thead class="thead-light">
@@ -40,9 +41,9 @@
                     @Html.DisplayFor(modelItem => item.estatus)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.idPerfil }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.idPerfil }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.idPerfil })
+                    @Html.ActionLink("Editar", "Edit", new { id = item.idPerfil }, new { @class="btn btn-info" }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.idPerfil }, new { @class="btn btn-info" }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.idPerfil }, new { @class="btn btn-danger" })
                 </td>
             </tr>
         }

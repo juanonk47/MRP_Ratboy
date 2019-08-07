@@ -5,10 +5,11 @@
     Layout = "~/Views/Shared/_LayoutMenuAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Procesadores</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+<p class="btn btn-info" style="cursor:pointer;">
+    @Html.ActionLink("NUEVO", "Create", null, 
+     new { @style="text-decoration: none; color: #fff;" })
 </p>
 <table class="table">
     <thead class="thead-light">
@@ -16,42 +17,21 @@
             <th>
                 @Html.DisplayNameFor(model => model.nombre)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.cantidadNucleos)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.cantidadSubProcesos)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.frecuenciaBasica)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.graficosIntegrados)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.optane)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.costoProveedor)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.costoVenta)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.marca)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.estatus)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.watts)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.detalleGeneracionProcesador.DetalleGeneracionProcesador1)
+                Detalle generación
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.socket.nombre)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.tipoMemoria.tipo)
             </th>
@@ -64,49 +44,28 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.nombre)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.cantidadNucleos)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.cantidadSubProcesos)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.frecuenciaBasica)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.graficosIntegrados)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.optane)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.costoProveedor)
-                </td>
+                
                 <td>
                     @Html.DisplayFor(modelItem => item.costoVenta)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.marca)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.estatus)
-                </td>
+                
                 <td>
                     @Html.DisplayFor(modelItem => item.watts)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.detalleGeneracionProcesador.DetalleGeneracionProcesador1)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.socket.nombre)
-                </td>
+                
                 <td>
                     @Html.DisplayFor(modelItem => item.tipoMemoria.tipo)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.idProcesador }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.idProcesador }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.idProcesador })
+                    @Html.ActionLink("Editar", "Edit", new { id = item.idProcesador }, new { @class="btn btn-info" }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.idProcesador }, new { @class="btn btn-info" }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.idProcesador }, new { @class="btn btn-danger" })
                 </td>
             </tr>
         }
