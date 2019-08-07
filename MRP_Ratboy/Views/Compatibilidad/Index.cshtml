@@ -1,48 +1,58 @@
-﻿
+﻿@model IEnumerable<MRP_Ratboy.Models.tarjetaVideo>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<section class="card custom-card-content">
-    <div class="col-md-12">
-        <div class="row">
-            <div class="col-md-2 process-lista">
-                <h1>1) Tarjeta Madre</h1>
-                <h1>2) Procesador</h1>
-                <h1>3) disipador</h1>
-                <h1>4) RAM</h1>
-                <h1>5) Almacenamiento</h1>
-                <h1>6) Gabinete</h1>
-                <h1>7) Fuente Poder</h1>
-            </div>
-
-            <div class="col-md-7">
-                <div class="row">
-                    
-                    <div id="prueba">
-                        
-                    </div>
-                    <!--<div class="card" style="width: 16rem; margin: 5px; margin-left: 60px;">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>-->
-
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <link href="~/Content/css/estilos-compatible.css" rel="stylesheet" />
+</head>
+<body>
+    <section class="card custom-card-content">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-2 process-lista">
+                    <h1>1) Tarjeta Madre</h1>
+                    <h1>2) Procesador</h1>
+                    <h1>3) disipador</h1>
+                    <h1>4) RAM</h1>
+                    <h1>5) Tarjeta de Video</h1>
+                    <h1>6) Almacenamiento</h1>
+                    <h1>7) Gabinete</h1>
+                    <h1>8) Fuente Poder</h1>
                 </div>
+
+                <div class="col-md-7">
+                    <div class="row">
+
+                        <div class="content-component-div row" id="content-component-div"></div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-2 process-lista-info">
+                    <h1>1) Tarjeta Madre</h1>
+                    <h1>2) Procesador</h1>
+                    <input type="button" value="Pagar" class="btn btn-primary btn-sm btn-sell" />
+                </div>
+
             </div>
+        </div>
+    </section>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        var cardComponent = "<div class='card' style='width: 16rem; margin: 5px; margin-left: 60px;'>" +
+            "<img class='card-img-top'>" + 
+            "<div class='card-body'>" + 
+            "<h5 class='card-title' id='Nombre'></h5>" +
+            "<p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card'scontent.</p>" +
+            "<input type='submit' class='btn btn-primary' id='btn-accept' value='Aceptar jejejeje' onclick='funciona()' /> </div> </div>";
 
-            <div class="col-md-2 process-lista-info">
-                <h1>1) Tarjeta Madre</h1>
-                <h1>2) Procesador</h1>
-                <input type="button" value="Pagar" class="btn btn-primary btn-sm btn-sell" />
-            </div>
-
-        </div> 
-    </div>
-</section>
-
-<link href="~/Content/css/estilos-compatible.css" rel="stylesheet" />
+        for (var i = 0; i < 5; i++) {
+            $("#content-component-div").append(cardComponent);
+        }
+    </script>
+</body>
+</html>
