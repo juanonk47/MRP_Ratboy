@@ -11,46 +11,48 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.estatus)
-        </th>
-       
-        <th>
-            @Html.DisplayNameFor(model => model.comnetarios)
-        </th>
-        
-        <th>
-            @Html.DisplayNameFor(model => model.procesador.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tarjetaVideo.nombre)
-        </th>
-        <th></th>
-    </tr>
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.estatus)
+            </th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.estatus)
-        </td>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.comnetarios)
-        </td>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.procesador.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tarjetaVideo.nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idCuelloBotella }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idCuelloBotella }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idCuelloBotella })
-        </td>
-    </tr>
-}
+            <th>
+                @Html.DisplayNameFor(model => model.comnetarios)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.procesador.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tarjetaVideo.nombre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estatus)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.comnetarios)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.procesador.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tarjetaVideo.nombre)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.idCuelloBotella }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.idCuelloBotella }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.idCuelloBotella })
+                </td>
+            </tr>
+        }
 
 </table>

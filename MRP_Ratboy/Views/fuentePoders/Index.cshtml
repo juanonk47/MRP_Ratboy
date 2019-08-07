@@ -11,66 +11,68 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.costoProveedor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.costoVenta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.marca)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.modelo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.estatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.watts)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tamaño)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.certificado)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.costoProveedor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.costoVenta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.marca)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.modelo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.estatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.watts)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tamaño)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.certificado)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idFuentePoder }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idFuentePoder }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idFuentePoder })
-        </td>
-    </tr>
-}
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.costoProveedor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.costoVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.marca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.modelo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.estatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.watts)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tamaño)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.certificado)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.costoProveedor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.costoVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.marca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.modelo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.watts)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tamaño)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.certificado)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.idFuentePoder }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.idFuentePoder }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.idFuentePoder })
+                </td>
+            </tr>
+        }
 
 </table>

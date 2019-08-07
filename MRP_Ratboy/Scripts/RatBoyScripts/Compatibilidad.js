@@ -15,7 +15,7 @@ function getPlacaMadre() {
         success: function (respuesta) {
 
             for (var i = 0; i < respuesta.length; i++) {
-                var cardComponent = "<div class='card' style='width: 16rem; height: 18rem; margin: 5px; margin-left: 60px;'>" +
+                var cardComponent = "<div class='card' style='width: 25rem; height: 18rem; margin: 5px; margin-left: 30px; float:left; background: #D2D1E8; padding: 10px; border-radius: 5px'>" +
                     "<img class='card-img-top'>" +
                     "<div class='card-body'>" +
                     "<h5 class='card-title' id='nombre'>" + respuesta[i].Nombre + "</h5>" +
