@@ -42,46 +42,6 @@
         </div>
     </section>
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script>
-
-        $(document).ready(
-            getPlacaMAdre();
-        );
-
-        function getPlacaMAdre() {
-            $.ajax({
-	            url: 'https://localhost:44327/Compatibilidad/mostrarPlacasMadre',
-	            success: function(respuesta) {
-                
-                    for (var i = 0; i < respuesta.length; i++) {
-                        var cardComponent = "<div class='card' style='width: 16rem; height: 18rem; margin: 5px; margin-left: 60px;'>" +
-                                                "<img class='card-img-top'>" + 
-                                                "<div class='card-body'>" +
-                                                    "<h5 class='card-title' id='nombre'>" + respuesta[i].Nombre + "</h5>" +
-                                                    "<p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card'scontent.</p>" +
-                                                    "<input type='submit' class='btn btn-primary' id='"+respuesta[i].idPlacaMadre+"' value='Aceptar Componente' onclick='funciona()'/> " +
-                                                "</div>" +
-                                            "</div>";
-                        $("#content-component-div").append(cardComponent);
-                    }
-	            },
-	            error: function() {
-                    console.log("No se ha podido obtener la información");
-                }
-            });
-        }
-
-        function funciona() {
-            $(document).ready(function(){
-                $('body').on('click', '#content-component-div input', function(){
-                    alert($(this).attr('id'))
-                })
-            })
-        }
-
-        function mandarId() {
-            // Mandamos peticion para busqueda
-        }
-    </script>
+    <script src="~/Scripts/RatBoyScripts/Compatibilidad.js"></script>
 </body>
 </html>
