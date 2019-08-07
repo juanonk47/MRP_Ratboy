@@ -91,7 +91,7 @@ namespace MRP_Ratboy.Controllers
                 GeneracionSoportadaPlacaMadre generacionSoportadaPlacaMadre2 = new GeneracionSoportadaPlacaMadre();
                 generacionSoportadaPlacaMadre2.idGeneracionProcesador_FK = placaMadre.detalleGeneracionProcesador2;
                 generacionSoportadaPlacaMadre2.idPlacaMadre_FK = placa.idPlacaMadre;
-                db.GeneracionSoportadaPlacaMadre.Add(generacionSoportadaPlacaMadre);
+                db.GeneracionSoportadaPlacaMadre.Add(generacionSoportadaPlacaMadre2);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             

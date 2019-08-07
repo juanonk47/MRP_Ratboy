@@ -296,7 +296,7 @@
           <Property Name="maxVelocidadMemoria" Type="int" Nullable="false" />
           <Property Name="statusM2" Type="bit" Nullable="false" />
           <Property Name="cantidadM2" Type="int" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Gaming" Type="bit" Nullable="false" />
           <Property Name="idTamaño_FK" Type="int" Nullable="false" />
           <Property Name="PCIexpress" Type="int" Nullable="false" />
@@ -388,6 +388,7 @@
           <Property Name="nombreModelo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="estatus" Type="bit" Nullable="false" />
           <Property Name="cantidad" Type="int" />
+          <Property Name="watts" Type="int" />
         </EntityType>
         <EntityType Name="tipo_usuarios">
           <Key>
@@ -1841,7 +1842,7 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="maxVelocidadMemoria" Type="Int32" Nullable="false" />
           <Property Name="statusM2" Type="Boolean" Nullable="false" />
           <Property Name="cantidadM2" Type="Int32" Nullable="false" />
-          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Gaming" Type="Boolean" Nullable="false" />
           <Property Name="idTamaño_FK" Type="Int32" Nullable="false" />
           <Property Name="PCIexpress" Type="Int32" Nullable="false" />
@@ -1949,6 +1950,7 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="nombreModelo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="estatus" Type="Boolean" Nullable="false" />
           <Property Name="cantidad" Type="Int32" />
+          <Property Name="watts" Type="Int32" />
           <NavigationProperty Name="cuelloBotella" Relationship="BD_ArmadoPcModel.FK_cuelloBotella_tarjetaVideo" FromRole="tarjetaVideo" ToRole="cuelloBotella" />
           <NavigationProperty Name="Ensamble" Relationship="BD_ArmadoPcModel.FK_Ensamble_modeloVideo" FromRole="tarjetaVideo" ToRole="Ensamble" />
           <NavigationProperty Name="modeloVideo" Relationship="BD_ArmadoPcModel.FK_modeloVideo_tarjetaVideo" FromRole="tarjetaVideo" ToRole="modeloVideo" />
@@ -3010,6 +3012,7 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <EntitySetMapping Name="tarjetaVideo">
             <EntityTypeMapping TypeName="BD_ArmadoPcModel.tarjetaVideo">
               <MappingFragment StoreEntitySet="tarjetaVideo">
+                <ScalarProperty Name="watts" ColumnName="watts" />
                 <ScalarProperty Name="cantidad" ColumnName="cantidad" />
                 <ScalarProperty Name="estatus" ColumnName="estatus" />
                 <ScalarProperty Name="nombreModelo" ColumnName="nombreModelo" />

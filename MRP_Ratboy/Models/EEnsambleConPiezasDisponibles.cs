@@ -12,6 +12,8 @@ namespace MRP_Ratboy.Models
         public List<Almacenamiento>almacenamientos { get; set; }
         public List<Gabinete> gabinetes { get; set; }
         public List<tarjetaVideo> tarjetaVideos { get; set; }
+        public List<Disipadores> Disipadores { get; set; }
+        public List<fuentePoder> fuentePoders { get; set; }
 
     }
 }

@@ -73,24 +73,43 @@ namespace MRP_Ratboy.Controllers
                 eEnsambleConPiezasDisponibles.memoriaRAMs = memoriasRamFiltradas;
                 eEnsambleConPiezasDisponibles.almacenamientos = almacenamiento;
                 eEnsambleConPiezasDisponibles.tarjetaVideos = tarjetaVideos;
+                var Disipadores = entities.Disipadores.Where(x => x.cantidad > 0).ToList();
+                var fuentePoders = entities.fuentePoder.Where(x => x.cantidad > 0).ToList();
                 return Json(new
                 {
                     procesadors = procesadorFiltrados.Select(x=>new {
                         idProcesador = x.idProcesador,
-                        nombre = x.nombre
+                        nombre = x.nombre,
+                        watts = x.watts
                     }),
                     memoriaRAMs = memoriasRamFiltradas.Select(x=> new {
                         idRAM = x.idRAM,
-                        nombre = x.nombre
+                        nombre = x.nombre,
+                        watts = x.watts
                     }),
                     almacenamientos = almacenamiento.Select(x=> new {
                         idAlmacenamiento = x.idAlmacenamiento,
-                        nombre = x.nombre
+                        nombre = x.nombre,
+                        watts = 0
                     }),
                     tarjetaVideos = tarjetaVideos.Select(x=> new {
                         idTarjetaVideo = x.idTarjetaVideo,
-                        nombre = x.nombre
+                        nombre = x.nombre,
+                        watts = x.watts
+                    }),
+                    Disipadores = Disipadores.Select(x=> new
+                    {
+                        idDisipador = x.id,
+                        nombre = x.nombre,
+                        watts = 0
+                    }),
+                    fuentePoder = fuentePoders.Select(x=> new
+                    {
+                        idFuentePoder = x.idFuentePoder,
+                        modelo = x.modelo,
+                        watts = x.watts
                     })
+
                 }, JsonRequestBehavior.AllowGet);
                 
             }

@@ -32,6 +32,7 @@ namespace MRP_Ratboy.Models
         public string nombreModelo { get; set; }
         public bool estatus { get; set; }
         public Nullable<int> cantidad { get; set; }
+        public Nullable<int> watts { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cuelloBotella> cuelloBotella { get; set; }
