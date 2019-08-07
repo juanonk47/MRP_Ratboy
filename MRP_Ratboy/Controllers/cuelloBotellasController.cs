@@ -17,7 +17,7 @@ namespace MRP_Ratboy.Controllers
         // GET: cuelloBotellas
         public ActionResult Index()
         {
-            var cuelloBotella = db.cuelloBotella.Include(c => c.Ensamble).Include(c => c.procesador).Include(c => c.tarjetaVideo);
+            var cuelloBotella = db.cuelloBotella.Include(c => c.procesador).Include(c => c.tarjetaVideo);
             return View(cuelloBotella.ToList());
         }
 
@@ -39,7 +39,6 @@ namespace MRP_Ratboy.Controllers
         // GET: cuelloBotellas/Create
         public ActionResult Create()
         {
-            ViewBag.idEnsamble_FK = new SelectList(db.Ensamble, "idEnsamble", "idEnsamble");
             ViewBag.idProcesador_FK = new SelectList(db.procesador, "idProcesador", "nombre");
             ViewBag.idTarjetaVideo_FK = new SelectList(db.tarjetaVideo, "idTarjetaVideo", "nombre");
             return View();
@@ -50,16 +49,16 @@ namespace MRP_Ratboy.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idCuelloBotella,idEnsamble_FK,estatus,idProcesador_FK,modelo,comnetarios,idTarjetaVideo_FK")] cuelloBotella cuelloBotella)
+        public ActionResult Create([Bind(Include = "idCuelloBotella,estatus,idProcesador_FK,comnetarios,idTarjetaVideo_FK")] cuelloBotella cuelloBotella)
         {
             if (ModelState.IsValid)
             {
+                cuelloBotella.estatus = true;
                 db.cuelloBotella.Add(cuelloBotella);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idEnsamble_FK = new SelectList(db.Ensamble, "idEnsamble", "idEnsamble", cuelloBotella.idEnsamble_FK);
             ViewBag.idProcesador_FK = new SelectList(db.procesador, "idProcesador", "nombre", cuelloBotella.idProcesador_FK);
             ViewBag.idTarjetaVideo_FK = new SelectList(db.tarjetaVideo, "idTarjetaVideo", "nombre", cuelloBotella.idTarjetaVideo_FK);
             return View(cuelloBotella);
@@ -77,7 +76,6 @@ namespace MRP_Ratboy.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.idEnsamble_FK = new SelectList(db.Ensamble, "idEnsamble", "idEnsamble", cuelloBotella.idEnsamble_FK);
             ViewBag.idProcesador_FK = new SelectList(db.procesador, "idProcesador", "nombre", cuelloBotella.idProcesador_FK);
             ViewBag.idTarjetaVideo_FK = new SelectList(db.tarjetaVideo, "idTarjetaVideo", "nombre", cuelloBotella.idTarjetaVideo_FK);
             return View(cuelloBotella);
@@ -88,7 +86,7 @@ namespace MRP_Ratboy.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idCuelloBotella,idEnsamble_FK,estatus,idProcesador_FK,modelo,comnetarios,idTarjetaVideo_FK")] cuelloBotella cuelloBotella)
+        public ActionResult Edit([Bind(Include = "idCuelloBotella,estatus,idProcesador_FK,comnetarios,idTarjetaVideo_FK")] cuelloBotella cuelloBotella)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +94,6 @@ namespace MRP_Ratboy.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.idEnsamble_FK = new SelectList(db.Ensamble, "idEnsamble", "idEnsamble", cuelloBotella.idEnsamble_FK);
             ViewBag.idProcesador_FK = new SelectList(db.procesador, "idProcesador", "nombre", cuelloBotella.idProcesador_FK);
             ViewBag.idTarjetaVideo_FK = new SelectList(db.tarjetaVideo, "idTarjetaVideo", "nombre", cuelloBotella.idTarjetaVideo_FK);
             return View(cuelloBotella);

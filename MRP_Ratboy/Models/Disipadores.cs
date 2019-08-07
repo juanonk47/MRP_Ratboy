@@ -12,26 +12,22 @@ namespace MRP_Ratboy.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Persona
+    public partial class Disipadores
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Persona()
+        public Disipadores()
         {
-            this.Usuarios = new HashSet<Usuarios>();
-            this.UsuariosAdmin = new HashSet<UsuariosAdmin>();
+            this.Ensamble = new HashSet<Ensamble>();
         }
     
-        public int idPersona { get; set; }
+        public int id { get; set; }
         public string nombre { get; set; }
-        public string apePaterno { get; set; }
-        public string apeMaterno { get; set; }
-        public Nullable<int> edad { get; set; }
-        public string direccion { get; set; }
         public bool estatus { get; set; }
+        public int idMarca { get; set; }
+        public Nullable<int> cantidad { get; set; }
     
+        public virtual Marca Marca { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Usuarios> Usuarios { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UsuariosAdmin> UsuariosAdmin { get; set; }
+        public virtual ICollection<Ensamble> Ensamble { get; set; }
     }
 }

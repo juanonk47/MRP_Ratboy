@@ -114,6 +114,104 @@ namespace MRP_Ratboy.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public JsonResult mostrarPerfilesConEnsambles()
+        {
+            List<EPerfilesConEnsambles> ePerfilesConEnsambles = new List<EPerfilesConEnsambles>();
+            List<Perfil_Ensamble> perfil_Ensambles = this.db.Perfil_Ensamble.Include(x => x.Ensamble).Include(x => x.Perfiles).ToList();
+            foreach(Perfil_Ensamble item in perfil_Ensambles)
+            {
+                EPerfilesConEnsambles ePerfilesConEnsamble = new EPerfilesConEnsambles();
+                ePerfilesConEnsamble.ensambles = new List<Ensamble>();
+                PlacaMadre placaEnsamble = this.db.PlacaMadre.Find(item.Ensamble.idPlacaMadre_FK);
+                if (placaEnsamble.cantidad <= 0)
+                {
+                    break;
+                }
+                procesador procesadorEnsamble = this.db.procesador.Find(item.Ensamble.idProcesador_FK);
+                if (procesadorEnsamble.cantidad <= 0)
+                {
+                    break;
+                }
+                fuentePoder fuentePoder = this.db.fuentePoder.Find(item.Ensamble.idFuentePoder_FK);
+                if (fuentePoder.cantidad <= 0)
+                {
+                    break;
+                }
+                Gabinete gabineteEnsamble = this.db.Gabinete.Find(item.Ensamble.idGabinete_FK);
+                if (gabineteEnsamble.cantidad <= 0)
+                {
+                    break;
+                }
+                tarjetaVideo tarjetaVideoEnsamble = this.db.tarjetaVideo.Find(item.Ensamble.idTarjetaVideo_FK);
+                if (tarjetaVideoEnsamble.cantidad <= 0)
+                {
+                    break;
+                }
+                List<memoriaRAM_Ensamble> memoriaRAM_Ensambles = this.db.memoriaRAM_Ensamble.Include(x=>x.memoriaRAM).Where(X => X.idEnsamble_FK == item.Ensamble.idEnsamble).ToList();
+                bool existenciasme = true;
+                foreach(memoriaRAM_Ensamble memoria in memoriaRAM_Ensambles)
+                {
+                    if (memoria.memoriaRAM.cantidad <= 0)
+                    {
+                        existenciasme = false;
+                    }
+                }
+                if (!existenciasme)
+                {
+                    break;
+                }
+                List<Almacenamiento_Ensamble> almacenamiento_Ensambles = this.db.Almacenamiento_Ensamble.Include(x => x.Almacenamiento).Where(x => x.idEnsamble_FK == item.idEnsamble_FK).ToList();
+                bool existenciaALM = true;
+                foreach(Almacenamiento_Ensamble almacenamiento in almacenamiento_Ensambles)
+                {
+                    if (almacenamiento.Almacenamiento.cantidad <= 0)
+                    {
+                        existenciaALM = false;
+                    }
+                }
+                if (!existenciaALM)
+                {
+                    break;
+                }
+                Ensamble ensamble = new Ensamble();
+                ensamble.procesador = procesadorEnsamble;
+                ensamble.PlacaMadre = placaEnsamble;
+                ensamble.Gabinete = gabineteEnsamble;
+                ensamble.fuentePoder = fuentePoder;
+                if (item.Ensamble.Disipadores.cantidad <= 0)
+                {
+                    break;
+                }
+                ensamble.Disipadores = item.Ensamble.Disipadores;
+                ePerfilesConEnsamble.ensambles.Add(ensamble);
+                ePerfilesConEnsamble.Perfiles = item.Perfiles;
+                int posicion = checarPerfilExiste(ePerfilesConEnsambles, ePerfilesConEnsamble);
+                if ( posicion>= 0)
+                {
+                    ePerfilesConEnsambles.ElementAt(posicion).ensambles.Add(ensamble);
+                }
+                else
+                {
+                    ePerfilesConEnsambles.Add(ePerfilesConEnsamble);
+                }
+                
+            }
+            return Json(ePerfilesConEnsambles);
+
+        }
+        public int checarPerfilExiste(List<EPerfilesConEnsambles> ePerfilesConEnsambles, EPerfilesConEnsambles ePerfilesCon)
+        {
+            int i = 0;
+            foreach (EPerfilesConEnsambles item in ePerfilesConEnsambles)
+            {
+                if (item.Perfiles.idPerfil == ePerfilesCon.Perfiles.idPerfil)
+                {
+                    return i;
+                }
+                i++;
+            }
+            return -1;
+        }
 
         protected override void Dispose(bool disposing)
         {

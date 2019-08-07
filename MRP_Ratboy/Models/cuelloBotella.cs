@@ -15,14 +15,11 @@ namespace MRP_Ratboy.Models
     public partial class cuelloBotella
     {
         public int idCuelloBotella { get; set; }
-        public int idEnsamble_FK { get; set; }
         public bool estatus { get; set; }
         public int idProcesador_FK { get; set; }
-        public string modelo { get; set; }
         public string comnetarios { get; set; }
         public int idTarjetaVideo_FK { get; set; }
     
-        public virtual Ensamble Ensamble { get; set; }
         public virtual procesador procesador { get; set; }
         public virtual tarjetaVideo tarjetaVideo { get; set; }
     }

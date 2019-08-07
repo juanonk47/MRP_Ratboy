@@ -179,6 +179,9 @@
     <Compile Include="Models\detalle_pedido.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Disipadores.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\EEnsambleConListMemoriaRamAlmacenamiento.cs" />
     <Compile Include="Models\Ensamble.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
@@ -198,6 +201,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EntityRatboy.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\EPerfilesConEnsambles.cs" />
     <Compile Include="Models\EUsuarioPersona.cs" />
     <Compile Include="Controllers\TamañoController.cs" />
     <Compile Include="Controllers\tipoMemoriasController.cs" />
@@ -248,6 +252,7 @@
     <Compile Include="Models\Persona.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PlacaConDosGeneraciones.cs" />
     <Compile Include="Models\PlacaMadre.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
@@ -288,6 +293,9 @@
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuarios.cs">
+      <DependentUpon>EntityRatboy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UsuariosAdmin.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UsuariosCliente.cs">
@@ -668,6 +676,7 @@
     <Content Include="Views\Admin\Panel.cshtml" />
     <Content Include="Views\Shared\_LayoutMenuAdmin.cshtml" />
     <Content Include="Views\Compatibilidad\Index.cshtml" />
+    <Content Include="Views\PlacaMadres\SeleccionarGeneracion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

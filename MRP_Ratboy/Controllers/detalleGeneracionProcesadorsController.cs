@@ -50,6 +50,7 @@ namespace MRP_Ratboy.Controllers
         {
             if (ModelState.IsValid)
             {
+                detalleGeneracionProcesador.estatus = true;
                 db.detalleGeneracionProcesador.Add(detalleGeneracionProcesador);
                 db.SaveChanges();
                 return RedirectToAction("Index");

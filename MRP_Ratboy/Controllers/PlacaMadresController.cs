@@ -39,6 +39,8 @@ namespace MRP_Ratboy.Controllers
         // GET: PlacaMadres/Create
         public ActionResult Create()
         {
+            ViewBag.detalleGeneracionProcesador = new SelectList(this.db.detalleGeneracionProcesador, "idGeneracionProcesador", "DetalleGeneracionProcesador1");
+            ViewBag.detalleGeneracionProcesador2 = new SelectList(this.db.detalleGeneracionProcesador, "idGeneracionProcesador", "DetalleGeneracionProcesador1");
             ViewBag.idSocket_FK = new SelectList(db.socket, "idSocket", "nombre");
             ViewBag.idTamaño_FK = new SelectList(db.Tamaño, "idTamaño", "nombreTamaño");
             ViewBag.idtipoMemoria = new SelectList(db.tipoMemoria, "idTipoMemoria", "tipo");
@@ -51,16 +53,46 @@ namespace MRP_Ratboy.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idPlacaMadre,Nombre,idtipoMemoria,maxVelocidadMemoria,statusM2,cantidadM2,Descripcion,Gaming,idTamaño_FK,codBarras,PCIexpress,SATA,costoProveedor,costoVenta,marca,modelo,watts,idSocket_FK")] PlacaMadre placaMadre)
+        public ActionResult Create([Bind(Include = "idPlacaMadre,Nombre,idtipoMemoria,maxVelocidadMemoria,statusM2,cantidadM2,Descripcion,Gaming,idTamaño_FK,codBarras,PCIexpress,SATA,costoProveedor,costoVenta,marca,modelo,watts,idSocket_FK,detalleGeneracionProcesador,detalleGeneracionProcesador2")] PlacaConDosGeneraciones placaMadre)
         {
-            placaMadre.estatus = true;
-            if (ModelState.IsValid)
-            {
-                db.PlacaMadre.Add(placaMadre);
+            
+                PlacaMadre placa = new PlacaMadre();
+                placa.cantidad = 0;
+                placa.cantidadM2 = placaMadre.cantidadM2;
+                placa.codBarra = placaMadre.codBarras;
+                placa.costoProveedor = placaMadre.costoProveedor;
+                placa.costoVenta = placaMadre.costoVenta;
+                placa.Descripcion = placaMadre.Descripcion;
+                placa.estatus = true;
+                placa.Gaming = placaMadre.Gaming;
+                placa.idSocket_FK = placaMadre.idSocket_FK;
+                placa.idTamaño_FK = placaMadre.idTamaño_FK;
+                placa.idtipoMemoria = placaMadre.idtipoMemoria;
+                placa.marca = placaMadre.marca;
+                placa.maxVelocidadMemoria = placaMadre.maxVelocidadMemoria;
+                placa.modelo = placaMadre.modelo;
+                placa.Nombre = placaMadre.Nombre;
+                placa.PCIexpress = placaMadre.PCIexpress;
+                placa.SATA = placaMadre.SATA;
+                placa.statusM2 = placaMadre.statusM2;
+                placa.watts = placaMadre.watts;
+                db.PlacaMadre.Add(placa);
+                db.SaveChanges();
+                GeneracionSoportadaPlacaMadre generacionSoportadaPlacaMadre = new GeneracionSoportadaPlacaMadre();
+                generacionSoportadaPlacaMadre.idGeneracionProcesador_FK = placaMadre.detalleGeneracionProcesador;
+                generacionSoportadaPlacaMadre.idPlacaMadre_FK = placa.idPlacaMadre;
+                db.GeneracionSoportadaPlacaMadre.Add(generacionSoportadaPlacaMadre);
+                db.SaveChanges();
+                GeneracionSoportadaPlacaMadre generacionSoportadaPlacaMadre2 = new GeneracionSoportadaPlacaMadre();
+                generacionSoportadaPlacaMadre.idGeneracionProcesador_FK = placaMadre.detalleGeneracionProcesador2;
+                generacionSoportadaPlacaMadre.idPlacaMadre_FK = placa.idPlacaMadre;
+                db.GeneracionSoportadaPlacaMadre.Add(generacionSoportadaPlacaMadre);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
+            
 
+            ViewBag.detalleGeneracionProcesador = new SelectList(this.db.detalleGeneracionProcesador, "idGeneracionProcesador", "DetalleGeneracionProcesador1");
+            ViewBag.detalleGeneracionProcesador2 = new SelectList(this.db.detalleGeneracionProcesador, "idGeneracionProcesador", "DetalleGeneracionProcesador1");
             ViewBag.idSocket_FK = new SelectList(db.socket, "idSocket", "nombre", placaMadre.idSocket_FK);
             ViewBag.idTamaño_FK = new SelectList(db.Tamaño, "idTamaño", "nombreTamaño", placaMadre.idTamaño_FK);
             ViewBag.idtipoMemoria = new SelectList(db.tipoMemoria, "idTipoMemoria", "tipo", placaMadre.idtipoMemoria);
@@ -141,5 +173,17 @@ namespace MRP_Ratboy.Controllers
             }
             base.Dispose(disposing);
         }
+        [HttpGet]
+        public ActionResult SeleccionarGeneracion(int id)
+        {
+            PlacaMadre placaMadre = this.db.PlacaMadre.Find(id);
+            List<detalleGeneracionProcesador> detalleGeneracionProcesador = this.db.detalleGeneracionProcesador.ToList();
+            detalleGeneracionProcesador d = new detalleGeneracionProcesador();
+            
+            return View();
+        }
+       
+
+
     }
 }

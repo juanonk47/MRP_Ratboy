@@ -12,13 +12,16 @@ namespace MRP_Ratboy.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class UsuariosCliente
+    public partial class UsuariosAdmin
     {
-        public int idUserCliente { get; set; }
-        public string nombre { get; set; }
-        public string apellidos { get; set; }
+        public int idUserAdmin { get; set; }
+        public int idPersona { get; set; }
+        public int idRol { get; set; }
         public string correo { get; set; }
         public string password { get; set; }
-        public Nullable<bool> isValid { get; set; }
+        public bool status { get; set; }
+    
+        public virtual Persona Persona { get; set; }
+        public virtual UserRole UserRole { get; set; }
     }
 }

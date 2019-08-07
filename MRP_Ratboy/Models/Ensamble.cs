@@ -18,7 +18,6 @@ namespace MRP_Ratboy.Models
         public Ensamble()
         {
             this.Almacenamiento_Ensamble = new HashSet<Almacenamiento_Ensamble>();
-            this.cuelloBotella = new HashSet<cuelloBotella>();
             this.memoriaRAM_Ensamble = new HashSet<memoriaRAM_Ensamble>();
             this.pedido_ensamble = new HashSet<pedido_ensamble>();
             this.Perfil_Ensamble = new HashSet<Perfil_Ensamble>();
@@ -31,14 +30,15 @@ namespace MRP_Ratboy.Models
         public int idTarjetaVideo_FK { get; set; }
         public int idGabinete_FK { get; set; }
         public bool estatus { get; set; }
+        public Nullable<int> idDisipador { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Almacenamiento_Ensamble> Almacenamiento_Ensamble { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<cuelloBotella> cuelloBotella { get; set; }
+        public virtual Disipadores Disipadores { get; set; }
         public virtual fuentePoder fuentePoder { get; set; }
         public virtual Gabinete Gabinete { get; set; }
-        public virtual modeloVideo modeloVideo { get; set; }
+        public virtual tarjetaVideo tarjetaVideo { get; set; }
+        public virtual PlacaMadre PlacaMadre { get; set; }
         public virtual procesador procesador { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<memoriaRAM_Ensamble> memoriaRAM_Ensamble { get; set; }
