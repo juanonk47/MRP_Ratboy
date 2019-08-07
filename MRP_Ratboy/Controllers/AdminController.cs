@@ -22,7 +22,7 @@ namespace MRP_Ratboy.Controllers
             if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
             {
                 BD_ArmadoPcEntities db = new BD_ArmadoPcEntities();
-                var user = db.Usuarios.FirstOrDefault(e => e.correo == email && e.password == password);
+                var user = db.UsuariosAdmin.FirstOrDefault(e => e.correo == email && e.password == password);
                 // si usuario es diferente de null
                 if (user != null)
                 {

@@ -1601,6 +1601,18 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <NavigationProperty Name="Marca" Relationship="BD_ArmadoPcModel.FK_Disipadores_Marca" FromRole="Disipadores" ToRole="Marca" />
           <NavigationProperty Name="Ensamble" Relationship="BD_ArmadoPcModel.FK_Ensamble_Disipadores" FromRole="Disipadores" ToRole="Ensamble" />
         </EntityType>
+        <EntityType Name="Disipadores">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estatus" Type="Boolean" Nullable="false" />
+          <Property Name="idMarca" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" />
+          <NavigationProperty Name="Marca" Relationship="Self.FK_Disipadores_Marca" FromRole="Disipadores" ToRole="Marca" />
+          <NavigationProperty Name="Ensamble" Relationship="Self.FK_Ensamble_Disipadores" FromRole="Disipadores" ToRole="Ensamble" />
+        </EntityType>
         <EntityType Name="Ensamble">
           <Key>
             <PropertyRef Name="idEnsamble" />
@@ -2707,6 +2719,17 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Disipadores">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.Disipadores">
+              <MappingFragment StoreEntitySet="Disipadores">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="idMarca" ColumnName="idMarca" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Ensamble">
             <EntityTypeMapping TypeName="BD_ArmadoPcModel.Ensamble">
               <MappingFragment StoreEntitySet="Ensamble">
@@ -3076,6 +3099,18 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
                 <ScalarProperty Name="idRol" ColumnName="idRol" />
                 <ScalarProperty Name="idPersona" ColumnName="idPersona" />
                 <ScalarProperty Name="idUserAdmin" ColumnName="idUserAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsuariosAdmin">
+            <EntityTypeMapping TypeName="BD_ArmadoPcModel.UsuariosAdmin">
+              <MappingFragment StoreEntitySet="UsuariosAdmin">
+                <ScalarProperty Name="idUserAdmin" ColumnName="idUserAdmin" />
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="status" ColumnName="status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

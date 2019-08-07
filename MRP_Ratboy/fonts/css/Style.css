@@ -60,16 +60,17 @@
 */
 
 body {
-  background: #599fd9;
-  background: -webkit-linear-gradient(to right, #599fd9, #c2e59c);
-  background: linear-gradient(to right, #599fd9, #c2e59c);
-  min-height: 100vh;
-  overflow-x: hidden;
+    background: #30DDB2;
+    background: -webkit-linear-gradient(to right, #30DDB2, #09B3EF);
+    background: linear-gradient(to right, #30DDB2, #09B3EF);
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
+
 .separator {
-  margin: 3rem 0;
-  border-bottom: 1px dashed #fff;
+    margin: 3rem 0;
+    border-bottom: 1px dashed #fff;
 }
 
 .text-uppercase {
