@@ -4,6 +4,7 @@
     <link rel="stylesheet" type="text/css" href="~/fonts/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="~/fonts/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="~/fonts/css/Style.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- Enlace para iconos -->
     <script src="https://kit.fontawesome.com/ce32f95b11.js"></script>
     <title>RATBOY - Admin</title>
@@ -22,60 +23,130 @@
                         </div>
                     </div>
                 </div>
-
-                <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Menú</p>
-
+                <!--USUARIOS-->
+                <p class="text-dark font-weight-bold text-uppercase px-3 small pb-0 mb-0">Usuarios</p>
                 <ul class="nav flex-column bg-white mb-0">
                     <li class="nav-item">
-                        <i class="fas fa-chart-line"></i>
-                        @Html.ActionLink("Overview", "Index", "Usuarios")
+                        <a href="@Url.Action("Index","UsuariosAdmins")" class="nav-link text-dark font-italic">
+                            <i class="fas fa-chart-line pr-2"></i>
+                            Overview
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <i class="fas fa-user-friends"></i>
-                        @Html.ActionLink("Usuarios", "Index", "UsuariosAdmins")
+                        <a href="@Url.Action("Index","Usuarios")" class="nav-link text-dark font-italic">
+                            <i class="fas fa-user-friends pr-2"></i>
+                            Clientes
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <i class="fas fa-box-open"></i>
-                        @Html.ActionLink("Inventario", "Index", "Usuarios")
-                    </li>
-                    <li class="nav-item">
-                        <i class="fas fa-box-open"></i>
-                        @Html.ActionLink("Proveedores", "Index", "proveedors")
-                    </li>
-                    <li class="nav-item">
-                        <i class="fas fa-box-open"></i>
-                        @Html.ActionLink("Monitores", "Index", "Monitors")
-                    </li>
-                    <li class="nav-item">
-                        <i class="fas fa-box-open"></i>
-                        @Html.ActionLink("Accesorios", "Index", "Accesorios")
-                    </li>
-                    <li class="nav-item">
-                        <i class="fas fa-puzzle-piece"></i>
-                        @Html.ActionLink("Ensamble", "Index", "Usuarios")
+                        <a href="@Url.Action("Index","UsuariosAdmins")" class="nav-link text-dark font-italic">
+                            <i class="fas fa-robot pr-2"></i>
+                            Empleados
+                        </a>
                     </li>
                 </ul>
 
-                <p class="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">Pedidos</p>
+                <!--COMPONENTES-->
+                <p class="text-dark font-weight-bold text-uppercase px-3 small pb-0 mb-0">Componentes</p>
 
                 <ul class="nav flex-column bg-white mb-0">
                     <li class="nav-item">
-                        <i class="fas fa-truck-moving"></i>
-                        @Html.ActionLink("Pedidos", "Index", "Usuarios")
+                        <a href="@Url.Action("Index","procesadors")" class="nav-link text-dark font-italic">
+                            <i class="fas fa-microchip pr-2"></i>
+                            Procesador
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index","Disipador")" class="nav-link text-dark font-italic">
+                            <i class="fas fa-temperature-low pr-2"></i>
+                            Disipador
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index","memoriaRAMs")" class="nav-link text-dark font-italic">
+                            <i class="fas fa-memory pr-2"></i>
+                            Memoria RAM
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index","Almacenamiento")" class="nav-link text-dark font-italic">
+                            <i class="fas fa-hdd pr-2"></i>
+                            Almacenamiento
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index","Gabinetes")" class="nav-link text-dark font-italic">
+                            <i class="fas fa-chess-rook pr-2"></i>
+                            Gabinete
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index","fuentePoders")" class="nav-link text-dark font-italic">
+                            <i class="fas fa-plug pr-2"></i>
+                            Fuente de poder
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index","tarjetaVideos")" class="nav-link text-dark font-italic">
+                            <i class="fas fa-photo-video pr-2"></i>
+                            Tarjeta de vídeo
+                        </a>
+                    </li>
+                </ul>
+
+                <!--ENSAMBLES-->
+                <p class="text-dark font-weight-bold text-uppercase px-3 small pb-0 mb-0">Ensambles</p>
+
+                <ul class="nav flex-column bg-white mb-0">
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index","Ensamble")" class="nav-link text-dark font-italic">
+                            <i class="fas fa-puzzle-piece pr-2"></i>
+                            PCs Armadas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index","Perfiles")" class="nav-link text-dark font-italic">
+                            <i class="fas fa-id-badge pr-2"></i>
+                            Perfiles
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index","Perfil_Ensamble")" class="nav-link text-dark font-italic">
+                            <i class="far fa-id-badge pr-2"></i>
+                            Perfil ensamble
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index","cuelloBotellas")" class="nav-link text-dark font-italic">
+                            <i class="fas fa-wine-bottle pr-2"></i>
+                            Cuellos de botella
+                        </a>
+                    </li>
+                </ul>
+
+                <!--PEDIDOS-->
+                <p class="text-dark font-weight-bold text-uppercase px-3 small pb-0 mb-0">Pedidos</p>
+
+                <ul class="nav flex-column bg-white mb-0">
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index","Pedidos")" class="nav-link text-dark font-italic">
+                            <i class="fas fa-truck-moving pr-2"></i>
+                            Pedidos pendientes
+                        </a>
                     </li>
 
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item">
-                            <a href="/Admin/Logout" class="nav-link text-dark font-italic">
-                                <i class="fas fa-sign-out-alt"></i>
+                            <a href="@Url.Action("Logout","Admin")" class="nav-link text-dark font-italic">
+                                <i class="fas fa-sign-out-alt pr-2"></i>
                                 Cerrar sesión
                             </a>
                         </li>
                     }
                 </ul>
-                <footer>
-                    <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+                <footer class="bg-dark mb-0 p-2">
+                    <p class="text-white font-weight-bold">&copy; @DateTime.Now.Year - Ratboy</p>
                 </footer>
             </div>
             <!-- End vertical navbar -->
