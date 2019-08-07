@@ -11,66 +11,68 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.capacidad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.costoProveedor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.costoVenta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.estatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.rpm)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Marca1.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoAlmacenamiento.nombre)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.capacidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.costoProveedor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.costoVenta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.estatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.rpm)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Marca1.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoAlmacenamiento.nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idAlmacenamiento }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idAlmacenamiento }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idAlmacenamiento })
-        </td>
-    </tr>
-}
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.capacidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.costoProveedor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.costoVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.estatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rpm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Marca1.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoAlmacenamiento.nombre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.capacidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.costoProveedor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.costoVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.rpm)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Marca1.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoAlmacenamiento.nombre)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.idAlmacenamiento }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.idAlmacenamiento }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.idAlmacenamiento })
+                </td>
+            </tr>
+        }
 
 </table>

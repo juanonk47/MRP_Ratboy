@@ -11,30 +11,32 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DetalleGeneracionProcesador1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.estatus)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DetalleGeneracionProcesador1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.estatus)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idGeneracionProcesador }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idGeneracionProcesador }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idGeneracionProcesador })
-        </td>
-    </tr>
-}
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DetalleGeneracionProcesador1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.estatus)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DetalleGeneracionProcesador1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estatus)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.idGeneracionProcesador }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.idGeneracionProcesador }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.idGeneracionProcesador })
+                </td>
+            </tr>
+        }
 
 </table>

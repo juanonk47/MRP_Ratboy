@@ -11,72 +11,74 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cantidad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.velocidad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.estatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.costoVendedor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.costoVenta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.marca)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.watts)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tipoMemoria.tipo)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cantidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.velocidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.estatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.costoVendedor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.costoVenta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.marca)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.watts)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tipoMemoria.tipo)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idRAM }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idRAM }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idRAM })
-        </td>
-    </tr>
-}
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.velocidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.estatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.costoVendedor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.costoVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.marca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.watts)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tipoMemoria.tipo)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cantidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.velocidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.costoVendedor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.costoVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.marca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.watts)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tipoMemoria.tipo)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.idRAM }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.idRAM }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.idRAM })
+                </td>
+            </tr>
+        }
 
 </table>

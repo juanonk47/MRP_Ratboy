@@ -11,38 +11,40 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nivel)
-        </th>
-        
-        <th>
-            @Html.DisplayNameFor(model => model.estatus)
-        </th>
-        <th></th>
-    </tr>
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nivel)
+            </th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nivel)
-        </td>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.estatus)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idPerfil }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idPerfil }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idPerfil })
-        </td>
-    </tr>
-}
+            <th>
+                @Html.DisplayNameFor(model => model.estatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nivel)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.estatus)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.idPerfil }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.idPerfil }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.idPerfil })
+                </td>
+            </tr>
+        }
 
 </table>
