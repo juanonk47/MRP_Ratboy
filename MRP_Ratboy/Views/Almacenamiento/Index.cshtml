@@ -5,10 +5,11 @@
     Layout = "~/Views/Shared/_LayoutMenuAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Almacenamiento</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+<p class="btn btn-info" style="cursor:pointer;">
+    @Html.ActionLink("NUEVO", "Create", null, 
+     new { @style="text-decoration: none; color: #fff;" })
 </p>
 <table class="table">
     <thead class="thead-light">
@@ -32,10 +33,10 @@
                 RPM
             </th>
             <th>
-                MARCA
+                Marca
             </th>
             <th>
-                tipo de almacenamiento
+                Tipo de almacenamiento
             </th>
             <th>Acciones</th>
         </tr>
@@ -68,9 +69,9 @@
                     @Html.DisplayFor(modelItem => item.TipoAlmacenamiento.nombre)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.idAlmacenamiento }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.idAlmacenamiento }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.idAlmacenamiento })
+                    @Html.ActionLink("Editar", "Edit", new { id = item.idAlmacenamiento }, new { @class="btn btn-info" }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.idAlmacenamiento }, new { @class="btn btn-info" }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.idAlmacenamiento }, new { @class="btn btn-danger" })
                 </td>
             </tr>
         }

@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/ce32f95b11.js"></script>
     <title>RATBOY - Admin</title>
 </head>
-<body>
+<body style="text-decoration: none!important">
     <div class="row">
         <div class="container">
             <!-- Vertical navbar -->
@@ -56,12 +56,12 @@
                             Procesador
                         </a>
                     </li>
-                    <li class="nav-item">
+                    @*<li class="nav-item">
                         <a href="@Url.Action("Index","Disipador")" class="nav-link text-dark font-italic">
                             <i class="fas fa-temperature-low pr-2"></i>
                             Disipador
                         </a>
-                    </li>
+                    </li>*@
                     <li class="nav-item">
                         <a href="@Url.Action("Index","memoriaRAMs")" class="nav-link text-dark font-italic">
                             <i class="fas fa-memory pr-2"></i>
@@ -125,15 +125,15 @@
                 </ul>
 
                 <!--PEDIDOS-->
-                <p class="text-dark font-weight-bold text-uppercase px-3 small pb-0 mb-0">Pedidos</p>
+                @*<p class="text-dark font-weight-bold text-uppercase px-3 small pb-0 mb-0">Pedidos</p>*@
 
                 <ul class="nav flex-column bg-white mb-0">
-                    <li class="nav-item">
+                    @*<li class="nav-item">
                         <a href="@Url.Action("Index","Pedidos")" class="nav-link text-dark font-italic">
                             <i class="fas fa-truck-moving pr-2"></i>
                             Pedidos pendientes
                         </a>
-                    </li>
+                    </li>*@
 
                     @if (User.Identity.IsAuthenticated)
                     {
