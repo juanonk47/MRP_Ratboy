@@ -184,6 +184,7 @@
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EEnsambleConListMemoriaRamAlmacenamiento.cs" />
+    <Compile Include="Models\EEnsambleConPiezasDisponibles.cs" />
     <Compile Include="Models\Ensamble.cs">
       <DependentUpon>EntityRatboy.tt</DependentUpon>
     </Compile>

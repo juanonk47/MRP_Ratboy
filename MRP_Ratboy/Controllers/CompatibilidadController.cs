@@ -23,12 +23,13 @@ namespace MRP_Ratboy.Controllers
             {
                 idPlacaMadre = x.idPlacaMadre,
                 Nombre = x.Nombre,
+                Descripcion = x.Descripcion
             }),JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
         //RECIBO EL ID DE UNA PLACA MADRE PARA PODER FILTRAR LOS PROCESADORES DISPONIBLES
-        public ActionResult piezasSoportadas(int id)
+        public JsonResult piezasSoportadas(int id)
         {
             PlacaMadre placaMadre = this.entities.PlacaMadre.Find(id);
 
@@ -44,13 +45,12 @@ namespace MRP_Ratboy.Controllers
                     procesadorFiltrados.AddRange(procesadores.ToList());
                 }
                 //VIEWBAG PARA PODER PONER EL COMBOBOX
-                ViewBag.procesadoresDisponibles = new SelectList(procesadorFiltrados, "idProcesador", "nombre");
 
 
                 //Filtrado de memorias ram
                 var memorias = this.entities.tipoMemoria.Where(x => x.idTipoMemoria == placaMadre.idtipoMemoria);
                 List<tipoMemoria> tiposdememoria = memorias.ToList();
-                List<memoriaRAM> allMemoriasRam = this.entities.memoriaRAM.ToList();
+                List<memoriaRAM> allMemoriasRam = this.entities.memoriaRAM.Where(x=>x.cantidad>0).ToList();
                 List<memoriaRAM> memoriasRamFiltradas = new List<memoriaRAM>();
                 foreach (tipoMemoria tipo in tiposdememoria)
                 {
@@ -65,22 +65,36 @@ namespace MRP_Ratboy.Controllers
                 //COMBO BOX DE LAS MEMORIAS RAM DISPONIBLES
                 ViewBag.memoriasRamDisponibles = new SelectList(memoriasRamFiltradas, "idRAM","nombre");
                 Ensamble e = new Ensamble();
-                
+                List<tarjetaVideo> tarjetaVideos = this.entities.tarjetaVideo.Where(x => x.cantidad > 0).ToList();
 
                 var almacenamiento = this.entities.Almacenamiento.ToList();
-                Almacenamiento a = new Almacenamiento();
-                ViewBag.almacenamientoDisponible = new SelectList(almacenamiento, "idAlmacenamiento", "nombre");
-                ViewBag.GabinetesDisponibles = new SelectList(this.entities.Gabinete.ToList(), "idGabinete", "modelo");
-                ViewBag.TarjetaDeVideoDisponible = new SelectList(this.entities.tarjetaVideo.ToList(), "idTarjetaVideo", "nombre");
-                return View();
+                EEnsambleConPiezasDisponibles eEnsambleConPiezasDisponibles = new EEnsambleConPiezasDisponibles();
+                eEnsambleConPiezasDisponibles.procesadors = procesadorFiltrados;
+                eEnsambleConPiezasDisponibles.memoriaRAMs = memoriasRamFiltradas;
+                eEnsambleConPiezasDisponibles.almacenamientos = almacenamiento;
+                eEnsambleConPiezasDisponibles.tarjetaVideos = tarjetaVideos;
+                return Json(new
+                {
+                    procesadors = procesadorFiltrados.Select(x=>new {
+                        idProcesador = x.idProcesador,
+                        nombre = x.nombre
+                    }),
+                    memoriaRAMs = memoriasRamFiltradas.Select(x=> new {
+                        idRAM = x.idRAM,
+                        nombre = x.nombre
+                    }),
+                    almacenamientos = almacenamiento.Select(x=> new {
+                        idAlmacenamiento = x.idAlmacenamiento,
+                        nombre = x.nombre
+                    }),
+                    tarjetaVideos = tarjetaVideos.Select(x=> new {
+                        idTarjetaVideo = x.idTarjetaVideo,
+                        nombre = x.nombre
+                    })
+                }, JsonRequestBehavior.AllowGet);
                 
             }
-            else
-            {
-                ViewBag.ErroPlacaMadre = "NO SE ENCONTRO LA PLACA MADRE";
-                return View(placaMadre);
-            }
-            return View();
+            return null;
         }
         public ActionResult IndexPlacaMadre()
         {

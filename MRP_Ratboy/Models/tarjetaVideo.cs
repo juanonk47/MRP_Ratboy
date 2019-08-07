@@ -25,10 +25,10 @@ namespace MRP_Ratboy.Models
         public int idTarjetaVideo { get; set; }
         public string nombre { get; set; }
         public string arquitectura { get; set; }
-        public int cudaCore { get; set; }
-        public int frameBuffer { get; set; }
-        public int velocidadReloj { get; set; }
-        public int velocidadMemoria { get; set; }
+        public decimal cudaCore { get; set; }
+        public decimal frameBuffer { get; set; }
+        public decimal velocidadReloj { get; set; }
+        public decimal velocidadMemoria { get; set; }
         public string nombreModelo { get; set; }
         public bool estatus { get; set; }
         public Nullable<int> cantidad { get; set; }

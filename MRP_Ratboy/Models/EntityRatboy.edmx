@@ -381,10 +381,10 @@
           <Property Name="idTarjetaVideo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="arquitectura" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="cudaCore" Type="int" Nullable="false" />
-          <Property Name="frameBuffer" Type="int" Nullable="false" />
-          <Property Name="velocidadReloj" Type="int" Nullable="false" />
-          <Property Name="velocidadMemoria" Type="int" Nullable="false" />
+          <Property Name="cudaCore" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="frameBuffer" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="velocidadReloj" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="velocidadMemoria" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="nombreModelo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="estatus" Type="bit" Nullable="false" />
           <Property Name="cantidad" Type="int" />
@@ -1942,10 +1942,10 @@ advertencia 6002: La tabla o vista 'BD_ArmadoPc.dbo.URLImagenes' no tiene defini
           <Property Name="idTarjetaVideo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="arquitectura" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="cudaCore" Type="Int32" Nullable="false" />
-          <Property Name="frameBuffer" Type="Int32" Nullable="false" />
-          <Property Name="velocidadReloj" Type="Int32" Nullable="false" />
-          <Property Name="velocidadMemoria" Type="Int32" Nullable="false" />
+          <Property Name="cudaCore" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="frameBuffer" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="velocidadReloj" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="velocidadMemoria" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="nombreModelo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="estatus" Type="Boolean" Nullable="false" />
           <Property Name="cantidad" Type="Int32" />
