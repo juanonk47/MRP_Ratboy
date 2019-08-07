@@ -1,35 +1,39 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutMenuAdmin.cshtml";
+    Layout = "~/Views/Shared/_LayoutLoginAdmin.cshtml";
 }
 
-<h2>INICIO DE SESIÓN ADMINISTRADOR</h2>
 
 <br />
 <br />
 
 <div class="container">
-
-    @{
-        if (!string.IsNullOrEmpty(ViewBag.Message))
-        {
-            // message tiene un valor
-            <div class="alert alert-danger">@ViewBag.Message</div>
+    <div class="well">
+        @{
+            if (!string.IsNullOrEmpty(ViewBag.Message))
+            {
+                // message tiene un valor
+                <div class="alert alert-danger">@ViewBag.Message</div>
+                <div class="alert alert-dismissible alert-danger">
+                    <strong>@ViewBag.Message</strong>
+                </div>
+            }
         }
-    }
 
     <form action="/Admin/Login" method="post">
+        <legend>INICIO DE SESION</legend>
         <div class="form-group">
             <label>Ingresa tu email</label>
-            <input type="text" name="email" value="" />
+            <input type="text" name="email" value="" class="form-control" />
         </div>
         <div class="form-group">
             <label>Ingresa tu contraseña</label>
-            <input type="password" name="password" value="" />
+            <input type="password" name="password" value="" class="form-control" />
         </div>
         <div class="form-group">
-            <button>Iniciar sesión</button>
+            <button class="btn btn-default btn-lg">Iniciar sesión</button>
         </div>
     </form>
-</div>
+        </div>
+    </div>
