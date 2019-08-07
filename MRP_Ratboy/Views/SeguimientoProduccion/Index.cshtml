@@ -1,0 +1,40 @@
+﻿@model MRP_Ratboy.Models.PantallaDeProduccion
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMenuAdmin.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Dar avance a ensamble", "Avance")
+</p>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>En espera</th>
+            <th>En ensamble</th>
+            <th>Instalandose</th>
+            <th>Disponibles</th>
+            <th>Vendidas</th>
+        </tr>
+    </thead>
+ 
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.espera)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.ensamblando)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.instalando)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.disponible)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.fuera)
+        </td>
+    </tr>
+        
+
+</table>

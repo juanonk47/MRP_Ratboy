@@ -142,6 +142,7 @@
     <Compile Include="Controllers\PaypalController.cs" />
     <Compile Include="Controllers\modeloVideosController.cs" />
     <Compile Include="Controllers\PedidoClienteController.cs" />
+    <Compile Include="Controllers\PedidosController.cs" />
     <Compile Include="Controllers\PerfilesController.cs" />
     <Compile Include="Controllers\Perfil_EnsambleController.cs" />
     <Compile Include="Controllers\PlacaMadresController.cs" />
@@ -686,6 +687,8 @@
     <Content Include="Views\UsuariosAdmins\Edit.cshtml" />
     <Content Include="Views\UsuariosAdmins\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutLoginAdmin.cshtml" />
+    <Content Include="Views\SeguimientoProduccion\Index.cshtml" />
+    <Content Include="Views\SeguimientoProduccion\Avance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

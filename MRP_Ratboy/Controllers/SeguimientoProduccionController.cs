@@ -11,7 +11,7 @@ namespace MRP_Ratboy.Controllers
     public class SeguimientoProduccionController : Controller
     {
         private BD_ArmadoPcEntities db = new BD_ArmadoPcEntities();
-        public ActionResult motrarPedidos()
+        public ActionResult Index()
         {
             PantallaDeProduccion pantalla = new PantallaDeProduccion();
             List<pedido_ensamble> pedido_Ensambles = this.db.pedido_ensamble.ToList();
@@ -38,9 +38,10 @@ namespace MRP_Ratboy.Controllers
             }
             return View(pantalla);
         }
-        public ActionResult movimientoPedido(int id)
+        [HttpPost]
+        public ActionResult Avance([Bind(Include = "pedido_id")] pedido_ensamble p)
         {
-            pedido_ensamble pedido = this.db.pedido_ensamble.Find(id);
+            pedido_ensamble pedido = this.db.pedido_ensamble.Find(p.pedido_id);
             pedido.departamento++;
             this.db.Entry(pedido).State = EntityState.Modified;
             db.SaveChanges();
@@ -49,7 +50,11 @@ namespace MRP_Ratboy.Controllers
                 //MANDAR CORREL ELECTRONICO AL CLIENTE
             }
             ViewBag.Movimiento = "Pedido Movido de departamento";
-            return RedirectToAction("motrarPedidos");
+            return RedirectToAction("Index");
+        }
+        public ActionResult Avance()
+        {
+            return View();
         }
     }
 }
