@@ -42,6 +42,7 @@ namespace MRP_Ratboy.Controllers
         }
 
         // GET: Admin
+        [Authorize]
         public ActionResult Panel()
         {
             return View();

@@ -10,6 +10,7 @@ using MRP_Ratboy.Models;
 
 namespace MRP_Ratboy.Controllers
 {
+    [Authorize]
     public class UsuariosAdminsController : Controller
     {
         private BD_ArmadoPcEntities db = new BD_ArmadoPcEntities();
